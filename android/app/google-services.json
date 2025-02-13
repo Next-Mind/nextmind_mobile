@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "717856472169",
+    "project_id": "nextmind-v2",
+    "storage_bucket": "nextmind-v2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717856472169:android:84e83d96e08bcd4cb0f6f8",
+        "android_client_info": {
+          "package_name": "com.nextmind.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717856472169-uavicevhrqg0pkepd21c1lujq7dmmcb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0cfWek_7JlR27DkBxzhYT5OOsMoGoC1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717856472169-uavicevhrqg0pkepd21c1lujq7dmmcb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
