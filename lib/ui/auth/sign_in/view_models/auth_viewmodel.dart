@@ -12,10 +12,20 @@ class AuthViewModel extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   var passwordVisible = false.obs;
+  var stayConnected = false.obs;
 
   static AuthViewModel get to => Get.find<AuthViewModel>();
 
   late final loginWithEmailCommand = Command1(_loginWithEmail);
+
+  void togglePasswordVisibility() {
+    passwordVisible.value = !passwordVisible.value;
+  }
+
+  ValueChanged<bool?> toggleStayConnected(bool? value) {
+    stayConnected.value = value!;
+    return (newValue) => stayConnected.value = newValue!;
+  }
 
   AsyncResult<User> _loginWithEmail(Credentials credentials) async {
     return AuthRepository.to.loginWithEmail(credentials);
