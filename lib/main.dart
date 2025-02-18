@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nextmind_mobile/ui/auth/sign_in/widgets/auth_screen.dart';
+import 'package:nextmind_mobile/ui/auth/sign_in/widgets/sign_in_screen.dart';
+import 'package:nextmind_mobile/ui/core/localization/i18n.dart';
 import 'package:nextmind_mobile/ui/core/themes/theme.dart';
 import 'package:nextmind_mobile/ui/core/themes/util.dart';
 import 'package:nextmind_mobile/utils/bindings/remote_bindings.dart';
@@ -22,6 +23,8 @@ class MainApp extends StatelessWidget {
     MaterialTheme theme = MaterialTheme(textTheme);
     return GetMaterialApp(
       title: 'NextMind Mobile',
+      translations: Messages(),
+      locale: Locale('en', 'US'),
       theme: theme.light(),
       debugShowCheckedModeBanner: false,
       initialBinding: RemoteBindings(),
