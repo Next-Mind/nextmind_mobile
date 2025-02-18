@@ -22,6 +22,8 @@ class AuthViewModel extends GetxController {
 
   late final loginWithEmailCommand = Command0(_loginWithEmail);
 
+  late final loginWithGoogleCommand = Command0(_loginWithGoogle);
+
   void togglePasswordVisibility() {
     passwordVisible.value = !passwordVisible.value;
   }
@@ -34,5 +36,10 @@ class AuthViewModel extends GetxController {
   AsyncResult<User> _loginWithEmail() async {
     Future.delayed(Duration(seconds: 2));
     return AuthRepository.to.loginWithEmail(credentials);
+  }
+
+  AsyncResult<User> _loginWithGoogle() async {
+    Future.delayed(Duration(seconds: 2));
+    return AuthRepository.to.loginWithGoogle();
   }
 }

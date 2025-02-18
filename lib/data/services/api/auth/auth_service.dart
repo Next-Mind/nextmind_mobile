@@ -47,7 +47,7 @@ class AuthService extends GetxService {
       return Success(userCredential.user!);
     } catch (e) {
       _logger.d("User login failed using an email.");
-      return Failure(AuthException(e.toString()));
+      return Failure(AuthException("loginFailed".tr));
     }
   }
 
@@ -55,7 +55,7 @@ class AuthService extends GetxService {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return Failure(AuthException('Sign in aborted by user'));
+        return Failure(AuthException('sigInAborted'.tr));
       }
 
       final GoogleSignInAuthentication googleAuth =

@@ -1,15 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nextmind_mobile/ui/auth/sign_in/widgets/sign_in_screen.dart';
+import 'package:nextmind_mobile/ui/auth/check_auth/widgets/check_auth.dart';
 import 'package:nextmind_mobile/ui/core/localization/i18n.dart';
 import 'package:nextmind_mobile/ui/core/themes/theme.dart';
 import 'package:nextmind_mobile/ui/core/themes/util.dart';
 import 'package:nextmind_mobile/utils/bindings/remote_bindings.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const MainApp());
 }
 
@@ -28,7 +28,7 @@ class MainApp extends StatelessWidget {
       theme: theme.light(),
       debugShowCheckedModeBanner: false,
       initialBinding: RemoteBindings(),
-      home: AuthScreen(),
+      home: CheckAuth(),
     );
   }
 }

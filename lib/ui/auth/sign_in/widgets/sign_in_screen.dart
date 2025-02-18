@@ -5,37 +5,52 @@ import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.da
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 import 'package:result_command/result_command.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final viewModel = AuthViewModel.to;
 
   final _logger = Logger();
 
+  final Map<Command, VoidCallback> _commandListeners = {};
+
   @override
   void initState() {
     super.initState();
-    viewModel.loginWithEmailCommand.addListener(_listenable);
+    _registerCommandListener(viewModel.loginWithEmailCommand);
+    _registerCommandListener(viewModel.loginWithGoogleCommand);
+  }
+
+  void _registerCommandListener(Command command) {
+    listener() => _onCommandChanged(command);
+    _commandListeners[command] = listener;
+    command.addListener(listener);
   }
 
   @override
   void dispose() {
-    viewModel.loginWithEmailCommand.removeListener(_listenable);
+    _commandListeners.forEach((command, listener) {
+      command.removeListener(listener);
+    });
     super.dispose();
   }
 
-  void _listenable() {
-    if (viewModel.loginWithEmailCommand.isSuccess) {
-      _logger.d("Login success");
-    } else if (viewModel.loginWithEmailCommand.isFailure) {
-      _logger.d("Login failure");
-      final result = viewModel.loginWithEmailCommand.value as FailureCommand;
-      Get.snackbar('Ops!', result.error.toString());
+  void _onCommandChanged(Command command) {
+    if (command.isSuccess) {
+      _logger.d("Command Success: $command");
+    } else if (command.isFailure) {
+      _logger.d("Command Failure: $command");
+      final result = command.value as FailureCommand;
+      Get.snackbar(
+        'Ops!',
+        result.error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
@@ -67,25 +82,25 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ),
                   SizedBox(height: 36),
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: viewModel.passwordController,
-                    onChanged: viewModel.credentials.setPassword,
-                    validator: viewModel.validator
-                        .byField(viewModel.credentials, 'password'),
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: InputDecoration(
-                      hintText: 'fieldHintTextPassword'.tr,
-                      prefixIcon: Icon(Icons.lock_outline),
-                      suffixIcon: IconButton(
-                        icon: Icon(viewModel.passwordVisible.value
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                        onPressed: viewModel.togglePasswordVisibility,
-                      ),
-                    ),
-                    obscureText: !viewModel.passwordVisible.value,
-                  ),
+                  Obx(() => TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        controller: viewModel.passwordController,
+                        onChanged: viewModel.credentials.setPassword,
+                        validator: viewModel.validator
+                            .byField(viewModel.credentials, 'password'),
+                        keyboardType: TextInputType.visiblePassword,
+                        decoration: InputDecoration(
+                          hintText: 'fieldHintTextPassword'.tr,
+                          prefixIcon: Icon(Icons.lock_outline),
+                          suffixIcon: IconButton(
+                            icon: Icon(viewModel.passwordVisible.value
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: viewModel.togglePasswordVisibility,
+                          ),
+                        ),
+                        obscureText: !viewModel.passwordVisible.value,
+                      )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -110,7 +125,10 @@ class _AuthScreenState extends State<AuthScreen> {
                               minimumSize: Size(200, 48),
                             ),
                             child: viewModel.loginWithEmailCommand.isRunning
-                                ? CircularProgressIndicator()
+                                ? CircularProgressIndicator(
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
+                                  )
                                 : Text('signIn'.tr),
                           )),
                   SizedBox(height: 16),
@@ -122,16 +140,25 @@ class _AuthScreenState extends State<AuthScreen> {
                     child: Text('signUp'.tr),
                   ),
                   SizedBox(height: 16),
-                  SizedBox(
-                    width: 126,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.facebook, size: 24),
-                        Icon(Icons.email, size: 24),
-                        Icon(Icons.apple, size: 24),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.facebook),
+                        onPressed: () {},
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.email),
+                        onPressed: () {
+                          viewModel.loginWithGoogleCommand.execute();
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.apple),
+                        onPressed: () {},
+                      ),
+                    ],
                   ),
                 ],
               ),

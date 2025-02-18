@@ -87,4 +87,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'nextmind-v2.firebasestorage.app',
     measurementId: 'G-HCQ4MKVH22',
   );
+
 }
