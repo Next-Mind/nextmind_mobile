@@ -15,6 +15,27 @@ class Messages extends Translations {
           'signUp': 'Sign Up',
           'loginFailed': 'Invalid email or password.',
           'sigInAborted': 'Sign in aborted by user',
+          'formSignUpCurrentGrade': 'Current grade?',
+          'formSignUpCurrentGradeHint': 'Select your current grade',
+          'formSignUpReasonsForUsingApp':
+              'What are the reasons for using the app?',
+          'formSignUpHasTherapyExperience':
+              'Do you have any experience with therapy?',
+          'formSignUpLastPsychologicalExam':
+              'When was your last psychological exam?',
+          'formSignUpAcademicImpactOnMentalHealth':
+              'How does academic life impact your mental health?',
+          'formSignUpRestAndLeisureLevel':
+              'How do you rate your rest and leisure level?',
+          'formSignUpPracticesPhysicalActivities':
+              'Do you practice physical activities?',
+          'formSignUpAverageHoursOfSleep':
+              'How many hours of sleep do you usually have?',
+          'formSignUpEatingHabitsClassification':
+              'How do you classify your eating habits?',
+          'fieldHintTextName': 'Name',
+          'fieldHintTextRa': 'RA',
+          'fieldHintTextBirthday': 'Birthday',
         },
         'pt_BR': {
           'fieldEmailNotEmpty': 'O campo email não pode ser vazio',
@@ -28,6 +49,27 @@ class Messages extends Translations {
           'signUp': 'Criar Conta',
           'loginFailed': 'Email ou senha inválidos.',
           'sigInAborted': 'Login cancelado pelo usuário',
+          'formSignUpCurrentGrade': 'Em que ano está na escola?',
+          'formSignUpCurrentGradeHint':
+              'Selecione o ano que você está cursando',
+          'formSignUpReasonsForUsingApp': 'Quais os motivos por buscar o app?',
+          'formSignUpHasTherapyExperience':
+              'Você já fez ou está fazendo terapia?',
+          'formSignUpLastPsychologicalExam':
+              'Quando foi seu último exame psicológico?',
+          'formSignUpAcademicImpactOnMentalHealth':
+              'Como a vida acadêmica impacta na sua saúde mental?',
+          'formSignUpRestAndLeisureLevel':
+              'Como você avalia seu nível de descanso e lazer?',
+          'formSignUpPracticesPhysicalActivities':
+              'Você pratica atividades físicas?',
+          'formSignUpAverageHoursOfSleep':
+              'Quantas horas de sono você costuma ter?',
+          'formSignUpEatingHabitsClassification':
+              'Como você classifica seus hábitos alimentares?',
+          'fieldHintTextName': 'Nome',
+          'fieldHintTextRa': 'RA',
+          'fieldHintTextBirthday': 'Data de nascimento',
         },
       };
 }

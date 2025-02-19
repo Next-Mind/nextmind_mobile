@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
+import 'package:nextmind_mobile/ui/auth/sign_up/widgets/sign_up_screen.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 import 'package:result_command/result_command.dart';
 
@@ -133,7 +134,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           )),
                   SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => SignUpScreen());
+                    },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(200, 48),
                     ),

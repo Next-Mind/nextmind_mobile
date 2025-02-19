@@ -24,7 +24,8 @@ class MainApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'NextMind Mobile',
       translations: Messages(),
-      locale: Locale('en', 'US'),
+      locale: Get.deviceLocale,
+      fallbackLocale: Locale('pt', 'BR'),
       theme: theme.light(),
       debugShowCheckedModeBanner: false,
       initialBinding: RemoteBindings(),
