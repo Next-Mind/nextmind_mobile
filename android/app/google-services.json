@@ -29,6 +29,13 @@
             {
               "client_id": "717856472169-uavicevhrqg0pkepd21c1lujq7dmmcb0.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "717856472169-pgjl8j5ejlehgtphsvkp063s5564jnmk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nextmind.app"
+              }
             }
           ]
         }

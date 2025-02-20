@@ -9,7 +9,14 @@ import 'package:result_dart/result_dart.dart';
 
 class AuthRepositoryRemote extends GetxController implements AuthRepository {
   final AuthService _authService = AuthService.to;
+
+  @override
+  User? get user => _authService.user;
+
+  @override
   late RxBool userIsAuthenticated;
+
+  static AuthRepository get to => Get.find<AuthRepository>();
 
   @override
   void onInit() {

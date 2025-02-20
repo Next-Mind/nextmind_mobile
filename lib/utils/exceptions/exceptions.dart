@@ -7,8 +7,8 @@ abstract class AppException implements Exception {
   @override
   String toString() {
     if (stackTrace != null) {
-      return '$runtimeType: $message\n$stackTrace';
+      return '$message\n';
     }
-    return '$runtimeType: $message';
+    return message;
   }
 }

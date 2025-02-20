@@ -12,6 +12,7 @@ class AuthService extends GetxService {
   final Rxn<User> _firebaseUser = Rxn<User>();
   var userIsAuthenticated = false.obs;
 
+  User? get user => _firebaseUser.value;
   final Logger _logger = Logger();
 
   @override
@@ -47,7 +48,7 @@ class AuthService extends GetxService {
       return Success(userCredential.user!);
     } catch (e) {
       _logger.d("User login failed using an email.");
-      return Failure(AuthException(e.toString()));
+      return Failure(AuthException("loginFailed".tr));
     }
   }
 
@@ -55,7 +56,7 @@ class AuthService extends GetxService {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return Failure(AuthException('Sign in aborted by user'));
+        return Failure(AuthException('sigInAborted'.tr));
       }
 
       final GoogleSignInAuthentication googleAuth =

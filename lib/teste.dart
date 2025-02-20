@@ -5,9 +5,8 @@
 *
 */
 
-
 import 'package:flutter/material.dart';
-import 'package:nextmind_mobile/utils/wigdets/custom_menu.dart';
+import 'package:nextmind_mobile/ui/core/wigdets/custom_menu.dart';
 
 class Teste extends StatefulWidget {
   const Teste({super.key});

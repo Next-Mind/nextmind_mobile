@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_final_fields, unused_field, use_super_parameters
 
 import 'package:flutter/material.dart';
-import 'package:nextmind_mobile/utils/colors/menu_app_colors.dart';
+import 'package:nextmind_mobile/ui/core/themes/colors/menu_app_colors.dart';
 
 class CustomMenu extends StatelessWidget {
   final int currentIndex;
@@ -37,8 +37,8 @@ class CustomMenu extends StatelessWidget {
     required this.currentIndex,
     required this.onTap,
     this.items = _defaultItems,
-    this.backgroundColor = MenuAppColors.backgroundColors, 
-    this.iconColor = MenuAppColors.iconColors, 
+    this.backgroundColor = MenuAppColors.backgroundColors,
+    this.iconColor = MenuAppColors.iconColors,
     this.iconSelectedColor = MenuAppColors.iconSelectedColors,
     this.textColor = MenuAppColors.textColor,
     this.textSelectedColor = MenuAppColors.textSelectedColors,
@@ -49,14 +49,11 @@ class CustomMenu extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
-
       selectedIconTheme: IconThemeData(color: iconSelectedColor),
       unselectedIconTheme: IconThemeData(color: iconColor),
-
       selectedItemColor: textSelectedColor,
       unselectedItemColor: textColor,
       showUnselectedLabels: true,
-
       items: items,
     );
   }
