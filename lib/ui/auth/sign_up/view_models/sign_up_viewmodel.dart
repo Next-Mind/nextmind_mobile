@@ -35,6 +35,8 @@ class SignUpViewModel extends GetxController {
         duration: const Duration(milliseconds: 600),
         curve: Curves.easeInSine,
       );
+    } else {
+      Get.back();
     }
   }
 }
