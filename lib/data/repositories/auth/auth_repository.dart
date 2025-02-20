@@ -6,6 +6,8 @@ import 'package:result_dart/result_dart.dart';
 abstract interface class AuthRepository extends GetxController {
   static AuthRepository get to => Get.find<AuthRepository>();
 
+  User? get user;
+
   late RxBool userIsAuthenticated;
 
   AsyncResult<User> registerWithEmail(Credentials credentials);

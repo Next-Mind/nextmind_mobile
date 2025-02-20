@@ -50,8 +50,7 @@ class Messages extends Translations {
           'loginFailed': 'Email ou senha inválidos.',
           'sigInAborted': 'Login cancelado pelo usuário',
           'formSignUpCurrentGrade': 'Em que ano está na escola?',
-          'formSignUpCurrentGradeHint':
-              'Selecione o ano que você está cursando',
+          'formSignUpCurrentGradeHint': 'Selecione o ano',
           'formSignUpReasonsForUsingApp': 'Quais os motivos por buscar o app?',
           'formSignUpHasTherapyExperience':
               'Você já fez ou está fazendo terapia?',

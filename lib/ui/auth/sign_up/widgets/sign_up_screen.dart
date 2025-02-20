@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/academic_impact_on_mental_health.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/average_sleep_hours.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/current_grade.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/eating_habits_classification.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/has_therapy_experience.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/last_psychological_exam.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/personal_info_form.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/practices_physical_activity.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/reasons_for_using_app.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/rest_and_leisure_level.dart';
+import 'package:nextmind_mobile/ui/auth/sign_up/widgets/form_steps/widgets.dart';
+import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -21,25 +14,59 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   late final viewModel = SignUpViewModel.to;
 
+  final List<Widget> pages = [
+    CurrentGrade(),
+    ReasonsForUsingApp(),
+    HasTherapyExperience(),
+    LastPsychologicalExam(),
+    AcademicImpactOnMentalHealth(),
+    RestAndLeisureLevel(),
+    PracticesPhysicalActivity(),
+    AverageSleepHours(),
+    EatingHabitsClassification(),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    viewModel.setPagesLegth(pages.length);
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: viewModel.goToPreviousPage,
+        ),
+      ),
       body: SafeArea(
         child: PageView(
           controller: viewModel.pageController,
           physics: const NeverScrollableScrollPhysics(),
-          children: [
-            PersonalInfoForm(),
-            CurrentGrade(),
-            ReasonsForUsingApp(),
-            HasTherapyExperience(),
-            LastPsychologicalExam(),
-            AcademicImpactOnMentalHealth(),
-            RestAndLeisureLevel(),
-            PracticesPhysicalActivity(),
-            AverageSleepHours(),
-            EatingHabitsClassification()
-          ],
+          onPageChanged: viewModel.onPageChanged,
+          children: pages,
+        ),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: Dimens.mediumPadding),
+        child: FloatingActionButton(
+          onPressed: viewModel.goToNextPage,
+          child: const Icon(Icons.arrow_forward),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(Dimens.extraLargePadding),
+        child: Obx(
+          () => TweenAnimationBuilder<double>(
+            tween: Tween<double>(
+              begin: 0,
+              end: (viewModel.currentPage.value + 1) / pages.length,
+            ),
+            duration: const Duration(milliseconds: 600),
+            builder: (context, value, child) {
+              return LinearProgressIndicator(
+                value: value,
+              );
+            },
+          ),
         ),
       ),
     );

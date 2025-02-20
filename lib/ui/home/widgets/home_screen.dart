@@ -9,9 +9,15 @@ class HomeScreen extends StatelessWidget {
     final viewModel = HomeViewModel.to;
     return Scaffold(
       body: Center(
-        child:
-            ElevatedButton(onPressed: viewModel.logout, child: Text('Logout')),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            backgroundImage: NetworkImage(viewModel.user.photoURL!),
+          ),
+          ElevatedButton(onPressed: viewModel.logout, child: Text('Logout')),
+        ],
+      )),
     );
   }
 }

@@ -12,6 +12,7 @@ class AuthService extends GetxService {
   final Rxn<User> _firebaseUser = Rxn<User>();
   var userIsAuthenticated = false.obs;
 
+  User? get user => _firebaseUser.value;
   final Logger _logger = Logger();
 
   @override

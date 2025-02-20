@@ -7,18 +7,24 @@ class SignUpViewModel extends GetxController {
 
   final PageController pageController = PageController();
   final SignUpForm signUpFormAnswers = SignUpForm();
-  int currentPage = 0;
+  var currentPage = 0.obs;
+
+  late int length;
 
   void onPageChanged(int page) {
-    currentPage = page;
+    currentPage.value = page;
     update();
   }
 
+  void setPagesLegth(int length) {
+    this.length = length;
+  }
+
   void goToNextPage() {
-    if (currentPage < 2) {
+    if (currentPage < length) {
       pageController.nextPage(
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInSine,
       );
     }
   }
@@ -26,8 +32,8 @@ class SignUpViewModel extends GetxController {
   void goToPreviousPage() {
     if (currentPage > 0) {
       pageController.previousPage(
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeOut,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInSine,
       );
     }
   }
