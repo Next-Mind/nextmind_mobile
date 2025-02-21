@@ -27,6 +27,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   ];
 
   @override
+  void dispose() {
+    super.dispose();
+    viewModel.onPageChanged(0);
+  }
+
+  @override
   Widget build(BuildContext context) {
     viewModel.setPagesLegth(pages.length);
     return Scaffold(

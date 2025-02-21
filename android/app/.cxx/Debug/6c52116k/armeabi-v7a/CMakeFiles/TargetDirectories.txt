@@ -1,0 +1,2 @@
+C:/Users/Andre/Documents/Projeto Integrador/nextmind_mobile/android/app/.cxx/Debug/6c52116k/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Andre/Documents/Projeto Integrador/nextmind_mobile/android/app/.cxx/Debug/6c52116k/armeabi-v7a/CMakeFiles/rebuild_cache.dir
