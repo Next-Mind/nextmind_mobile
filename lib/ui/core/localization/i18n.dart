@@ -36,6 +36,7 @@ class Messages extends Translations {
           'fieldHintTextName': 'Name',
           'fieldHintTextRa': 'RA',
           'fieldHintTextBirthday': 'Birthday',
+          'unimplementedError': 'Unimplemented Function'
         },
         'pt_BR': {
           'fieldEmailNotEmpty': 'O campo email não pode ser vazio',
@@ -69,6 +70,7 @@ class Messages extends Translations {
           'fieldHintTextName': 'Nome',
           'fieldHintTextRa': 'RA',
           'fieldHintTextBirthday': 'Data de nascimento',
+          'unimplementedError': 'Função não implementada'
         },
       };
 }

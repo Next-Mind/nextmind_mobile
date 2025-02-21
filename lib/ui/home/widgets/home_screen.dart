@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,9 +13,9 @@ class HomeScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(viewModel.user.photoURL!),
-          ),
+          Obx(() => CircleAvatar(
+                backgroundImage: NetworkImage(viewModel.user.value.photoURL!),
+              )),
           ElevatedButton(onPressed: viewModel.logout, child: Text('Logout')),
         ],
       )),

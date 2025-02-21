@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nextmind_mobile/ui/auth/sign_up/view_models/personal_info_form_viewmodel.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/sign_up_screen.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
+import 'package:nextmind_mobile/utils/routes/routes.dart';
 
 class PersonalInfoForm extends StatelessWidget {
   const PersonalInfoForm({super.key});
@@ -109,7 +109,7 @@ class PersonalInfoForm extends StatelessWidget {
                 ),
                 SizedBox(height: Dimens.largePadding),
                 ElevatedButton(
-                  onPressed: () => Get.to(() => SignUpScreen()),
+                  onPressed: () => Get.toNamed(Routes.authSignupForm),
                   child: Text('signUp'.tr),
                 )
               ],
