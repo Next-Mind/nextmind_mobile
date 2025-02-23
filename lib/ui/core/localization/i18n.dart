@@ -36,7 +36,13 @@ class Messages extends Translations {
           'fieldHintTextName': 'Name',
           'fieldHintTextRa': 'RA',
           'fieldHintTextBirthday': 'Birthday',
-          'unimplementedError': 'Unimplemented Function'
+          'unimplementedError': 'Unimplemented Function',
+          'formSignUpChooseGrade': 'Please select your current grade level.',
+          'school_grade_1': '1st Grade',
+          'school_grade_2': '2nd Grade',
+          'school_grade_3': '3rd Grade',
+          'school_grade_4': '4th Grade',
+          'school_grade_other': 'Other',
         },
         'pt_BR': {
           'fieldEmailNotEmpty': 'O campo email não pode ser vazio',
@@ -70,7 +76,13 @@ class Messages extends Translations {
           'fieldHintTextName': 'Nome',
           'fieldHintTextRa': 'RA',
           'fieldHintTextBirthday': 'Data de nascimento',
-          'unimplementedError': 'Função não implementada'
+          'unimplementedError': 'Função não implementada',
+          'formSignUpChooseGrade': 'Selecione sua série atual',
+          'school_grade_1': '1º Série',
+          'school_grade_2': '2º Série',
+          'school_grade_3': '3º Série',
+          'school_grade_4': '4º Série',
+          'school_grade_other': 'Outros',
         },
       };
 }

@@ -57,9 +57,9 @@ class AuthService extends GetxService {
       var remoteUser = userCredential.user!;
       return Success(
         local_user.User(
-          remoteUser.displayName!,
-          remoteUser.email!,
-          remoteUser.photoURL!,
+          remoteUser.displayName ?? 'Undefined',
+          remoteUser.email ?? 'undefined@email.com',
+          remoteUser.photoURL ?? '',
         ),
       );
     } catch (e) {
@@ -88,9 +88,9 @@ class AuthService extends GetxService {
       var remoteUser = userCredential.user!;
       return Success(
         local_user.User(
-          remoteUser.displayName!,
-          remoteUser.email!,
-          remoteUser.photoURL!,
+          remoteUser.displayName ?? 'Undefined',
+          remoteUser.email ?? 'undefined@email.com',
+          remoteUser.photoURL ?? '',
         ),
       );
     } catch (e) {

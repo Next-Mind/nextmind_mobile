@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
+import 'package:nextmind_mobile/ui/core/ui/bottom_sheets/titled_bottom_sheet.dart';
 
 class CurrentGrade extends StatelessWidget {
   const CurrentGrade({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SignUpViewModel viewmodel = SignUpViewModel.to;
     return Padding(
       padding: EdgeInsets.all(Dimens.extraLargePadding),
       child: Column(
@@ -21,60 +24,17 @@ class CurrentGrade extends StatelessWidget {
           SizedBox(height: Dimens.extraLargePadding),
           TextFormField(
             readOnly: true,
+            controller: viewmodel.currentGradeController,
             onTap: () => showModalBottomSheet(
-              context: context,
               isScrollControlled: true,
-              builder: (context) {
-                return DraggableScrollableSheet(
-                  expand: false,
-                  builder: (context, scrollController) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Icon(Icons.drag_handle_rounded,
-                                  size: 30, color: Colors.grey[400]),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(Dimens.mediumPadding),
-                          child: Text(
-                            "Escolha a série",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium!
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            controller: scrollController,
-                            itemCount: 4,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                title: Text('${index + 1}º ano'),
-                                onTap: () {
-                                  Get.back();
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
+              context: context,
+              builder: (context) => TitledBottomSheet(
+                title: 'formSignUpChooseGrade'.tr,
+                customWidget: _gradeList(context),
+              ),
             ),
+            validator: viewmodel.validator.value
+                .byField(viewmodel.signUpFormAnswers.value, 'currentGrade'),
             decoration: InputDecoration(
               hintText: 'formSignUpCurrentGradeHint'.tr,
               suffixIcon: Icon(Icons.arrow_drop_down),
@@ -85,33 +45,21 @@ class CurrentGrade extends StatelessWidget {
       ),
     );
   }
+
+  Widget _gradeList(BuildContext context) {
+    SignUpViewModel viewmodel = SignUpViewModel.to;
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: viewmodel.grades.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(viewmodel.grades[index]),
+          onTap: () {
+            viewmodel.setCurrentGrade(index);
+            Get.back();
+          },
+        );
+      },
+    );
+  }
 }
-
-// Widget currentGradePage() {
-//   SignUpViewModel viewModel = SignUpViewModel.to;
-
-//   return Padding(
-//     padding: EdgeInsets.all(Dimens.largePadding),
-//     child: Column(
-//       children: [
-//         Text(
-//           'What is your current grade?',
-//         ),
-//         SizedBox(height: Dimens.mediumPadding),
-//         TextFormField(
-//           decoration: InputDecoration(
-//             hintText: 'Grade',
-//           ),
-//         ),
-//         SizedBox(height: Dimens.mediumPadding),
-//         Align(
-//           alignment: Alignment.bottomRight,
-//           child: IconButton(
-//             icon: const Icon(Icons.arrow_forward),
-//             onPressed: viewModel.goToNextPage,
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }

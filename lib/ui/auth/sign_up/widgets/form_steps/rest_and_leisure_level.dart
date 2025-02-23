@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 
 class RestAndLeisureLevel extends StatelessWidget {
@@ -7,6 +8,7 @@ class RestAndLeisureLevel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SignUpViewModel viewModel = SignUpViewModel.to;
     return Padding(
       padding: EdgeInsets.all(Dimens.extraLargePadding),
       child: Column(
@@ -20,6 +22,9 @@ class RestAndLeisureLevel extends StatelessWidget {
           ),
           SizedBox(height: Dimens.extraLargePadding),
           TextFormField(
+            validator: viewModel.validator.value.byField(
+                viewModel.signUpFormAnswers.value, 'restAndLeisureLevel'),
+            onChanged: viewModel.setRestAndLeisureLevel,
             decoration: InputDecoration(
               hintText: 'Grade',
             ),

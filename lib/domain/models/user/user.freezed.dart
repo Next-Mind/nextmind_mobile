@@ -22,7 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String? get photoURL => throw _privateConstructorUsedError;
+  String get photoURL => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String name, String email, String? photoURL});
+  $Res call({String name, String email, String photoURL});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? name = null,
     Object? email = null,
-    Object? photoURL = freezed,
+    Object? photoURL = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -69,10 +69,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      photoURL: freezed == photoURL
+      photoURL: null == photoURL
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -84,7 +84,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String email, String? photoURL});
+  $Res call({String name, String email, String photoURL});
 }
 
 /// @nodoc
@@ -101,7 +101,7 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? email = null,
-    Object? photoURL = freezed,
+    Object? photoURL = null,
   }) {
     return _then(_$UserImpl(
       null == name
@@ -112,10 +112,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      freezed == photoURL
+      null == photoURL
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -139,7 +139,7 @@ class _$UserImpl implements _User {
   final String email;
   @override
   @JsonKey()
-  final String? photoURL;
+  final String photoURL;
 
   @override
   String toString() {
@@ -181,7 +181,7 @@ abstract class _User implements User {
   factory _User(
       [final String name,
       final String email,
-      final String? photoURL]) = _$UserImpl;
+      final String photoURL]) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -190,7 +190,7 @@ abstract class _User implements User {
   @override
   String get email;
   @override
-  String? get photoURL;
+  String get photoURL;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

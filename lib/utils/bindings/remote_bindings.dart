@@ -9,7 +9,6 @@ import 'package:nextmind_mobile/ui/base_screen/view_models/base_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 
 import '../../data/services/local_storage.dart';
-import '../../ui/auth/sign_up/view_models/personal_info_form_viewmodel.dart';
 
 class RemoteBindings implements Bindings {
   @override
@@ -38,7 +37,6 @@ class BaseBindings implements Bindings {
 class SignUpBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<PersonalInfoFormViewModel>(() => PersonalInfoFormViewModel());
     Get.lazyPut<SignUpViewModel>(() => SignUpViewModel());
   }
 }

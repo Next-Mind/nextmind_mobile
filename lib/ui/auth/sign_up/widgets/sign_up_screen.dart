@@ -30,11 +30,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void dispose() {
     super.dispose();
     viewModel.onPageChanged(0);
+    viewModel.signUpFormAnswers.value.formSubmitted = false;
   }
 
   @override
   Widget build(BuildContext context) {
     viewModel.setPagesLegth(pages.length);
+
+    final pagesWithKeys = List.generate(
+      pages.length,
+      (index) => Form(
+        key: viewModel.formKeys[index],
+        child: pages[index],
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -48,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           controller: viewModel.pageController,
           physics: const NeverScrollableScrollPhysics(),
           onPageChanged: viewModel.onPageChanged,
-          children: pages,
+          children: pagesWithKeys,
         ),
       ),
       floatingActionButton: Padding(

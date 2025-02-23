@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 
 class LastPsychologicalExam extends StatelessWidget {
@@ -7,6 +8,7 @@ class LastPsychologicalExam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SignUpViewModel viewModel = SignUpViewModel.to;
     return Padding(
       padding: EdgeInsets.all(Dimens.extraLargePadding),
       child: Column(
@@ -20,6 +22,10 @@ class LastPsychologicalExam extends StatelessWidget {
           ),
           SizedBox(height: Dimens.extraLargePadding),
           TextFormField(
+            validator: viewModel.validator.value.byField(
+                viewModel.signUpFormAnswers.value, 'lastPsychologicalExam'),
+            onChanged:
+                viewModel.signUpFormAnswers.value.setLastPsychologicalExam,
             decoration: InputDecoration(
               hintText: 'Grade',
             ),

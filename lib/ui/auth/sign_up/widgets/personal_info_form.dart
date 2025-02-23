@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/view_models/personal_info_form_viewmodel.dart';
+import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
-import 'package:nextmind_mobile/utils/routes/routes.dart';
 
-class PersonalInfoForm extends StatelessWidget {
+class PersonalInfoForm extends StatefulWidget {
   const PersonalInfoForm({super.key});
 
+  @override
+  State<PersonalInfoForm> createState() => _PersonalInfoFormState();
+}
+
+class _PersonalInfoFormState extends State<PersonalInfoForm> {
   Future<void> _selectDate(BuildContext context) async {
-    final viewModel = PersonalInfoFormViewModel.to;
+    final viewModel = SignUpViewModel.to;
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -17,13 +21,13 @@ class PersonalInfoForm extends StatelessWidget {
     );
     if (picked != null) {
       viewModel.birthdayController.text = picked.toString();
-      viewModel.credentials.setBirthday(picked);
+      viewModel.signUpFormAnswers.value.setBirthday(picked);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = PersonalInfoFormViewModel.to;
+    final viewModel = SignUpViewModel.to;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -39,9 +43,9 @@ class PersonalInfoForm extends StatelessWidget {
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: viewModel.nameController,
-                  validator: viewModel.validator
-                      .byField(viewModel.credentials, 'name'),
-                  onChanged: viewModel.credentials.setName,
+                  validator: viewModel.validator.value
+                      .byField(viewModel.signUpFormAnswers.value, 'name'),
+                  onChanged: viewModel.setName,
                   decoration: InputDecoration(
                     hintText: 'fieldHintTextName'.tr,
                     prefixIcon: Icon(Icons.person_outline),
@@ -51,8 +55,9 @@ class PersonalInfoForm extends StatelessWidget {
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: viewModel.birthdayController,
-                  validator: viewModel.validator
-                      .byField(viewModel.credentials, 'birthday'),
+                  onChanged: viewModel.setBirthday,
+                  validator: viewModel.validator.value
+                      .byField(viewModel.signUpFormAnswers.value, 'birthday'),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.calendar_today_outlined),
                     hintText: 'fieldHintTextBirthday'.tr,
@@ -64,9 +69,9 @@ class PersonalInfoForm extends StatelessWidget {
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: viewModel.emailController,
-                  validator: viewModel.validator
-                      .byField(viewModel.credentials, 'email'),
-                  onChanged: viewModel.credentials.setEmail,
+                  validator: viewModel.validator.value
+                      .byField(viewModel.signUpFormAnswers.value, 'email'),
+                  onChanged: viewModel.setEmail,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: 'fieldHintTextEmail'.tr,
@@ -77,9 +82,9 @@ class PersonalInfoForm extends StatelessWidget {
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: viewModel.raController,
-                  validator:
-                      viewModel.validator.byField(viewModel.credentials, 'ra'),
-                  onChanged: viewModel.credentials.setRa,
+                  validator: viewModel.validator.value
+                      .byField(viewModel.signUpFormAnswers.value, 'ra'),
+                  onChanged: viewModel.setRa,
                   decoration: InputDecoration(
                     hintText: 'fieldHintTextRa'.tr,
                     prefixIcon: Icon(Icons.format_list_numbered_outlined),
@@ -90,9 +95,9 @@ class PersonalInfoForm extends StatelessWidget {
                   () => TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: viewModel.passwordController,
-                    onChanged: viewModel.credentials.setPassword,
-                    validator: viewModel.validator
-                        .byField(viewModel.credentials, 'password'),
+                    onChanged: viewModel.setPassword,
+                    validator: viewModel.validator.value
+                        .byField(viewModel.signUpFormAnswers.value, 'password'),
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       hintText: 'fieldHintTextPassword'.tr,
@@ -108,10 +113,17 @@ class PersonalInfoForm extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: Dimens.largePadding),
-                ElevatedButton(
-                  onPressed: () => Get.toNamed(Routes.authSignupForm),
-                  child: Text('signUp'.tr),
-                )
+                Obx(() => ElevatedButton(
+                      onPressed: viewModel.isFormValid.value
+                          ? () => viewModel.submitForm()
+                          : null,
+                      style: !viewModel.isFormValid.value
+                          ? ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll<Color>(
+                                  Theme.of(context).colorScheme.inversePrimary))
+                          : null,
+                      child: Text('signUp'.tr),
+                    )),
               ],
             ),
           ),
