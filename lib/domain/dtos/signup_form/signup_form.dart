@@ -13,7 +13,7 @@ class SignUpForm {
 
   String currentGrade;
   String reasonsForUsingApp;
-  bool hasTherapyExperience;
+  String hasTherapyExperience;
   String lastPsychologicalExam;
   String academicImpactOnMentalHealth;
   String restAndLeisureLevel;
@@ -26,7 +26,7 @@ class SignUpForm {
   SignUpForm({
     this.currentGrade = '',
     this.reasonsForUsingApp = '',
-    this.hasTherapyExperience = false,
+    this.hasTherapyExperience = '',
     this.lastPsychologicalExam = '',
     this.academicImpactOnMentalHealth = '',
     this.restAndLeisureLevel = '',
@@ -74,7 +74,7 @@ class SignUpForm {
     this.reasonsForUsingApp = reasonsForUsingApp;
   }
 
-  void setHasTherapyExperience(bool hasTherapyExperience) {
+  void setHasTherapyExperience(String hasTherapyExperience) {
     _logger
         .d("Input hasTherapyExperience changed: ${this.hasTherapyExperience}");
     this.hasTherapyExperience = hasTherapyExperience;

@@ -22,48 +22,48 @@ class SignupFormValidator extends LucidValidator<SignUpForm> {
     ruleFor((signUpFormAnswers) => signUpFormAnswers.currentGrade,
             key: 'currentGrade') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldCurrentGradeNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.reasonsForUsingApp,
             key: 'reasonsForUsingApp') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldReasonsForUsingAppNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.hasTherapyExperience,
             key: 'hasTherapyExperience') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .isNotNull();
+        .notEmpty();
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.lastPsychologicalExam,
             key: 'lastPsychologicalExam') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldLastPsychologicalExamNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
 
     ruleFor(
             (signUpFormAnswers) =>
                 signUpFormAnswers.academicImpactOnMentalHealth,
             key: 'academicImpactOnMentalHealth') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldAcademicImpactOnMentalHealthNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.restAndLeisureLevel,
             key: 'restAndLeisureLevel') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldRestAndLeisureLevelNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.practicesPhysicalActivity,
             key: 'practicesPhysicalActivity') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldPracticesPhysicalActivityNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.averageSleepHours,
             key: 'averageSleepHours') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldAverageSleepHoursNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.eatingHabitsClassification,
             key: 'eatingHabitsClassification') //
         .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldEatingHabitsClassificationNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
   }
 }

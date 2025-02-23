@@ -4,6 +4,7 @@ class Messages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'fieldNotEmpty': 'This field must not be empty',
           'fieldEmailNotEmpty': 'Email must not be empty',
           'fieldEmailInvalid': 'Email is invalid',
           'fieldHintTextEmail': 'Email',
@@ -43,8 +44,11 @@ class Messages extends Translations {
           'school_grade_3': '3rd Grade',
           'school_grade_4': '4th Grade',
           'school_grade_other': 'Other',
+          'formSignUpChooseReason': 'Please select a reason.',
+          'formSignUpReasonsForUsingAppHint': 'Choose a reason'
         },
         'pt_BR': {
+          'fieldNotEmpty': 'Este campo não pode estar vazio!',
           'fieldEmailNotEmpty': 'O campo email não pode ser vazio',
           'fieldEmailInvalid': 'Email inválido',
           'fieldHintTextEmail': 'Digite seu email',
@@ -83,6 +87,8 @@ class Messages extends Translations {
           'school_grade_3': '3º Série',
           'school_grade_4': '4º Série',
           'school_grade_other': 'Outros',
+          'formSignUpChooseReason': 'Por favor, selecione um motivo.',
+          'formSignUpReasonsForUsingAppHint': 'Escolha um motivo'
         },
       };
 }

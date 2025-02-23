@@ -17,14 +17,19 @@ class SignUpViewModel extends GetxController {
   TextEditingController passwordController = TextEditingController();
 
   TextEditingController currentGradeController = TextEditingController();
-  TextEditingController reasonsForUsingApp = TextEditingController();
-  TextEditingController hasTherapyExperience = TextEditingController();
-  TextEditingController lastPsychologicalExam = TextEditingController();
-  TextEditingController academicImpactOnMentalHealth = TextEditingController();
-  TextEditingController restAndLeisureLevel = TextEditingController();
-  TextEditingController practicesPhysicalActivity = TextEditingController();
-  TextEditingController averageSleepHours = TextEditingController();
-  TextEditingController eatingHabitsClassification = TextEditingController();
+  TextEditingController reasonsForUsingAppController = TextEditingController();
+  TextEditingController hasTherapyExperienceController =
+      TextEditingController();
+  TextEditingController lastPsychologicalExamController =
+      TextEditingController();
+  TextEditingController academicImpactOnMentalHealthController =
+      TextEditingController();
+  TextEditingController restAndLeisureLevelController = TextEditingController();
+  TextEditingController practicesPhysicalActivityController =
+      TextEditingController();
+  TextEditingController averageSleepHoursController = TextEditingController();
+  TextEditingController eatingHabitsClassificationController =
+      TextEditingController();
 
   final PageController pageController = PageController();
 
@@ -42,6 +47,18 @@ class SignUpViewModel extends GetxController {
     'school_grade_3'.tr,
     'school_grade_4'.tr,
     'school_grade_other'.tr,
+  ];
+
+  final List<String> reasons = [
+    'Motivo 1',
+    'Motivo 2',
+    'Motivo 3',
+  ];
+
+  final List<String> therapyExperience = [
+    'Experiencia 1',
+    'Experiencia 2',
+    'Experiencia 3'
   ];
 
   final List<GlobalKey<FormState>> formKeys = [];
@@ -121,14 +138,16 @@ class SignUpViewModel extends GetxController {
     signUpFormAnswers.value.setCurrentGrade(grades[index]);
   }
 
-  void setReasonsForUsingApp(String reason) {
-    signUpFormAnswers.value.setReasonsForUsingApp(reason);
+  void setReasonsForUsingApp(int index) {
+    reasonsForUsingAppController.text = reasons[index];
+    signUpFormAnswers.value.setReasonsForUsingApp(reasons[index]);
     signUpFormAnswers.refresh();
   }
 
-  void setHasTherapyExperience(String hasTherapyExperience) {
-    signUpFormAnswers.value
-        .setHasTherapyExperience(bool.parse(hasTherapyExperience));
+  void setHasTherapyExperience(int index) {
+    hasTherapyExperienceController.text = therapyExperience[index];
+    signUpFormAnswers.value.setHasTherapyExperience(therapyExperience[index]);
+    signUpFormAnswers.refresh();
   }
 
   void setLastPsychologicalExam(String lastPsychologicalExam) {
