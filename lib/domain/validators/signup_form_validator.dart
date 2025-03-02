@@ -5,65 +5,24 @@ import 'package:nextmind_mobile/domain/dtos/signup_form/signup_form.dart';
 class SignupFormValidator extends LucidValidator<SignUpForm> {
   SignupFormValidator() {
     ruleFor((signUpFormAnswers) => signUpFormAnswers.name, key: 'name') //
-        .notEmpty(message: 'fieldNameNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr)
+        .minLength(3, message: 'fieldMinLength'.trParams({'length': '3'}));
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.email, key: 'email') //
         .notEmpty(message: 'fieldEmailNotEmpty'.tr)
         .validEmail(message: 'fieldEmailInvalid'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.ra, key: 'ra') //
-        .notEmpty(message: 'fieldRaNotEmpty'.tr);
+        .notEmpty(message: 'fieldNotEmpty'.tr);
+
+    ruleFor((signUpFormAnswers) => signUpFormAnswers.birthday,
+            key: 'birthday') //
+        .lessThan(DateTime(DateTime.now().year - 13, 12, 31),
+            message: 'fieldBirthdayLessThan'.tr);
 
     ruleFor((signUpFormAnswers) => signUpFormAnswers.password,
             key: 'password') //
         .notEmpty(message: 'fieldPasswordNotEmpty'.tr)
         .minLength(8, message: 'fieldPasswordMinLength'.tr);
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.currentGrade,
-            key: 'currentGrade') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.reasonsForUsingApp,
-            key: 'reasonsForUsingApp') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.hasTherapyExperience,
-            key: 'hasTherapyExperience') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty();
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.lastPsychologicalExam,
-            key: 'lastPsychologicalExam') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
-
-    ruleFor(
-            (signUpFormAnswers) =>
-                signUpFormAnswers.academicImpactOnMentalHealth,
-            key: 'academicImpactOnMentalHealth') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.restAndLeisureLevel,
-            key: 'restAndLeisureLevel') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.practicesPhysicalActivity,
-            key: 'practicesPhysicalActivity') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.averageSleepHours,
-            key: 'averageSleepHours') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
-
-    ruleFor((signUpFormAnswers) => signUpFormAnswers.eatingHabitsClassification,
-            key: 'eatingHabitsClassification') //
-        .when((signUpFormAnswers) => signUpFormAnswers.formSubmitted)
-        .notEmpty(message: 'fieldNotEmpty'.tr);
   }
 }

@@ -21,15 +21,31 @@ class BottomNavBar extends StatelessWidget {
               Icons.home,
               color: Theme.of(context).colorScheme.surface,
             ),
-            label: "Home",
+            label: "NavHome".tr,
           ),
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.calendar_today_outlined),
             selectedIcon: Icon(
-              Icons.home,
+              Icons.calendar_today,
               color: Theme.of(context).colorScheme.surface,
             ),
-            label: "Home",
+            label: "NavAppointments".tr,
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.chat_outlined),
+            selectedIcon: Icon(
+              Icons.chat,
+              color: Theme.of(context).colorScheme.surface,
+            ),
+            label: "NavChat".tr,
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            selectedIcon: Icon(
+              Icons.settings,
+              color: Theme.of(context).colorScheme.surface,
+            ),
+            label: "NavSettings".tr,
           ),
         ],
       ),

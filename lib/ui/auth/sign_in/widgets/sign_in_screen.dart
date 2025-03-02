@@ -106,7 +106,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(Routes.authForgotPassword);
+                        },
                         child: Text('forgotPassword'.tr),
                       ),
                     ],

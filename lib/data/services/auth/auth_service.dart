@@ -33,17 +33,40 @@ class AuthService extends GetxService {
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
               email: credentials.email, password: credentials.password);
-      _logger.d("Successfully created a new user with an email.");
       var newUser = userCredential.user!;
+      _logger.d("Successfully created a new user with an email.");
+      sendEmailVerification();
       return Success(
         local_user.User(
-          newUser.displayName!,
-          newUser.email!,
-          newUser.photoURL!,
+          newUser.displayName ?? 'Undefined',
+          newUser.email ?? 'Undefined',
+          newUser.photoURL ?? 'Undefined',
         ),
       );
     } catch (e) {
       _logger.d("Failed to create a new user with an email.");
+      return Failure(AuthException(e.toString()));
+    }
+  }
+
+  AsyncResult<Unit> sendEmailVerification() async {
+    try {
+      await _auth.currentUser!.sendEmailVerification();
+      _logger.d("Email verification sent successfully.");
+      return Success(unit);
+    } catch (e) {
+      _logger.d("Failed to send email verification.");
+      return Failure(AuthException(e.toString()));
+    }
+  }
+
+  AsyncResult<Unit> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      _logger.d("Password reset email sent successfully.");
+      return Success(unit);
+    } catch (e) {
+      _logger.d("Failed to send password reset email.");
       return Failure(AuthException(e.toString()));
     }
   }
