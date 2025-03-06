@@ -1,2 +1,0 @@
-C:/Users/Andre/Documents/Projeto Integrador/nextmind_mobile/android/app/.cxx/RelWithDebInfo/101zj65e/x86_64/CMakeFiles/edit_cache.dir
-C:/Users/Andre/Documents/Projeto Integrador/nextmind_mobile/android/app/.cxx/RelWithDebInfo/101zj65e/x86_64/CMakeFiles/rebuild_cache.dir
