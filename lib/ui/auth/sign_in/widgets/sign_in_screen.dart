@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
-import 'package:nextmind_mobile/utils/routes/routes.dart';
+import 'package:nextmind_mobile/utils/routes/app_routes.dart';
 import 'package:result_command/result_command.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -107,7 +107,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          Get.toNamed(Routes.authForgotPassword);
+                          Get.toNamed(AppRoutes.authForgotPassword);
                         },
                         child: Text('forgotPassword'.tr),
                       ),
@@ -137,7 +137,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
-                      Get.toNamed(Routes.authSignup);
+                      Get.toNamed(AppRoutes.authSignup);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(200, 48),

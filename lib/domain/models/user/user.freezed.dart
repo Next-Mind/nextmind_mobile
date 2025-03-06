@@ -15,30 +15,67 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'authenticated':
+      return _User.fromJson(json);
+    case 'empty':
+      return NotLoggedUser.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'User',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$User {
-  String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get photoURL => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String email, String photoURL) $default, {
+    required TResult Function() notLogged,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String email, String photoURL)? $default, {
+    TResult? Function()? notLogged,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String email, String photoURL)? $default, {
+    TResult Function()? notLogged,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_User value) $default, {
+    required TResult Function(NotLoggedUser value) notLogged,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_User value)? $default, {
+    TResult? Function(NotLoggedUser value)? notLogged,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_User value)? $default, {
+    TResult Function(NotLoggedUser value)? notLogged,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of User
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
-  @useResult
-  $Res call({String name, String email, String photoURL});
 }
 
 /// @nodoc
@@ -53,36 +90,13 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? photoURL = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoURL: null == photoURL
-          ? _value.photoURL
-          : photoURL // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
+abstract class _$$UserImplCopyWith<$Res> {
   factory _$$UserImplCopyWith(
           _$UserImpl value, $Res Function(_$UserImpl) then) =
       __$$UserImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String name, String email, String photoURL});
 }
@@ -126,7 +140,9 @@ class _$UserImpl implements _User {
   _$UserImpl(
       [this.name = 'Undefined',
       this.email = 'Undefined',
-      this.photoURL = 'Undefined']);
+      this.photoURL = 'Undefined',
+      final String? $type])
+      : $type = $type ?? 'authenticated';
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -140,6 +156,9 @@ class _$UserImpl implements _User {
   @override
   @JsonKey()
   final String photoURL;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -170,6 +189,68 @@ class _$UserImpl implements _User {
       __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
 
   @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String email, String photoURL) $default, {
+    required TResult Function() notLogged,
+  }) {
+    return $default(name, email, photoURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String email, String photoURL)? $default, {
+    TResult? Function()? notLogged,
+  }) {
+    return $default?.call(name, email, photoURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String email, String photoURL)? $default, {
+    TResult Function()? notLogged,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(name, email, photoURL);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_User value) $default, {
+    required TResult Function(NotLoggedUser value) notLogged,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_User value)? $default, {
+    TResult? Function(NotLoggedUser value)? notLogged,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_User value)? $default, {
+    TResult Function(NotLoggedUser value)? notLogged,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+
+  @override
   Map<String, dynamic> toJson() {
     return _$$UserImplToJson(
       this,
@@ -185,17 +266,135 @@ abstract class _User implements User {
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
-  @override
   String get name;
-  @override
   String get email;
-  @override
   String get photoURL;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NotLoggedUserImplCopyWith<$Res> {
+  factory _$$NotLoggedUserImplCopyWith(
+          _$NotLoggedUserImpl value, $Res Function(_$NotLoggedUserImpl) then) =
+      __$$NotLoggedUserImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NotLoggedUserImplCopyWithImpl<$Res>
+    extends _$UserCopyWithImpl<$Res, _$NotLoggedUserImpl>
+    implements _$$NotLoggedUserImplCopyWith<$Res> {
+  __$$NotLoggedUserImplCopyWithImpl(
+      _$NotLoggedUserImpl _value, $Res Function(_$NotLoggedUserImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$NotLoggedUserImpl implements NotLoggedUser {
+  const _$NotLoggedUserImpl({final String? $type}) : $type = $type ?? 'empty';
+
+  factory _$NotLoggedUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NotLoggedUserImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'User.notLogged()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NotLoggedUserImpl);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String name, String email, String photoURL) $default, {
+    required TResult Function() notLogged,
+  }) {
+    return notLogged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String name, String email, String photoURL)? $default, {
+    TResult? Function()? notLogged,
+  }) {
+    return notLogged?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String name, String email, String photoURL)? $default, {
+    TResult Function()? notLogged,
+    required TResult orElse(),
+  }) {
+    if (notLogged != null) {
+      return notLogged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_User value) $default, {
+    required TResult Function(NotLoggedUser value) notLogged,
+  }) {
+    return notLogged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_User value)? $default, {
+    TResult? Function(NotLoggedUser value)? notLogged,
+  }) {
+    return notLogged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_User value)? $default, {
+    TResult Function(NotLoggedUser value)? notLogged,
+    required TResult orElse(),
+  }) {
+    if (notLogged != null) {
+      return notLogged(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NotLoggedUserImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class NotLoggedUser implements User {
+  const factory NotLoggedUser() = _$NotLoggedUserImpl;
+
+  factory NotLoggedUser.fromJson(Map<String, dynamic> json) =
+      _$NotLoggedUserImpl.fromJson;
 }

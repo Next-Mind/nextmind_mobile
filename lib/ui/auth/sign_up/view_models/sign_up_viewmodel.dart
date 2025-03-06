@@ -5,7 +5,7 @@ import 'package:nextmind_mobile/domain/dtos/credentials/credentials.dart';
 import 'package:nextmind_mobile/domain/dtos/signup_form/signup_form.dart';
 import 'package:nextmind_mobile/domain/models/user/user.dart';
 import 'package:nextmind_mobile/domain/validators/signup_form_validator.dart';
-import 'package:nextmind_mobile/utils/routes/routes.dart';
+import 'package:nextmind_mobile/utils/routes/app_routes.dart';
 import 'package:intl/intl.dart';
 import 'package:result_command/result_command.dart';
 import 'package:result_dart/result_dart.dart';
@@ -45,7 +45,7 @@ class SignUpViewModel extends GetxController {
 
   void submitForm() {
     signUpFormAnswers.value.formSubmitted = true;
-    Get.toNamed(Routes.authSignupForm, arguments: (answers) {
+    Get.toNamed(AppRoutes.authSignupForm, arguments: (answers) {
       registerWithEmailCommand.execute();
     });
   }
@@ -84,7 +84,7 @@ class SignUpViewModel extends GetxController {
     return AuthRepository.to
         .registerWithEmail(Credentials(
             signUpFormAnswers.value.email, signUpFormAnswers.value.password))
-        .onSuccess((success) => Get.offAllNamed(Routes.home))
+        .onSuccess((success) => Get.offAllNamed(AppRoutes.home))
         .onFailure(
           (failure) => Get.snackbar('Ops!', failure.toString()),
         );

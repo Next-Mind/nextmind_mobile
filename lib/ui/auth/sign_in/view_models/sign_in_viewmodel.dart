@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/domain/dtos/credentials/credentials.dart';
 import 'package:nextmind_mobile/domain/validators/credentials_validator.dart';
-import 'package:nextmind_mobile/utils/routes/routes.dart';
+import 'package:nextmind_mobile/utils/routes/app_routes.dart';
 import 'package:result_command/result_command.dart';
 import 'package:result_dart/result_dart.dart';
 
@@ -42,13 +42,13 @@ class SignInViewModel extends GetxController {
     Future.delayed(Duration(seconds: 2));
     return AuthRepository.to
         .loginWithEmail(credentials)
-        .onSuccess((success) => Get.offAllNamed(Routes.home));
+        .onSuccess((success) => Get.offAllNamed(AppRoutes.home));
   }
 
   AsyncResult<User> _loginWithGoogle() async {
     return AuthRepository.to
         .loginWithGoogle()
-        .onSuccess((success) => Get.offAllNamed(Routes.home));
+        .onSuccess((success) => Get.offAllNamed(AppRoutes.home));
   }
 
   AsyncResult<Unit> _loginWithFacebook() async {

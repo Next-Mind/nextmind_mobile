@@ -4,6 +4,7 @@ import 'package:nextmind_mobile/data/repositories/auth/auth_repository_remote.da
 import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_service.dart';
 import 'package:nextmind_mobile/data/services/form_builder/form_service.dart';
+import 'package:nextmind_mobile/main_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/forgot_password_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
@@ -12,16 +13,6 @@ import 'package:nextmind_mobile/ui/form_builder/viewmodels/form_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 
 import '../../data/services/local_storage.dart';
-
-class RemoteBindings implements Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut<AuthRepository>(() => AuthRepositoryRemote());
-    Get.put<LocalStorage>(LocalStorage());
-    Get.put<AuthLocalStorage>(AuthLocalStorage());
-    Get.put<AuthService>(AuthService());
-  }
-}
 
 class FormTestBinding implements Bindings {
   @override
@@ -66,4 +57,12 @@ class HomeBindings implements Bindings {
       () => HomeViewModel(),
     );
   }
+}
+
+setupGlobalDependencies() {
+  Get.put<LocalStorage>(LocalStorage());
+  Get.put<AuthLocalStorage>(AuthLocalStorage());
+  Get.put<AuthService>(AuthService());
+  Get.put<AuthRepository>(AuthRepositoryRemote());
+  Get.put<MainViewModel>(MainViewModel());
 }

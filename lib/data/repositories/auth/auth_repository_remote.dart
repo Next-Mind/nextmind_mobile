@@ -13,14 +13,16 @@ class AuthRepositoryRemote extends GetxController implements AuthRepository {
   final AuthLocalStorage _authLocalStorage = Get.find();
 
   @override
-  late RxBool userIsAuthenticated;
+  RxBool userIsAuthenticated = RxBool(false);
 
   static AuthRepository get to => Get.find<AuthRepository>();
 
   @override
   void onInit() {
     super.onInit();
-    userIsAuthenticated = _authService.userIsAuthenticated;
+    ever(_authService.userIsAuthenticated, (isAuthenticated) {
+      userIsAuthenticated.value = isAuthenticated;
+    });
   }
 
   @override

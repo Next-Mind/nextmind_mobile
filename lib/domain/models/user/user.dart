@@ -4,12 +4,16 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class User with _$User {
+sealed class User with _$User {
+  @FreezedUnionValue('authenticated')
   factory User([
     @Default('Undefined') String name,
     @Default('Undefined') String email,
     @Default('Undefined') String photoURL,
   ]) = _User;
+
+  @FreezedUnionValue('empty')
+  const factory User.notLogged() = NotLoggedUser;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
