@@ -9,6 +9,7 @@ import 'package:nextmind_mobile/ui/auth/sign_in/view_models/forgot_password_view
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/base_screen/view_models/base_viewmodel.dart';
+import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
 import 'package:nextmind_mobile/ui/form_builder/viewmodels/form_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 
@@ -61,6 +62,7 @@ class HomeBindings implements Bindings {
 
 setupGlobalDependencies() {
   Get.put<LocalStorage>(LocalStorage());
+  Get.put<ThemeController>(ThemeController());
   Get.put<AuthLocalStorage>(AuthLocalStorage());
   Get.put<AuthService>(AuthService());
   Get.put<AuthRepository>(AuthRepositoryRemote());

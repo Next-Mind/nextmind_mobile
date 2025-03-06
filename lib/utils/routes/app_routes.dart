@@ -5,6 +5,7 @@ import 'package:nextmind_mobile/ui/auth/sign_in/widgets/forgot_password_screen.d
 import 'package:nextmind_mobile/ui/auth/sign_in/widgets/sign_in_screen.dart';
 import 'package:nextmind_mobile/ui/auth/sign_up/widgets/sign_up_screen.dart';
 import 'package:nextmind_mobile/ui/base_screen/widgets/base_screen.dart';
+import 'package:nextmind_mobile/ui/splash_screen/widgets/splash_screen.dart';
 import 'package:nextmind_mobile/utils/bindings/remote_bindings.dart';
 
 class AppRoutes {
@@ -14,6 +15,7 @@ class AppRoutes {
   static String get authForgotPassword => '/auth/forgot-password';
   static String get authSignupForm => '/auth/signup/form';
   static String get formTest => '/tests/form';
+  static String get splashScreen => '/splash';
 
   static List<GetPage> get pages => [
         GetPage(
@@ -47,6 +49,10 @@ class AppRoutes {
           page: () => ForgotPasswordScreen(),
           binding: ForgotPasswordBindings(),
           transition: Transition.cupertino,
+        ),
+        GetPage(
+          name: AppRoutes.splashScreen,
+          page: () => SplashScreen(),
         ),
       ];
 }

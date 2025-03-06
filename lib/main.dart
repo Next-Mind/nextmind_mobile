@@ -29,9 +29,11 @@ class MainApp extends StatelessWidget {
       translations: Messages(),
       locale: Get.deviceLocale,
       fallbackLocale: Locale('pt', 'BR'),
-      theme: theme.dark(),
+      theme: theme.light(),
+      darkTheme: theme.dark(),
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
     );
   }

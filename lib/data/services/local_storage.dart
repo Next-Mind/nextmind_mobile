@@ -4,6 +4,8 @@ import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage extends GetxService {
+  static LocalStorage get to => Get.find();
+
   AsyncResult<String> saveData(String key, String value) async {
     try {
       final shared = await SharedPreferences.getInstance();
