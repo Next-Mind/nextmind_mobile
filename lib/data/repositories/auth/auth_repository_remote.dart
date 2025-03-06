@@ -1,27 +1,28 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
-import 'package:nextmind_mobile/data/services/api/auth/auth_service.dart';
+import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
+import 'package:nextmind_mobile/data/services/auth/auth_service.dart';
 import 'package:nextmind_mobile/domain/dtos/credentials/credentials.dart';
 import 'package:nextmind_mobile/domain/validators/credentials_validator.dart';
 import 'package:nextmind_mobile/utils/validation/lucid_validator_extension.dart';
+import 'package:nextmind_mobile/domain/models/user/user.dart';
 import 'package:result_dart/result_dart.dart';
 
 class AuthRepositoryRemote extends GetxController implements AuthRepository {
   final AuthService _authService = AuthService.to;
+  final AuthLocalStorage _authLocalStorage = Get.find();
 
   @override
-  User? get user => _authService.user;
-
-  @override
-  late RxBool userIsAuthenticated;
+  RxBool userIsAuthenticated = RxBool(false);
 
   static AuthRepository get to => Get.find<AuthRepository>();
 
   @override
   void onInit() {
     super.onInit();
-    userIsAuthenticated = _authService.userIsAuthenticated;
+    ever(_authService.userIsAuthenticated, (isAuthenticated) {
+      userIsAuthenticated.value = isAuthenticated;
+    });
   }
 
   @override
@@ -30,19 +31,21 @@ class AuthRepositoryRemote extends GetxController implements AuthRepository {
 
     return validator //
         .validateResult(credentials)
-        .flatMap(_authService.loginUserWithEmail);
+        .flatMap(_authService.loginUserWithEmail)
+        .flatMap(_authLocalStorage.saveUser);
   }
 
   @override
   AsyncResult<User> loginWithGoogle() {
     return _authService //
-        .loginGoogleUser();
+        .loginGoogleUser()
+        .flatMap(_authLocalStorage.saveUser);
   }
 
   @override
   AsyncResult<Unit> logout() {
-    return _authService //
-        .logout();
+    _authLocalStorage.removeUser();
+    return _authService.logout();
   }
 
   @override
@@ -51,6 +54,12 @@ class AuthRepositoryRemote extends GetxController implements AuthRepository {
 
     return validator //
         .validateResult(credentials)
-        .flatMap(_authService.newUserWithEmail);
+        .flatMap(_authService.newUserWithEmail)
+        .flatMap(_authLocalStorage.saveUser);
+  }
+
+  @override
+  AsyncResult<User> getUser() {
+    return _authLocalStorage.getUser();
   }
 }

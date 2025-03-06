@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
-import 'package:nextmind_mobile/ui/auth/sign_up/widgets/personal_info_form.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
+import 'package:nextmind_mobile/utils/routes/app_routes.dart';
 import 'package:result_command/result_command.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final viewModel = AuthViewModel.to;
+  final viewModel = SignInViewModel.to;
 
   final _logger = Logger();
 
@@ -106,7 +106,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.authForgotPassword);
+                        },
                         child: Text('forgotPassword'.tr),
                       ),
                     ],
@@ -135,7 +137,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
-                      Get.to(() => PersonalInfoForm());
+                      Get.toNamed(AppRoutes.authSignup);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(200, 48),
@@ -149,7 +151,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       IconButton(
                         icon: Icon(Icons.facebook),
-                        onPressed: () {},
+                        onPressed: () {
+                          viewModel.loginWithFacebookCommand.execute();
+                        },
                       ),
                       IconButton(
                         icon: Icon(Icons.email),
@@ -159,7 +163,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       IconButton(
                         icon: Icon(Icons.apple),
-                        onPressed: () {},
+                        onPressed: () {
+                          viewModel.loginWithAppleCommand.execute();
+                        },
                       ),
                     ],
                   ),

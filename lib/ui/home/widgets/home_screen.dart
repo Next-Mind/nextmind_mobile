@@ -12,9 +12,6 @@ class HomeScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(viewModel.user.photoURL!),
-          ),
           ElevatedButton(onPressed: viewModel.logout, child: Text('Logout')),
         ],
       )),
