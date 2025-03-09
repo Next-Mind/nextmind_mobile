@@ -41,14 +41,12 @@ class SignInViewModel extends GetxController {
   AsyncResult<User> _loginWithEmail() async {
     Future.delayed(Duration(seconds: 2));
     return AuthRepository.to
-        .loginWithEmail(credentials)
-        .onSuccess((success) => Get.offAllNamed(AppRoutes.home));
+        .loginWithEmail(credentials);
   }
 
   AsyncResult<User> _loginWithGoogle() async {
     return AuthRepository.to
-        .loginWithGoogle()
-        .onSuccess((success) => Get.offAllNamed(AppRoutes.home));
+        .loginWithGoogle();
   }
 
   AsyncResult<Unit> _loginWithFacebook() async {

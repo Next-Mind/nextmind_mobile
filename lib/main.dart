@@ -29,7 +29,7 @@ class MainApp extends StatelessWidget {
       translations: Messages(),
       locale: Get.deviceLocale,
       fallbackLocale: Locale('pt', 'BR'),
-      theme: theme.dark(),
+      theme: theme.light(),
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.home,
       getPages: AppRoutes.pages,

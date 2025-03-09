@@ -8,7 +8,7 @@ import 'package:nextmind_mobile/ui/base_screen/widgets/base_screen.dart';
 import 'package:nextmind_mobile/utils/bindings/remote_bindings.dart';
 
 class AppRoutes {
-  static String get home => '/home';
+  static String get home => '/';
   static String get authHome => '/auth';
   static String get authSignup => '/auth/signup';
   static String get authForgotPassword => '/auth/forgot-password';

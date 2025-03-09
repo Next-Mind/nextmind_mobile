@@ -20,10 +20,6 @@ class HomeViewModel extends GetxController {
   static HomeViewModel get to => Get.find<HomeViewModel>();
 
   void logout() {
-    _authRepository.logout().onSuccess(
-      (_) {
-        Get.offAllNamed('/auth');
-      },
-    );
+    _authRepository.logout();
   }
 }
