@@ -1,3 +1,5 @@
+import 'package:logger/logger.dart';
+import 'package:nextmind_mobile/domain/models/login_result/login_result.dart';
 import 'package:nextmind_mobile/domain/models/user/user.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -39,21 +41,35 @@ class SignInViewModel extends GetxController {
   }
 
   AsyncResult<User> _loginWithEmail() async {
-    Future.delayed(Duration(seconds: 2));
-    return AuthRepository.to
-        .loginWithEmail(credentials)
-        .onSuccess((success) => Get.offAllNamed(AppRoutes.home));
+    return AuthRepository.to.loginWithEmail(credentials);
   }
 
   AsyncResult<User> _loginWithGoogle() async {
-    return AuthRepository.to
-        .loginWithGoogle()
-        .onSuccess((success) => Get.offAllNamed(AppRoutes.home));
+    var loginResult = await AuthRepository.to.loginWithGoogle().getOrThrow();
+    if (loginResult is NeedsFormSubscription) {
+      _goToSignupForm(loginResult.getUser());
+    }
+    return Success(loginResult.getUser());
+  }
+
+  void _goToSignupForm(ApiUser newUser) {
+    Get.toNamed(AppRoutes.authSignupFormGoogle,
+        arguments: (questionnaireAnswers) {
+      newUser = newUser.copyWith(
+        name: questionnaireAnswers.remove('name'),
+        birthday: questionnaireAnswers.remove('birthday'),
+        ra: questionnaireAnswers.remove('ra'),
+        questionnaire: questionnaireAnswers,
+      );
+      Logger().d(newUser.toString());
+      AuthRepository.to.completeRegistration(newUser);
+      update();
+    });
   }
 
   AsyncResult<Unit> _loginWithFacebook() async {
-    Get.snackbar('Ops!', 'unimplementedError'.tr);
-    return Success(unit);
+    //Get.snackbar('Ops!', 'unimplementedError'.tr);
+    return Failure(Exception());
   }
 
   AsyncResult<Unit> _loginWithApple() async {

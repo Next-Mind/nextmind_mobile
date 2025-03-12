@@ -5,25 +5,29 @@ import 'package:result_dart/result_dart.dart';
 
 class HomeViewModel extends GetxController {
   final AuthRepository _authRepository = AuthRepository.to;
+  final _user = Rx<User>(NotLoggedUser());
+  LoggedUser get user => _user.value as LoggedUser;
 
-  var user = User().obs;
+  final _isLoading = true.obs;
+
+  bool get isLoading => _isLoading.value;
 
   @override
   void onInit() async {
     super.onInit();
-    await _authRepository
-        .getUser()
-        .onSuccess((success) => user.value = success);
-    update();
+    _user.bindStream(_authRepository.userObserver());
+    ever(
+      _user,
+      (user) => user is LoggedUser
+          ? _isLoading.value = false
+          : _isLoading.value = true,
+    );
+    _user.value = await _authRepository.getUser().getOrThrow();
   }
 
   static HomeViewModel get to => Get.find<HomeViewModel>();
 
   void logout() {
-    _authRepository.logout().onSuccess(
-      (_) {
-        Get.offAllNamed('/auth');
-      },
-    );
+    _authRepository.logout();
   }
 }

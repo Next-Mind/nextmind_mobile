@@ -14,10 +14,20 @@ class AppRoutes {
   static String get authSignup => '/auth/signup';
   static String get authForgotPassword => '/auth/forgot-password';
   static String get authSignupForm => '/auth/signup/form';
+  static String get authSignupFormGoogle => '/auth/form-google';
   static String get formTest => '/tests/form';
   static String get splashScreen => '/splash';
 
   static List<GetPage> get pages => [
+        GetPage(
+          name: AppRoutes.authSignupFormGoogle,
+          page: () => FormScreen(
+            formPath: 'assets/form_data_google.json',
+            theme: 'Progressive',
+            onSubmit: Get.arguments,
+          ),
+          binding: DynamicFormBinding(),
+        ),
         GetPage(
           name: AppRoutes.authSignupForm,
           page: () => FormScreen(
@@ -25,7 +35,7 @@ class AppRoutes {
             theme: 'Progressive',
             onSubmit: Get.arguments,
           ),
-          binding: FormTestBinding(),
+          binding: DynamicFormBinding(),
         ),
         GetPage(
           name: AppRoutes.home,
@@ -40,7 +50,7 @@ class AppRoutes {
         ),
         GetPage(
           name: AppRoutes.authSignup,
-          page: () => PersonalInfoForm(),
+          page: () => SignUpScreen(),
           binding: SignUpBindings(),
           transition: Transition.cupertino,
         ),

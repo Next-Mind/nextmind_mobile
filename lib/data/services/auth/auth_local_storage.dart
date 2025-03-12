@@ -12,14 +12,18 @@ class AuthLocalStorage extends GetxService {
   final LocalStorage _localStorage = Get.find();
   final Logger _logger = Logger();
 
-  AsyncResult<User> getUser() {
-    _logger.d("Getting user from Local Storage");
+  static AuthLocalStorage get to => Get.find();
+
+  AsyncResult<LoggedUser> getUser() {
+    _logger.d("$runtimeType: Getting user from Local Storage");
     return _localStorage //
         .getData(_userKey)
-        .map((json) => User.fromJson(jsonDecode(json)));
+        .map((json) => LoggedUser.fromJson(jsonDecode(json)))
+        .onFailure((e) => _logger.e(
+            '$runtimeType: Unable to retrieve user from LocalStorage ${e.toString()}'));
   }
 
-  AsyncResult<User> saveUser(User user) {
+  AsyncResult<LoggedUser> saveUser(LoggedUser user) {
     _logger.d("Saving user in Local Storage");
     return _localStorage //
         .saveData(_userKey, jsonEncode(user.toJson()))

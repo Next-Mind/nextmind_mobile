@@ -45,6 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void _onCommandChanged(Command command) {
     if (command.isSuccess) {
       _logger.d("Command Success: $command");
+      setState(() {});
     } else if (command.isFailure) {
       _logger.d("Command Failure: $command");
       final result = command.value as FailureCommand;
