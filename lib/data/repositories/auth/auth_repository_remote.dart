@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_client_http.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
@@ -20,7 +19,6 @@ class AuthRepositoryRemote extends GetxController implements AuthRepository {
   final AuthService _authService = AuthService.to;
   final AuthLocalStorage _authLocalStorage = Get.find();
   final AuthClientHttp _authClientHttp = Get.find();
-  final Logger _logger = Logger();
 
   //Stream do usuário logado
   final _streamController = StreamController<User>.broadcast();
@@ -90,16 +88,22 @@ class AuthRepositoryRemote extends GetxController implements AuthRepository {
   AsyncResult<LoggedUser> registerWithEmail(SignUpForm signUpFormAnswers) {
     final validator = SignupFormValidator();
 
-    _logger.d('Iniciando registro');
-
     return validator //
         .validateResult(signUpFormAnswers)
         .flatMap(_authService.newUserWithEmail)
         .flatMap(_authClientHttp.authApiUser)
-        .flatMap(_authClientHttp.setQuestionnaireAnswers)
+        .flatMap((apiUser) {
+          apiUser = apiUser.copyWith(
+            birthday: signUpFormAnswers.birthday,
+            ra: signUpFormAnswers.ra,
+            questionnaire: signUpFormAnswers.questionnaireAnswers,
+          );
+          return _authClientHttp.setQuestionnaireAnswers(apiUser);
+        })
         .flatMap(_authClientHttp.setProfileInfo)
         .flatMap((user) => _authClientHttp.getApiUser(user.token!))
-        .flatMap(_authLocalStorage.saveUser);
+        .flatMap(_authLocalStorage.saveUser)
+        .onSuccess(_streamController.add);
   }
 
   @override

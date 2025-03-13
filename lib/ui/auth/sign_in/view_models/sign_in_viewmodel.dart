@@ -1,4 +1,3 @@
-import 'package:logger/logger.dart';
 import 'package:nextmind_mobile/domain/models/login_result/login_result.dart';
 import 'package:nextmind_mobile/domain/models/user/user.dart';
 import 'package:flutter/widgets.dart';
@@ -47,12 +46,12 @@ class SignInViewModel extends GetxController {
   AsyncResult<User> _loginWithGoogle() async {
     var loginResult = await AuthRepository.to.loginWithGoogle().getOrThrow();
     if (loginResult is NeedsFormSubscription) {
-      _goToSignupForm(loginResult.getUser());
+      await _goToSignupForm(loginResult.getUser());
     }
     return Success(loginResult.getUser());
   }
 
-  void _goToSignupForm(ApiUser newUser) {
+  Future<void> _goToSignupForm(ApiUser newUser) async {
     Get.toNamed(AppRoutes.authSignupFormGoogle,
         arguments: (questionnaireAnswers) {
       newUser = newUser.copyWith(
@@ -61,9 +60,8 @@ class SignInViewModel extends GetxController {
         ra: questionnaireAnswers.remove('ra'),
         questionnaire: questionnaireAnswers,
       );
-      Logger().d(newUser.toString());
       AuthRepository.to.completeRegistration(newUser);
-      update();
+      Get.toNamed(AppRoutes.loadingScreen);
     });
   }
 

@@ -81,6 +81,7 @@ class SignUpViewModel extends GetxController {
   AsyncResult<User> _registerWithEmail(
       Map<String, dynamic> questionAnswers) async {
     signUpFormAnswers.value.questionnaireAnswers = questionAnswers;
+    Get.toNamed(AppRoutes.loadingScreen);
     return AuthRepository.to
         .registerWithEmail(signUpFormAnswers.value)
         .onFailure(

@@ -62,42 +62,45 @@ class ProgressiveTheme extends StatelessWidget {
               Expanded(
                 child: Form(
                   key: viewModel.formKey,
-                  child: PageView.builder(
+                  child: PageView(
                     controller: viewModel.pageController,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: viewModel.formData.value!.questions.length,
                     onPageChanged: (index) =>
                         viewModel.currentQuestionIndex.value = index,
-                    itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.all(Dimens.extraLargePadding),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Obx(() => Text(
-                                viewModel.currentQuestion.title.tr,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge!
-                                    .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              )),
-
-                          SizedBox(height: Dimens.extraLargePadding),
-
-                          // Use an Obx to refresh the question field when current index changes
-                          Obx(() => Container(
+                    children:
+                        viewModel.formData.value!.questions.map((question) {
+                      return Padding(
+                        padding: EdgeInsets.all(Dimens.extraLargePadding),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              question.title.tr,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            SizedBox(
+                              height: Dimens.extraLargePadding,
+                            ),
+                            Obx(
+                              () => Container(
                                 key: ValueKey(
                                     'question_container_${viewModel.currentQuestionIndex.value}'),
                                 child: QuestionField(
-                                  question: viewModel.currentQuestion,
+                                  question: question,
                                   viewModel: viewModel,
                                 ),
-                              )),
-
-                          SizedBox(height: Dimens.smallPadding),
-
-                          Obx(() => Text(
+                              ),
+                            ),
+                            SizedBox(
+                              height: Dimens.smallPadding,
+                            ),
+                            Obx(
+                              () => Text(
                                 'hintQuestion'.trParams(
                                   {
                                     'index':
@@ -106,12 +109,68 @@ class ProgressiveTheme extends StatelessWidget {
                                         '${viewModel.formData.value!.questions.length}'
                                   },
                                 ),
-                                style: TextStyle(color: Colors.grey),
-                              )),
-                        ],
-                      ),
-                    ),
+                                style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .surfaceContainerHighest,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    }).toList(),
                   ),
+                  // child: PageView.builder(
+                  //   controller: viewModel.pageController,
+                  //   physics: NeverScrollableScrollPhysics(),
+                  //   itemCount: viewModel.formData.value!.questions.length,
+                  //   onPageChanged: (index) =>
+                  //       viewModel.currentQuestionIndex.value = index,
+                  //   itemBuilder: (context, index) => Padding(
+                  //     padding: EdgeInsets.all(Dimens.extraLargePadding),
+                  //     child: Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Obx(() => Text(
+                  //               viewModel.currentQuestion.title.tr,
+                  //               style: Theme.of(context)
+                  //                   .textTheme
+                  //                   .headlineLarge!
+                  //                   .copyWith(
+                  //                     fontWeight: FontWeight.bold,
+                  //                   ),
+                  //             )),
+
+                  //         SizedBox(height: Dimens.extraLargePadding),
+
+                  //         // Use an Obx to refresh the question field when current index changes
+                  //         Obx(() => Container(
+                  //               key: ValueKey(
+                  //                   'question_container_${viewModel.currentQuestionIndex.value}'),
+                  //               child: QuestionField(
+                  //                 question: viewModel.currentQuestion,
+                  //                 viewModel: viewModel,
+                  //               ),
+                  //             )),
+
+                  //         SizedBox(height: Dimens.smallPadding),
+
+                  //         Obx(() => Text(
+                  //               'hintQuestion'.trParams(
+                  //                 {
+                  //                   'index':
+                  //                       '${viewModel.currentQuestionIndex.value + 1}',
+                  //                   'total':
+                  //                       '${viewModel.formData.value!.questions.length}'
+                  //                 },
+                  //               ),
+                  //               style: TextStyle(color: Colors.grey),
+                  //             )),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               ),
             ],

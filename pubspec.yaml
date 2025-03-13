@@ -23,6 +23,7 @@ dependencies:
   json_annotation: ^4.9.0
   jwt_decoder: ^2.0.1
   logger: ^2.5.0
+  lottie: ^3.3.1
   lucid_validation: ^1.2.4
   mask_text_input_formatter: ^2.9.0
   mockito: ^5.4.5
@@ -45,5 +46,6 @@ flutter:
 
   assets:
     - assets/
-    - assets/images/nextmind/
     - assets/images/
+    - assets/images/nextmind/
+    - assets/animations/

@@ -107,7 +107,6 @@ class DefaultTheme extends StatelessWidget {
                                         viewModel.formData.value!.questions
                                                 .length -
                                             1) {
-                                      viewModel.submitForm();
                                     } else {
                                       viewModel.goToNextQuestion();
                                     }

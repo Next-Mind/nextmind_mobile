@@ -45,9 +45,11 @@ class _SignInScreenState extends State<SignInScreen> {
   void _onCommandChanged(Command command) {
     if (command.isSuccess) {
       _logger.d("Command Success: $command");
-      setState(() {});
+    } else if (command.isRunning) {
+      Get.toNamed(AppRoutes.loadingScreen);
     } else if (command.isFailure) {
       _logger.d("Command Failure: $command");
+      if (Get.currentRoute == AppRoutes.loadingScreen) Get.back();
       final result = command.value as FailureCommand;
       Get.snackbar(
         'Ops!',

@@ -7,6 +7,7 @@ class SignUpForm {
   String ra;
   String password;
   Map<String, dynamic> questionnaireAnswers;
+  String token;
 
   SignUpForm({
     required this.name,
@@ -15,6 +16,7 @@ class SignUpForm {
     required this.ra,
     required this.password,
     required this.questionnaireAnswers,
+    this.token = '',
   });
 
   factory SignUpForm.init() {

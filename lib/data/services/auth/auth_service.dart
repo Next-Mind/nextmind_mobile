@@ -38,7 +38,7 @@ class AuthService extends GetxService {
       var newFirebaseUser = userCredential.user!;
       await newFirebaseUser.updateDisplayName(signUpFormInfos.name);
       _logger.d("Successfully created a new user with an email.");
-      //sendEmailVerification(); //Preciso implementar isso com uma lógica melhor
+      //sendEmailVerification(); //Preciso implementar isso com uma lógia melhor
       return Success(await newFirebaseUser.getIdToken() ?? '');
     } catch (e) {
       _logger.d("Failed to create a new user with an email.");
