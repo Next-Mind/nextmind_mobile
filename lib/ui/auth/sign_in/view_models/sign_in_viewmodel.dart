@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:nextmind_mobile/domain/models/user/user.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
