@@ -87,6 +87,7 @@ class FormViewModel extends GetxController {
 
   void updateAnswer(String questionId, dynamic value) {
     answers[questionId] = value;
+    update();
   }
 
   String? validateAnswer(Question question, dynamic value) {

@@ -4,7 +4,7 @@
   "questions": [
     {
       "id": "name",
-      "title": "Qual é o seu nome?",
+      "title": "fieldSignUpName",
       "fieldType": "text",
       "isRequired": true,
       "placeholder": "fieldChooseOptionHint",
@@ -12,7 +12,7 @@
     },
     {
       "id": "birthday",
-      "title": "Qual sua data de nascimento?",
+      "title": "fieldSignUpBirthdate",
       "fieldType": "date",
       "isRequired": true,
       "placeholder": "fieldChooseOptionHint",
@@ -20,7 +20,7 @@
     },
     {
       "id": "ra",
-      "title": "Qual é o seu ra?",
+      "title": "fieldSignUpRa",
       "fieldType": "text",
       "isRequired": true,
       "placeholder": "fieldChooseOptionHint",

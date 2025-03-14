@@ -23,6 +23,7 @@ class Messages extends Translations {
               'How does academic life impact your mental health?',
           'formSignUpAverageHoursOfSleep':
               'How many hours of sleep do you usually have?',
+          'fieldSignUpBirthdate': 'What is your date of birth?',
           'formSignUpChooseGrade': 'Please select your current grade level.',
           'formSignUpChooseReason': 'Please select a reason.',
           'formSignUpCurrentGrade': 'Current grade?',
@@ -33,8 +34,10 @@ class Messages extends Translations {
               'Do you have any experience with therapy?',
           'formSignUpLastPsychologicalExam':
               'When was your last psychological exam?',
+          'fieldSignUpName': 'What is your name?',
           'formSignUpPracticesPhysicalActivities':
               'Do you practice physical activities?',
+          'fieldSignUpRa': 'What is your RA?',
           'formSignUpReasonsForUsingApp':
               'What are the reasons for using the app?',
           'formSignUpReasonsForUsingAppHint': 'Choose a reason',
@@ -76,6 +79,7 @@ class Messages extends Translations {
               'Como a vida acadêmica impacta na sua saúde mental?',
           'formSignUpAverageHoursOfSleep':
               'Quantas horas de sono você costuma ter?',
+          'fieldSignUpBirthdate': 'Qual é sua data de nascimento?',
           'formSignUpChooseGrade': 'Selecione sua série atual',
           'formSignUpChooseReason': 'Por favor, selecione um motivo.',
           'formSignUpCurrentGrade': 'Em que ano está na escola?',
@@ -86,8 +90,10 @@ class Messages extends Translations {
               'Você já fez ou está fazendo terapia?',
           'formSignUpLastPsychologicalExam':
               'Quando foi seu último exame psicológico?',
+          'fieldSignUpName': 'Qual é o seu nome?',
           'formSignUpPracticesPhysicalActivities':
               'Você pratica atividades físicas?',
+          'fieldSignUpRa': 'Qual é o seu RA?',
           'formSignUpReasonsForUsingApp': 'Quais os motivos por buscar o app?',
           'formSignUpReasonsForUsingAppHint': 'Escolha um motivo',
           'formSignUpRestAndLeisureLevel':

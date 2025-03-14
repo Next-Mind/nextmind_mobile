@@ -52,7 +52,7 @@ class SignInViewModel extends GetxController {
   }
 
   Future<void> _goToSignupForm(ApiUser newUser) async {
-    Get.toNamed(AppRoutes.authSignupFormGoogle,
+    Get.offAndToNamed(AppRoutes.authSignupFormGoogle,
         arguments: (questionnaireAnswers) {
       newUser = newUser.copyWith(
         name: questionnaireAnswers.remove('name'),

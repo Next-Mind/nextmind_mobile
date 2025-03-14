@@ -46,7 +46,7 @@ class QuestionField extends StatelessWidget {
               '${question.id}_${viewModel.currentQuestionIndex.value}'),
           decoration: InputDecoration(
             labelText: question.title.tr,
-            hintText: question.placeholder,
+            hintText: question.placeholder?.tr,
             helperText: question.helperText?.tr,
           ),
           validator: (value) => viewModel.validateAnswer(question, value),
@@ -226,19 +226,23 @@ class QuestionField extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  question.title.tr,
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(height: 8),
-                InkWell(
+                TextFormField(
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.calendar_today_outlined),
+                  ),
+                  controller: TextEditingController(
+                    text: viewModel.answers[question.id] != null
+                        ? '${(viewModel.answers[question.id] as DateTime).day.toString().padLeft(2, '0')}/${(viewModel.answers[question.id] as DateTime).month.toString().padLeft(2, '0')}/${(viewModel.answers[question.id] as DateTime).year}'
+                        : question.placeholder?.tr ?? 'Select date',
+                  ),
+                  readOnly: true,
                   onTap: () async {
                     final DateTime? picked = await showDatePicker(
                       context: Get.context!,
-                      initialDate:
-                          viewModel.answers[question.id] ?? DateTime.now(),
+                      initialDate: viewModel.answers[question.id] ??
+                          DateTime(DateTime.now().year - 13),
                       firstDate: DateTime(1900),
-                      lastDate: DateTime(2100),
+                      lastDate: DateTime(DateTime.now().year - 13, 12, 31),
                     );
 
                     if (picked != null) {
@@ -246,38 +250,15 @@ class QuestionField extends StatelessWidget {
                       state.didChange(picked);
                     }
                   },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          viewModel.answers[question.id] != null
-                              ? '${(viewModel.answers[question.id] as DateTime).day}/${(viewModel.answers[question.id] as DateTime).month}/${(viewModel.answers[question.id] as DateTime).year}'
-                              : question.placeholder ?? 'Select date',
-                          style: TextStyle(
-                            color: viewModel.answers[question.id] != null
-                                ? Colors.black
-                                : Colors.grey,
-                          ),
-                        ),
-                        Icon(Icons.calendar_today),
-                      ],
-                    ),
-                  ),
                 ),
                 if (state.hasError)
                   Text(
-                    state.errorText!,
+                    state.errorText!.tr,
                     style: TextStyle(color: Colors.red, fontSize: 12),
                   ),
                 if (question.helperText != null)
                   Text(
-                    question.helperText!,
+                    question.helperText!.tr,
                     style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
               ],
