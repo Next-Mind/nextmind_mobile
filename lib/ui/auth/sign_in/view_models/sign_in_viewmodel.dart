@@ -56,7 +56,7 @@ class SignInViewModel extends GetxController {
         arguments: (questionnaireAnswers) {
       newUser = newUser.copyWith(
         name: questionnaireAnswers.remove('name'),
-        birthday: questionnaireAnswers.remove('birthday'),
+        birthDate: questionnaireAnswers.remove('birthday'),
         ra: questionnaireAnswers.remove('ra'),
         questionnaire: questionnaireAnswers,
       );
@@ -66,7 +66,7 @@ class SignInViewModel extends GetxController {
   }
 
   AsyncResult<Unit> _loginWithFacebook() async {
-    //Get.snackbar('Ops!', 'unimplementedError'.tr);
+    Get.snackbar('Ops!', 'unimplementedError'.tr);
     return Failure(Exception());
   }
 

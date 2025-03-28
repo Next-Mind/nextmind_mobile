@@ -32,7 +32,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: LottieBuilder.asset(selectedAnimation),
+        child: SizedBox(
+            height: 200,
+            width: 200,
+            child: LottieBuilder.asset(selectedAnimation)),
       ),
     );
   }

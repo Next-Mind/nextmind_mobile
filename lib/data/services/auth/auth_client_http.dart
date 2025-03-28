@@ -55,7 +55,7 @@ class AuthClientHttp extends GetxController {
       requiresAuth: true,
       token: token,
     );
-    return response
-        .map((r) => LoggedUser.fromJson(r.data['data']).copyWith(token: token));
+    return response.map((r) =>
+        LoggedUser.fromJson(r.data['data']['user']).copyWith(token: token));
   }
 }

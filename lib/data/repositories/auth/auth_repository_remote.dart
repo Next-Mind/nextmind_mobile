@@ -63,7 +63,7 @@ class AuthRepositoryRemote extends GetxController implements AuthRepository {
         .loginGoogleUser()
         .flatMap(_authClientHttp.authApiUser)
         .flatMap((user) async {
-      if (!user.questionnaireAnswered || !user.completeProfile) {
+      if (!user.questionnaireAnswered) {
         return Success(NeedsFormSubscription(user));
       }
       LoggedUser loggedUser =
@@ -94,7 +94,7 @@ class AuthRepositoryRemote extends GetxController implements AuthRepository {
         .flatMap(_authClientHttp.authApiUser)
         .flatMap((apiUser) {
           apiUser = apiUser.copyWith(
-            birthday: signUpFormAnswers.birthday,
+            birthDate: signUpFormAnswers.birthday,
             ra: signUpFormAnswers.ra,
             questionnaire: signUpFormAnswers.questionnaireAnswers,
           );

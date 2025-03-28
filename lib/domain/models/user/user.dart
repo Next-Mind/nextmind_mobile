@@ -8,56 +8,58 @@ part 'user.g.dart';
 sealed class User with _$User {
   @FreezedUnionValue('authenticated')
   factory User({
-    required String uid,
     required int id,
+    required String uid,
     required String name,
     required String email,
   }) = _User;
 
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory User.authApi({
-    required String uid,
     required int id,
+    required String uid,
     required String name,
     required String email,
     String? password,
-    DateTime? birthday,
+    DateTime? birthDate,
     String? ra,
     Map<String, dynamic>? questionnaire,
     required bool questionnaireAnswered,
-    required bool completeProfile,
-    required bool completeRegistration,
+    required bool personalInfoComplete,
+    required bool addressComplete,
     required String? token,
   }) = ApiUser;
 
   const factory User.empty() = NotLoggedUser;
 
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory User.fullProfile({
     required int id,
     required String uid,
-    @JsonKey(name: 'tipo_usuario_id') @Default(1) int userType,
-    @JsonKey(name: 'nome') @Default('') String name,
-    @JsonKey(name: 'email') @Default('') String email,
-    @JsonKey(name: 'data_nascimento') @Default('') String birthday,
+    required int userTypeId,
+    required String name,
+    required String email,
+    required String birthDate,
+    required String gender,
     @Default('') String cpf,
-    @Default('') String ra,
+    required String ra,
     @Default('') String crp,
-    @JsonKey(name: 'fone1') @Default('') String phone1,
-    @JsonKey(name: 'fone2') @Default('') String phone2,
-    @JsonKey(name: 'logradouro') @Default('') String address,
-    @JsonKey(name: 'numero') @Default('') String addressNumber,
-    @JsonKey(name: 'complemento') @Default('') String addressComplement,
-    @JsonKey(name: 'cep') @Default('') String zipCode,
-    @JsonKey(name: 'estado') @Default('') String state,
-    @JsonKey(name: 'imagem_perfil') @Default('') String photoURL,
-    @JsonKey(name: 'descricao') @Default('') String description,
-    @JsonKey(name: 'situacao') @Default(1) int situation,
-    @JsonKey(name: 'data_ultimo_acesso') required DateTime lastLoginDate,
-    @JsonKey(name: 'data_cadastro') required DateTime createdAt,
-    @JsonKey(name: 'perfil_completo') required bool completeProfile,
-    @JsonKey(name: 'questionario_respondido')
+    @Default('') String phone1,
+    @Default('') String phone2,
+    @Default('') String addressStreet,
+    @Default('') String addressNumber,
+    @Default('') String addressComplement,
+    @Default('') String zipCode,
+    @Default('') String state,
+    @Default('') String profileImage,
+    @Default('') String profileDescription,
+    @Default(1) int status,
+    required DateTime lastLogin,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    required bool personalInfoComplete,
+    required bool addressComplete,
     required bool questionnaireAnswered,
-    @JsonKey(name: 'cadastro_completo') required bool completeRegistration,
     @Default('') String token,
   }) = LoggedUser;
 

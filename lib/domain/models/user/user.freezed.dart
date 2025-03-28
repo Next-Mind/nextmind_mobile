@@ -35,145 +35,148 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email) $default, {
+    TResult Function(int id, String uid, String name, String email) $default, {
     required TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)
         authApi,
     required TResult Function() empty,
     required TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)
         fullProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String uid, int id, String name, String email)?
+    TResult? Function(int id, String uid, String name, String email)?
         $default, {
     TResult? Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult? Function()? empty,
     TResult? Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email)? $default, {
+    TResult Function(int id, String uid, String name, String email)? $default, {
     TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult Function()? empty,
     TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
     required TResult orElse(),
@@ -235,7 +238,7 @@ abstract class _$$UserImplCopyWith<$Res> {
           _$UserImpl value, $Res Function(_$UserImpl) then) =
       __$$UserImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String uid, int id, String name, String email});
+  $Res call({int id, String uid, String name, String email});
 }
 
 /// @nodoc
@@ -250,20 +253,20 @@ class __$$UserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uid = null,
     Object? id = null,
+    Object? uid = null,
     Object? name = null,
     Object? email = null,
   }) {
     return _then(_$UserImpl(
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -280,8 +283,8 @@ class __$$UserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserImpl implements _User {
   _$UserImpl(
-      {required this.uid,
-      required this.id,
+      {required this.id,
+      required this.uid,
       required this.name,
       required this.email,
       final String? $type})
@@ -291,9 +294,9 @@ class _$UserImpl implements _User {
       _$$UserImplFromJson(json);
 
   @override
-  final String uid;
-  @override
   final int id;
+  @override
+  final String uid;
   @override
   final String name;
   @override
@@ -304,7 +307,7 @@ class _$UserImpl implements _User {
 
   @override
   String toString() {
-    return 'User(uid: $uid, id: $id, name: $name, email: $email)';
+    return 'User(id: $id, uid: $uid, name: $name, email: $email)';
   }
 
   @override
@@ -312,15 +315,15 @@ class _$UserImpl implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
-            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, id, name, email);
+  int get hashCode => Object.hash(runtimeType, id, uid, name, email);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -333,157 +336,160 @@ class _$UserImpl implements _User {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email) $default, {
+    TResult Function(int id, String uid, String name, String email) $default, {
     required TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)
         authApi,
     required TResult Function() empty,
     required TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)
         fullProfile,
   }) {
-    return $default(uid, id, name, email);
+    return $default(id, uid, name, email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String uid, int id, String name, String email)?
+    TResult? Function(int id, String uid, String name, String email)?
         $default, {
     TResult? Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult? Function()? empty,
     TResult? Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
   }) {
-    return $default?.call(uid, id, name, email);
+    return $default?.call(id, uid, name, email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email)? $default, {
+    TResult Function(int id, String uid, String name, String email)? $default, {
     TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult Function()? empty,
     TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(uid, id, name, email);
+      return $default(id, uid, name, email);
     }
     return orElse();
   }
@@ -535,15 +541,15 @@ class _$UserImpl implements _User {
 
 abstract class _User implements User {
   factory _User(
-      {required final String uid,
-      required final int id,
+      {required final int id,
+      required final String uid,
       required final String name,
       required final String email}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
-  String get uid;
   int get id;
+  String get uid;
   String get name;
   String get email;
 
@@ -561,17 +567,17 @@ abstract class _$$ApiUserImplCopyWith<$Res> {
       __$$ApiUserImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String uid,
-      int id,
+      {int id,
+      String uid,
       String name,
       String email,
       String? password,
-      DateTime? birthday,
+      DateTime? birthDate,
       String? ra,
       Map<String, dynamic>? questionnaire,
       bool questionnaireAnswered,
-      bool completeProfile,
-      bool completeRegistration,
+      bool personalInfoComplete,
+      bool addressComplete,
       String? token});
 }
 
@@ -588,28 +594,28 @@ class __$$ApiUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uid = null,
     Object? id = null,
+    Object? uid = null,
     Object? name = null,
     Object? email = null,
     Object? password = freezed,
-    Object? birthday = freezed,
+    Object? birthDate = freezed,
     Object? ra = freezed,
     Object? questionnaire = freezed,
     Object? questionnaireAnswered = null,
-    Object? completeProfile = null,
-    Object? completeRegistration = null,
+    Object? personalInfoComplete = null,
+    Object? addressComplete = null,
     Object? token = freezed,
   }) {
     return _then(_$ApiUserImpl(
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -622,9 +628,9 @@ class __$$ApiUserImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      birthday: freezed == birthday
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
+      birthDate: freezed == birthDate
+          ? _value.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       ra: freezed == ra
           ? _value.ra
@@ -638,13 +644,13 @@ class __$$ApiUserImplCopyWithImpl<$Res>
           ? _value.questionnaireAnswered
           : questionnaireAnswered // ignore: cast_nullable_to_non_nullable
               as bool,
-      completeProfile: null == completeProfile
-          ? _value.completeProfile
-          : completeProfile // ignore: cast_nullable_to_non_nullable
+      personalInfoComplete: null == personalInfoComplete
+          ? _value.personalInfoComplete
+          : personalInfoComplete // ignore: cast_nullable_to_non_nullable
               as bool,
-      completeRegistration: null == completeRegistration
-          ? _value.completeRegistration
-          : completeRegistration // ignore: cast_nullable_to_non_nullable
+      addressComplete: null == addressComplete
+          ? _value.addressComplete
+          : addressComplete // ignore: cast_nullable_to_non_nullable
               as bool,
       token: freezed == token
           ? _value.token
@@ -659,17 +665,17 @@ class __$$ApiUserImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$ApiUserImpl implements ApiUser {
   const _$ApiUserImpl(
-      {required this.uid,
-      required this.id,
+      {required this.id,
+      required this.uid,
       required this.name,
       required this.email,
       this.password,
-      this.birthday,
+      this.birthDate,
       this.ra,
       final Map<String, dynamic>? questionnaire,
       required this.questionnaireAnswered,
-      required this.completeProfile,
-      required this.completeRegistration,
+      required this.personalInfoComplete,
+      required this.addressComplete,
       required this.token,
       final String? $type})
       : _questionnaire = questionnaire,
@@ -679,9 +685,9 @@ class _$ApiUserImpl implements ApiUser {
       _$$ApiUserImplFromJson(json);
 
   @override
-  final String uid;
-  @override
   final int id;
+  @override
+  final String uid;
   @override
   final String name;
   @override
@@ -689,7 +695,7 @@ class _$ApiUserImpl implements ApiUser {
   @override
   final String? password;
   @override
-  final DateTime? birthday;
+  final DateTime? birthDate;
   @override
   final String? ra;
   final Map<String, dynamic>? _questionnaire;
@@ -705,9 +711,9 @@ class _$ApiUserImpl implements ApiUser {
   @override
   final bool questionnaireAnswered;
   @override
-  final bool completeProfile;
+  final bool personalInfoComplete;
   @override
-  final bool completeRegistration;
+  final bool addressComplete;
   @override
   final String? token;
 
@@ -716,7 +722,7 @@ class _$ApiUserImpl implements ApiUser {
 
   @override
   String toString() {
-    return 'User.authApi(uid: $uid, id: $id, name: $name, email: $email, password: $password, birthday: $birthday, ra: $ra, questionnaire: $questionnaire, questionnaireAnswered: $questionnaireAnswered, completeProfile: $completeProfile, completeRegistration: $completeRegistration, token: $token)';
+    return 'User.authApi(id: $id, uid: $uid, name: $name, email: $email, password: $password, birthDate: $birthDate, ra: $ra, questionnaire: $questionnaire, questionnaireAnswered: $questionnaireAnswered, personalInfoComplete: $personalInfoComplete, addressComplete: $addressComplete, token: $token)';
   }
 
   @override
@@ -724,23 +730,23 @@ class _$ApiUserImpl implements ApiUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiUserImpl &&
-            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.birthday, birthday) ||
-                other.birthday == birthday) &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate) &&
             (identical(other.ra, ra) || other.ra == ra) &&
             const DeepCollectionEquality()
                 .equals(other._questionnaire, _questionnaire) &&
             (identical(other.questionnaireAnswered, questionnaireAnswered) ||
                 other.questionnaireAnswered == questionnaireAnswered) &&
-            (identical(other.completeProfile, completeProfile) ||
-                other.completeProfile == completeProfile) &&
-            (identical(other.completeRegistration, completeRegistration) ||
-                other.completeRegistration == completeRegistration) &&
+            (identical(other.personalInfoComplete, personalInfoComplete) ||
+                other.personalInfoComplete == personalInfoComplete) &&
+            (identical(other.addressComplete, addressComplete) ||
+                other.addressComplete == addressComplete) &&
             (identical(other.token, token) || other.token == token));
   }
 
@@ -748,17 +754,17 @@ class _$ApiUserImpl implements ApiUser {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      uid,
       id,
+      uid,
       name,
       email,
       password,
-      birthday,
+      birthDate,
       ra,
       const DeepCollectionEquality().hash(_questionnaire),
       questionnaireAnswered,
-      completeProfile,
-      completeRegistration,
+      personalInfoComplete,
+      addressComplete,
       token);
 
   /// Create a copy of User
@@ -772,181 +778,184 @@ class _$ApiUserImpl implements ApiUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email) $default, {
+    TResult Function(int id, String uid, String name, String email) $default, {
     required TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)
         authApi,
     required TResult Function() empty,
     required TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)
         fullProfile,
   }) {
-    return authApi(uid, id, name, email, password, birthday, ra, questionnaire,
-        questionnaireAnswered, completeProfile, completeRegistration, token);
+    return authApi(id, uid, name, email, password, birthDate, ra, questionnaire,
+        questionnaireAnswered, personalInfoComplete, addressComplete, token);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String uid, int id, String name, String email)?
+    TResult? Function(int id, String uid, String name, String email)?
         $default, {
     TResult? Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult? Function()? empty,
     TResult? Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
   }) {
     return authApi?.call(
-        uid,
         id,
+        uid,
         name,
         email,
         password,
-        birthday,
+        birthDate,
         ra,
         questionnaire,
         questionnaireAnswered,
-        completeProfile,
-        completeRegistration,
+        personalInfoComplete,
+        addressComplete,
         token);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email)? $default, {
+    TResult Function(int id, String uid, String name, String email)? $default, {
     TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult Function()? empty,
     TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
     required TResult orElse(),
   }) {
     if (authApi != null) {
       return authApi(
-          uid,
           id,
+          uid,
           name,
           email,
           password,
-          birthday,
+          birthDate,
           ra,
           questionnaire,
           questionnaireAnswered,
-          completeProfile,
-          completeRegistration,
+          personalInfoComplete,
+          addressComplete,
           token);
     }
     return orElse();
@@ -999,32 +1008,32 @@ class _$ApiUserImpl implements ApiUser {
 
 abstract class ApiUser implements User {
   const factory ApiUser(
-      {required final String uid,
-      required final int id,
+      {required final int id,
+      required final String uid,
       required final String name,
       required final String email,
       final String? password,
-      final DateTime? birthday,
+      final DateTime? birthDate,
       final String? ra,
       final Map<String, dynamic>? questionnaire,
       required final bool questionnaireAnswered,
-      required final bool completeProfile,
-      required final bool completeRegistration,
+      required final bool personalInfoComplete,
+      required final bool addressComplete,
       required final String? token}) = _$ApiUserImpl;
 
   factory ApiUser.fromJson(Map<String, dynamic> json) = _$ApiUserImpl.fromJson;
 
-  String get uid;
   int get id;
+  String get uid;
   String get name;
   String get email;
   String? get password;
-  DateTime? get birthday;
+  DateTime? get birthDate;
   String? get ra;
   Map<String, dynamic>? get questionnaire;
   bool get questionnaireAnswered;
-  bool get completeProfile;
-  bool get completeRegistration;
+  bool get personalInfoComplete;
+  bool get addressComplete;
   String? get token;
 
   /// Create a copy of User
@@ -1082,48 +1091,49 @@ class _$NotLoggedUserImpl implements NotLoggedUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email) $default, {
+    TResult Function(int id, String uid, String name, String email) $default, {
     required TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)
         authApi,
     required TResult Function() empty,
     required TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)
         fullProfile,
   }) {
@@ -1133,49 +1143,50 @@ class _$NotLoggedUserImpl implements NotLoggedUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String uid, int id, String name, String email)?
+    TResult? Function(int id, String uid, String name, String email)?
         $default, {
     TResult? Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult? Function()? empty,
     TResult? Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
   }) {
@@ -1185,48 +1196,49 @@ class _$NotLoggedUserImpl implements NotLoggedUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email)? $default, {
+    TResult Function(int id, String uid, String name, String email)? $default, {
     TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult Function()? empty,
     TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
     required TResult orElse(),
@@ -1298,28 +1310,30 @@ abstract class _$$LoggedUserImplCopyWith<$Res> {
   $Res call(
       {int id,
       String uid,
-      @JsonKey(name: 'tipo_usuario_id') int userType,
-      @JsonKey(name: 'nome') String name,
-      @JsonKey(name: 'email') String email,
-      @JsonKey(name: 'data_nascimento') String birthday,
+      int userTypeId,
+      String name,
+      String email,
+      String birthDate,
+      String gender,
       String cpf,
       String ra,
       String crp,
-      @JsonKey(name: 'fone1') String phone1,
-      @JsonKey(name: 'fone2') String phone2,
-      @JsonKey(name: 'logradouro') String address,
-      @JsonKey(name: 'numero') String addressNumber,
-      @JsonKey(name: 'complemento') String addressComplement,
-      @JsonKey(name: 'cep') String zipCode,
-      @JsonKey(name: 'estado') String state,
-      @JsonKey(name: 'imagem_perfil') String photoURL,
-      @JsonKey(name: 'descricao') String description,
-      @JsonKey(name: 'situacao') int situation,
-      @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-      @JsonKey(name: 'data_cadastro') DateTime createdAt,
-      @JsonKey(name: 'perfil_completo') bool completeProfile,
-      @JsonKey(name: 'questionario_respondido') bool questionnaireAnswered,
-      @JsonKey(name: 'cadastro_completo') bool completeRegistration,
+      String phone1,
+      String phone2,
+      String addressStreet,
+      String addressNumber,
+      String addressComplement,
+      String zipCode,
+      String state,
+      String profileImage,
+      String profileDescription,
+      int status,
+      DateTime lastLogin,
+      DateTime createdAt,
+      DateTime updatedAt,
+      bool personalInfoComplete,
+      bool addressComplete,
+      bool questionnaireAnswered,
       String token});
 }
 
@@ -1338,28 +1352,30 @@ class __$$LoggedUserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? uid = null,
-    Object? userType = null,
+    Object? userTypeId = null,
     Object? name = null,
     Object? email = null,
-    Object? birthday = null,
+    Object? birthDate = null,
+    Object? gender = null,
     Object? cpf = null,
     Object? ra = null,
     Object? crp = null,
     Object? phone1 = null,
     Object? phone2 = null,
-    Object? address = null,
+    Object? addressStreet = null,
     Object? addressNumber = null,
     Object? addressComplement = null,
     Object? zipCode = null,
     Object? state = null,
-    Object? photoURL = null,
-    Object? description = null,
-    Object? situation = null,
-    Object? lastLoginDate = null,
+    Object? profileImage = null,
+    Object? profileDescription = null,
+    Object? status = null,
+    Object? lastLogin = null,
     Object? createdAt = null,
-    Object? completeProfile = null,
+    Object? updatedAt = null,
+    Object? personalInfoComplete = null,
+    Object? addressComplete = null,
     Object? questionnaireAnswered = null,
-    Object? completeRegistration = null,
     Object? token = null,
   }) {
     return _then(_$LoggedUserImpl(
@@ -1371,9 +1387,9 @@ class __$$LoggedUserImplCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
-      userType: null == userType
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
+      userTypeId: null == userTypeId
+          ? _value.userTypeId
+          : userTypeId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -1383,9 +1399,13 @@ class __$$LoggedUserImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      birthday: null == birthday
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
+      birthDate: null == birthDate
+          ? _value.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
               as String,
       cpf: null == cpf
           ? _value.cpf
@@ -1407,9 +1427,9 @@ class __$$LoggedUserImplCopyWithImpl<$Res>
           ? _value.phone2
           : phone2 // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
+      addressStreet: null == addressStreet
+          ? _value.addressStreet
+          : addressStreet // ignore: cast_nullable_to_non_nullable
               as String,
       addressNumber: null == addressNumber
           ? _value.addressNumber
@@ -1427,37 +1447,41 @@ class __$$LoggedUserImplCopyWithImpl<$Res>
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-      photoURL: null == photoURL
-          ? _value.photoURL
-          : photoURL // ignore: cast_nullable_to_non_nullable
+      profileImage: null == profileImage
+          ? _value.profileImage
+          : profileImage // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      profileDescription: null == profileDescription
+          ? _value.profileDescription
+          : profileDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      situation: null == situation
-          ? _value.situation
-          : situation // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as int,
-      lastLoginDate: null == lastLoginDate
-          ? _value.lastLoginDate
-          : lastLoginDate // ignore: cast_nullable_to_non_nullable
+      lastLogin: null == lastLogin
+          ? _value.lastLogin
+          : lastLogin // ignore: cast_nullable_to_non_nullable
               as DateTime,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      completeProfile: null == completeProfile
-          ? _value.completeProfile
-          : completeProfile // ignore: cast_nullable_to_non_nullable
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      personalInfoComplete: null == personalInfoComplete
+          ? _value.personalInfoComplete
+          : personalInfoComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      addressComplete: null == addressComplete
+          ? _value.addressComplete
+          : addressComplete // ignore: cast_nullable_to_non_nullable
               as bool,
       questionnaireAnswered: null == questionnaireAnswered
           ? _value.questionnaireAnswered
           : questionnaireAnswered // ignore: cast_nullable_to_non_nullable
-              as bool,
-      completeRegistration: null == completeRegistration
-          ? _value.completeRegistration
-          : completeRegistration // ignore: cast_nullable_to_non_nullable
               as bool,
       token: null == token
           ? _value.token
@@ -1468,34 +1492,36 @@ class __$$LoggedUserImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$LoggedUserImpl implements LoggedUser {
   const _$LoggedUserImpl(
       {required this.id,
       required this.uid,
-      @JsonKey(name: 'tipo_usuario_id') this.userType = 1,
-      @JsonKey(name: 'nome') this.name = '',
-      @JsonKey(name: 'email') this.email = '',
-      @JsonKey(name: 'data_nascimento') this.birthday = '',
+      required this.userTypeId,
+      required this.name,
+      required this.email,
+      required this.birthDate,
+      required this.gender,
       this.cpf = '',
-      this.ra = '',
+      required this.ra,
       this.crp = '',
-      @JsonKey(name: 'fone1') this.phone1 = '',
-      @JsonKey(name: 'fone2') this.phone2 = '',
-      @JsonKey(name: 'logradouro') this.address = '',
-      @JsonKey(name: 'numero') this.addressNumber = '',
-      @JsonKey(name: 'complemento') this.addressComplement = '',
-      @JsonKey(name: 'cep') this.zipCode = '',
-      @JsonKey(name: 'estado') this.state = '',
-      @JsonKey(name: 'imagem_perfil') this.photoURL = '',
-      @JsonKey(name: 'descricao') this.description = '',
-      @JsonKey(name: 'situacao') this.situation = 1,
-      @JsonKey(name: 'data_ultimo_acesso') required this.lastLoginDate,
-      @JsonKey(name: 'data_cadastro') required this.createdAt,
-      @JsonKey(name: 'perfil_completo') required this.completeProfile,
-      @JsonKey(name: 'questionario_respondido')
+      this.phone1 = '',
+      this.phone2 = '',
+      this.addressStreet = '',
+      this.addressNumber = '',
+      this.addressComplement = '',
+      this.zipCode = '',
+      this.state = '',
+      this.profileImage = '',
+      this.profileDescription = '',
+      this.status = 1,
+      required this.lastLogin,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.personalInfoComplete,
+      required this.addressComplete,
       required this.questionnaireAnswered,
-      @JsonKey(name: 'cadastro_completo') required this.completeRegistration,
       this.token = '',
       final String? $type})
       : $type = $type ?? 'fullProfile';
@@ -1508,71 +1534,65 @@ class _$LoggedUserImpl implements LoggedUser {
   @override
   final String uid;
   @override
-  @JsonKey(name: 'tipo_usuario_id')
-  final int userType;
+  final int userTypeId;
   @override
-  @JsonKey(name: 'nome')
   final String name;
   @override
-  @JsonKey(name: 'email')
   final String email;
   @override
-  @JsonKey(name: 'data_nascimento')
-  final String birthday;
+  final String birthDate;
+  @override
+  final String gender;
   @override
   @JsonKey()
   final String cpf;
   @override
-  @JsonKey()
   final String ra;
   @override
   @JsonKey()
   final String crp;
   @override
-  @JsonKey(name: 'fone1')
+  @JsonKey()
   final String phone1;
   @override
-  @JsonKey(name: 'fone2')
+  @JsonKey()
   final String phone2;
   @override
-  @JsonKey(name: 'logradouro')
-  final String address;
+  @JsonKey()
+  final String addressStreet;
   @override
-  @JsonKey(name: 'numero')
+  @JsonKey()
   final String addressNumber;
   @override
-  @JsonKey(name: 'complemento')
+  @JsonKey()
   final String addressComplement;
   @override
-  @JsonKey(name: 'cep')
+  @JsonKey()
   final String zipCode;
   @override
-  @JsonKey(name: 'estado')
+  @JsonKey()
   final String state;
   @override
-  @JsonKey(name: 'imagem_perfil')
-  final String photoURL;
+  @JsonKey()
+  final String profileImage;
   @override
-  @JsonKey(name: 'descricao')
-  final String description;
+  @JsonKey()
+  final String profileDescription;
   @override
-  @JsonKey(name: 'situacao')
-  final int situation;
+  @JsonKey()
+  final int status;
   @override
-  @JsonKey(name: 'data_ultimo_acesso')
-  final DateTime lastLoginDate;
+  final DateTime lastLogin;
   @override
-  @JsonKey(name: 'data_cadastro')
   final DateTime createdAt;
   @override
-  @JsonKey(name: 'perfil_completo')
-  final bool completeProfile;
+  final DateTime updatedAt;
   @override
-  @JsonKey(name: 'questionario_respondido')
+  final bool personalInfoComplete;
+  @override
+  final bool addressComplete;
+  @override
   final bool questionnaireAnswered;
-  @override
-  @JsonKey(name: 'cadastro_completo')
-  final bool completeRegistration;
   @override
   @JsonKey()
   final String token;
@@ -1582,7 +1602,7 @@ class _$LoggedUserImpl implements LoggedUser {
 
   @override
   String toString() {
-    return 'User.fullProfile(id: $id, uid: $uid, userType: $userType, name: $name, email: $email, birthday: $birthday, cpf: $cpf, ra: $ra, crp: $crp, phone1: $phone1, phone2: $phone2, address: $address, addressNumber: $addressNumber, addressComplement: $addressComplement, zipCode: $zipCode, state: $state, photoURL: $photoURL, description: $description, situation: $situation, lastLoginDate: $lastLoginDate, createdAt: $createdAt, completeProfile: $completeProfile, questionnaireAnswered: $questionnaireAnswered, completeRegistration: $completeRegistration, token: $token)';
+    return 'User.fullProfile(id: $id, uid: $uid, userTypeId: $userTypeId, name: $name, email: $email, birthDate: $birthDate, gender: $gender, cpf: $cpf, ra: $ra, crp: $crp, phone1: $phone1, phone2: $phone2, addressStreet: $addressStreet, addressNumber: $addressNumber, addressComplement: $addressComplement, zipCode: $zipCode, state: $state, profileImage: $profileImage, profileDescription: $profileDescription, status: $status, lastLogin: $lastLogin, createdAt: $createdAt, updatedAt: $updatedAt, personalInfoComplete: $personalInfoComplete, addressComplete: $addressComplete, questionnaireAnswered: $questionnaireAnswered, token: $token)';
   }
 
   @override
@@ -1592,40 +1612,43 @@ class _$LoggedUserImpl implements LoggedUser {
             other is _$LoggedUserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.userType, userType) ||
-                other.userType == userType) &&
+            (identical(other.userTypeId, userTypeId) ||
+                other.userTypeId == userTypeId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.birthday, birthday) ||
-                other.birthday == birthday) &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.cpf, cpf) || other.cpf == cpf) &&
             (identical(other.ra, ra) || other.ra == ra) &&
             (identical(other.crp, crp) || other.crp == crp) &&
             (identical(other.phone1, phone1) || other.phone1 == phone1) &&
             (identical(other.phone2, phone2) || other.phone2 == phone2) &&
-            (identical(other.address, address) || other.address == address) &&
+            (identical(other.addressStreet, addressStreet) ||
+                other.addressStreet == addressStreet) &&
             (identical(other.addressNumber, addressNumber) ||
                 other.addressNumber == addressNumber) &&
             (identical(other.addressComplement, addressComplement) ||
                 other.addressComplement == addressComplement) &&
             (identical(other.zipCode, zipCode) || other.zipCode == zipCode) &&
             (identical(other.state, state) || other.state == state) &&
-            (identical(other.photoURL, photoURL) ||
-                other.photoURL == photoURL) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.situation, situation) ||
-                other.situation == situation) &&
-            (identical(other.lastLoginDate, lastLoginDate) ||
-                other.lastLoginDate == lastLoginDate) &&
+            (identical(other.profileImage, profileImage) ||
+                other.profileImage == profileImage) &&
+            (identical(other.profileDescription, profileDescription) ||
+                other.profileDescription == profileDescription) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.lastLogin, lastLogin) ||
+                other.lastLogin == lastLogin) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.completeProfile, completeProfile) ||
-                other.completeProfile == completeProfile) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.personalInfoComplete, personalInfoComplete) ||
+                other.personalInfoComplete == personalInfoComplete) &&
+            (identical(other.addressComplete, addressComplete) ||
+                other.addressComplete == addressComplete) &&
             (identical(other.questionnaireAnswered, questionnaireAnswered) ||
                 other.questionnaireAnswered == questionnaireAnswered) &&
-            (identical(other.completeRegistration, completeRegistration) ||
-                other.completeRegistration == completeRegistration) &&
             (identical(other.token, token) || other.token == token));
   }
 
@@ -1635,28 +1658,30 @@ class _$LoggedUserImpl implements LoggedUser {
         runtimeType,
         id,
         uid,
-        userType,
+        userTypeId,
         name,
         email,
-        birthday,
+        birthDate,
+        gender,
         cpf,
         ra,
         crp,
         phone1,
         phone2,
-        address,
+        addressStreet,
         addressNumber,
         addressComplement,
         zipCode,
         state,
-        photoURL,
-        description,
-        situation,
-        lastLoginDate,
+        profileImage,
+        profileDescription,
+        status,
+        lastLogin,
         createdAt,
-        completeProfile,
+        updatedAt,
+        personalInfoComplete,
+        addressComplete,
         questionnaireAnswered,
-        completeRegistration,
         token
       ]);
 
@@ -1671,201 +1696,208 @@ class _$LoggedUserImpl implements LoggedUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email) $default, {
+    TResult Function(int id, String uid, String name, String email) $default, {
     required TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)
         authApi,
     required TResult Function() empty,
     required TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)
         fullProfile,
   }) {
     return fullProfile(
         id,
         uid,
-        userType,
+        userTypeId,
         name,
         email,
-        birthday,
+        birthDate,
+        gender,
         cpf,
         ra,
         crp,
         phone1,
         phone2,
-        address,
+        addressStreet,
         addressNumber,
         addressComplement,
         zipCode,
         state,
-        photoURL,
-        description,
-        situation,
-        lastLoginDate,
+        profileImage,
+        profileDescription,
+        status,
+        lastLogin,
         createdAt,
-        completeProfile,
+        updatedAt,
+        personalInfoComplete,
+        addressComplete,
         questionnaireAnswered,
-        completeRegistration,
         token);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String uid, int id, String name, String email)?
+    TResult? Function(int id, String uid, String name, String email)?
         $default, {
     TResult? Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult? Function()? empty,
     TResult? Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
   }) {
     return fullProfile?.call(
         id,
         uid,
-        userType,
+        userTypeId,
         name,
         email,
-        birthday,
+        birthDate,
+        gender,
         cpf,
         ra,
         crp,
         phone1,
         phone2,
-        address,
+        addressStreet,
         addressNumber,
         addressComplement,
         zipCode,
         state,
-        photoURL,
-        description,
-        situation,
-        lastLoginDate,
+        profileImage,
+        profileDescription,
+        status,
+        lastLogin,
         createdAt,
-        completeProfile,
+        updatedAt,
+        personalInfoComplete,
+        addressComplete,
         questionnaireAnswered,
-        completeRegistration,
         token);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String uid, int id, String name, String email)? $default, {
+    TResult Function(int id, String uid, String name, String email)? $default, {
     TResult Function(
-            String uid,
             int id,
+            String uid,
             String name,
             String email,
             String? password,
-            DateTime? birthday,
+            DateTime? birthDate,
             String? ra,
             Map<String, dynamic>? questionnaire,
             bool questionnaireAnswered,
-            bool completeProfile,
-            bool completeRegistration,
+            bool personalInfoComplete,
+            bool addressComplete,
             String? token)?
         authApi,
     TResult Function()? empty,
     TResult Function(
             int id,
             String uid,
-            @JsonKey(name: 'tipo_usuario_id') int userType,
-            @JsonKey(name: 'nome') String name,
-            @JsonKey(name: 'email') String email,
-            @JsonKey(name: 'data_nascimento') String birthday,
+            int userTypeId,
+            String name,
+            String email,
+            String birthDate,
+            String gender,
             String cpf,
             String ra,
             String crp,
-            @JsonKey(name: 'fone1') String phone1,
-            @JsonKey(name: 'fone2') String phone2,
-            @JsonKey(name: 'logradouro') String address,
-            @JsonKey(name: 'numero') String addressNumber,
-            @JsonKey(name: 'complemento') String addressComplement,
-            @JsonKey(name: 'cep') String zipCode,
-            @JsonKey(name: 'estado') String state,
-            @JsonKey(name: 'imagem_perfil') String photoURL,
-            @JsonKey(name: 'descricao') String description,
-            @JsonKey(name: 'situacao') int situation,
-            @JsonKey(name: 'data_ultimo_acesso') DateTime lastLoginDate,
-            @JsonKey(name: 'data_cadastro') DateTime createdAt,
-            @JsonKey(name: 'perfil_completo') bool completeProfile,
-            @JsonKey(name: 'questionario_respondido')
+            String phone1,
+            String phone2,
+            String addressStreet,
+            String addressNumber,
+            String addressComplement,
+            String zipCode,
+            String state,
+            String profileImage,
+            String profileDescription,
+            int status,
+            DateTime lastLogin,
+            DateTime createdAt,
+            DateTime updatedAt,
+            bool personalInfoComplete,
+            bool addressComplete,
             bool questionnaireAnswered,
-            @JsonKey(name: 'cadastro_completo') bool completeRegistration,
             String token)?
         fullProfile,
     required TResult orElse(),
@@ -1874,28 +1906,30 @@ class _$LoggedUserImpl implements LoggedUser {
       return fullProfile(
           id,
           uid,
-          userType,
+          userTypeId,
           name,
           email,
-          birthday,
+          birthDate,
+          gender,
           cpf,
           ra,
           crp,
           phone1,
           phone2,
-          address,
+          addressStreet,
           addressNumber,
           addressComplement,
           zipCode,
           state,
-          photoURL,
-          description,
-          situation,
-          lastLoginDate,
+          profileImage,
+          profileDescription,
+          status,
+          lastLogin,
           createdAt,
-          completeProfile,
+          updatedAt,
+          personalInfoComplete,
+          addressComplete,
           questionnaireAnswered,
-          completeRegistration,
           token);
     }
     return orElse();
@@ -1950,31 +1984,30 @@ abstract class LoggedUser implements User {
   const factory LoggedUser(
       {required final int id,
       required final String uid,
-      @JsonKey(name: 'tipo_usuario_id') final int userType,
-      @JsonKey(name: 'nome') final String name,
-      @JsonKey(name: 'email') final String email,
-      @JsonKey(name: 'data_nascimento') final String birthday,
+      required final int userTypeId,
+      required final String name,
+      required final String email,
+      required final String birthDate,
+      required final String gender,
       final String cpf,
-      final String ra,
+      required final String ra,
       final String crp,
-      @JsonKey(name: 'fone1') final String phone1,
-      @JsonKey(name: 'fone2') final String phone2,
-      @JsonKey(name: 'logradouro') final String address,
-      @JsonKey(name: 'numero') final String addressNumber,
-      @JsonKey(name: 'complemento') final String addressComplement,
-      @JsonKey(name: 'cep') final String zipCode,
-      @JsonKey(name: 'estado') final String state,
-      @JsonKey(name: 'imagem_perfil') final String photoURL,
-      @JsonKey(name: 'descricao') final String description,
-      @JsonKey(name: 'situacao') final int situation,
-      @JsonKey(name: 'data_ultimo_acesso')
-      required final DateTime lastLoginDate,
-      @JsonKey(name: 'data_cadastro') required final DateTime createdAt,
-      @JsonKey(name: 'perfil_completo') required final bool completeProfile,
-      @JsonKey(name: 'questionario_respondido')
+      final String phone1,
+      final String phone2,
+      final String addressStreet,
+      final String addressNumber,
+      final String addressComplement,
+      final String zipCode,
+      final String state,
+      final String profileImage,
+      final String profileDescription,
+      final int status,
+      required final DateTime lastLogin,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
+      required final bool personalInfoComplete,
+      required final bool addressComplete,
       required final bool questionnaireAnswered,
-      @JsonKey(name: 'cadastro_completo')
-      required final bool completeRegistration,
       final String token}) = _$LoggedUserImpl;
 
   factory LoggedUser.fromJson(Map<String, dynamic> json) =
@@ -1982,47 +2015,30 @@ abstract class LoggedUser implements User {
 
   int get id;
   String get uid;
-  @JsonKey(name: 'tipo_usuario_id')
-  int get userType;
-  @JsonKey(name: 'nome')
+  int get userTypeId;
   String get name;
-  @JsonKey(name: 'email')
   String get email;
-  @JsonKey(name: 'data_nascimento')
-  String get birthday;
+  String get birthDate;
+  String get gender;
   String get cpf;
   String get ra;
   String get crp;
-  @JsonKey(name: 'fone1')
   String get phone1;
-  @JsonKey(name: 'fone2')
   String get phone2;
-  @JsonKey(name: 'logradouro')
-  String get address;
-  @JsonKey(name: 'numero')
+  String get addressStreet;
   String get addressNumber;
-  @JsonKey(name: 'complemento')
   String get addressComplement;
-  @JsonKey(name: 'cep')
   String get zipCode;
-  @JsonKey(name: 'estado')
   String get state;
-  @JsonKey(name: 'imagem_perfil')
-  String get photoURL;
-  @JsonKey(name: 'descricao')
-  String get description;
-  @JsonKey(name: 'situacao')
-  int get situation;
-  @JsonKey(name: 'data_ultimo_acesso')
-  DateTime get lastLoginDate;
-  @JsonKey(name: 'data_cadastro')
+  String get profileImage;
+  String get profileDescription;
+  int get status;
+  DateTime get lastLogin;
   DateTime get createdAt;
-  @JsonKey(name: 'perfil_completo')
-  bool get completeProfile;
-  @JsonKey(name: 'questionario_respondido')
+  DateTime get updatedAt;
+  bool get personalInfoComplete;
+  bool get addressComplete;
   bool get questionnaireAnswered;
-  @JsonKey(name: 'cadastro_completo')
-  bool get completeRegistration;
   String get token;
 
   /// Create a copy of User
