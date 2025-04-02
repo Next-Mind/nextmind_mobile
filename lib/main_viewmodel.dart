@@ -10,6 +10,7 @@ class MainViewModel extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    Get.testMode = true;
     _logger.d('Initializing Main Viewmodel');
     ever(_authRepository.userIsAuthenticated, (authenticated) {
       WidgetsBinding.instance.addPostFrameCallback((_) {

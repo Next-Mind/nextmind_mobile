@@ -10,7 +10,7 @@ class AppointmentNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: Get.nestedKey(NavsIds.chat),
+      key: Get.nestedKey(GlobalKey<NavigatorState>()),
       onGenerateRoute: (settings) {
         if (settings.name == '/') {
           return GetPageRoute(

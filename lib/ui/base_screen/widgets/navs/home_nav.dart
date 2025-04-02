@@ -10,7 +10,7 @@ class HomeNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: Get.nestedKey(NavsIds.home),
+      key: Get.nestedKey(GlobalKey<NavigatorState>()),
       onGenerateRoute: (settings) {
         if (settings.name == '/') {
           return GetPageRoute(
