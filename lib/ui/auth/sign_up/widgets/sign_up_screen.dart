@@ -5,14 +5,9 @@ import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.da
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 import 'package:nextmind_mobile/ui/core/ui/input_formatters/data_text_input_formatter.dart';
 
-class PersonalInfoForm extends StatefulWidget {
-  const PersonalInfoForm({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
-  @override
-  State<PersonalInfoForm> createState() => _PersonalInfoFormState();
-}
-
-class _PersonalInfoFormState extends State<PersonalInfoForm> {
   Future<void> _selectDate(BuildContext context) async {
     final viewModel = SignUpViewModel.to;
     final DateTime? picked = await showDatePicker(

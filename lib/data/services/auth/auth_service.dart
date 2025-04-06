@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nextmind_mobile/domain/models/user/user.dart' as local_user;
+import 'package:nextmind_mobile/domain/dtos/signup_form/signup_form.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
@@ -28,21 +28,18 @@ class AuthService extends GetxService {
 
   static AuthService get to => Get.find<AuthService>();
 
-  AsyncResult<local_user.User> newUserWithEmail(Credentials credentials) async {
+  AsyncResult<String> newUserWithEmail(SignUpForm signUpFormInfos) async {
     try {
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
-              email: credentials.email, password: credentials.password);
-      var newUser = userCredential.user!;
-      _logger.d("Successfully created a new user with an email.");
-      sendEmailVerification();
-      return Success(
-        local_user.User(
-          newUser.displayName ?? 'Undefined',
-          newUser.email ?? 'Undefined',
-          newUser.photoURL ?? 'Undefined',
-        ),
+        email: signUpFormInfos.email,
+        password: signUpFormInfos.password,
       );
+      var newFirebaseUser = userCredential.user!;
+      await newFirebaseUser.updateDisplayName(signUpFormInfos.name);
+      _logger.d("Successfully created a new user with an email.");
+      //sendEmailVerification(); //Preciso implementar isso com uma lógia melhor
+      return Success(await newFirebaseUser.getIdToken() ?? '');
     } catch (e) {
       _logger.d("Failed to create a new user with an email.");
       return Failure(AuthException(e.toString()));
@@ -71,27 +68,20 @@ class AuthService extends GetxService {
     }
   }
 
-  AsyncResult<local_user.User> loginUserWithEmail(
-      Credentials credentials) async {
+  AsyncResult<String> loginUserWithEmail(Credentials credentials) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: credentials.email, password: credentials.password);
       _logger.d("User successfully logged in using an email.");
       var remoteUser = userCredential.user!;
-      return Success(
-        local_user.User(
-          remoteUser.displayName ?? 'Undefined',
-          remoteUser.email ?? 'undefined@email.com',
-          remoteUser.photoURL ?? '',
-        ),
-      );
+      return Success(await remoteUser.getIdToken() ?? '');
     } catch (e) {
       _logger.d("User login failed using an email.");
       return Failure(AuthException("loginFailed".tr));
     }
   }
 
-  AsyncResult<local_user.User> loginGoogleUser() async {
+  AsyncResult<String> loginGoogleUser() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
@@ -109,13 +99,8 @@ class AuthService extends GetxService {
           await _auth.signInWithCredential(credential);
       _logger.d("User has successfully logged in with Google Authentication.");
       var remoteUser = userCredential.user!;
-      return Success(
-        local_user.User(
-          remoteUser.displayName ?? 'Undefined',
-          remoteUser.email ?? 'undefined@email.com',
-          remoteUser.photoURL ?? '',
-        ),
-      );
+
+      return Success(await remoteUser.getIdToken() ?? '');
     } catch (e) {
       _logger.d("User login failed using Google Authentication.");
       return Failure(AuthException(e.toString()));

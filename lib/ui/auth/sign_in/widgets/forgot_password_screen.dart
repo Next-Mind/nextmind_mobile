@@ -11,50 +11,56 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ForgotPasswordViewModel viewModel = Get.find();
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar.medium(
-            title: Text('forgotPassword'.tr),
-            centerTitle: true,
-          ),
-          SliverPadding(
-              padding: EdgeInsets.all(Dimens.largePadding),
-              sliver: SliverList(
-                  delegate: SliverChildListDelegate([
-                SvgPicture.asset(
-                  'assets/images/forgot_password.svg',
-                  height: 250,
-                ),
-                SizedBox(height: Dimens.largePadding),
-                Form(
-                  key: viewModel.formKey,
-                  child: TextFormField(
-                    controller: viewModel.emailController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'fieldNotEmpty'.tr;
-                      }
-                      if (!viewModel.isValidEmail(value)) {
-                        return 'fieldEmailInvalid'.tr;
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'fieldHintTextEmail'.tr,
-                    ),
+      appBar: AppBar(
+        title: Text('forgotPassword'.tr),
+      ),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(Dimens.largePadding),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 64,
+              ),
+              SvgPicture.asset(
+                'assets/images/forgot_password.svg',
+                height: 250,
+              ),
+              SizedBox(height: Dimens.extraLargePadding * 1.5),
+              Form(
+                key: viewModel.formKey,
+                child: TextFormField(
+                  controller: viewModel.emailController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'fieldNotEmpty'.tr;
+                    }
+                    if (!viewModel.isValidEmail(value)) {
+                      return 'fieldEmailInvalid'.tr;
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'fieldHintTextEmail'.tr,
                   ),
                 ),
-                SizedBox(height: Dimens.largePadding),
-                ElevatedButton(
+              ),
+              SizedBox(height: Dimens.extraLargePadding),
+              SizedBox(
+                width: Dimens.extraLargePadding * 7,
+                child: ElevatedButton(
                   onPressed: () {
                     if (viewModel.formKey.currentState!.validate()) {
                       viewModel.sendEmailCommand.execute();
+                      Get.snackbar('Sucesso!', 'Confira seu email');
                     }
                   },
                   child: Text('fieldSendButton'.tr),
                 ),
-              ]))),
-        ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

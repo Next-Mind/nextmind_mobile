@@ -1,47 +1,52 @@
 import 'dart:convert';
 
-import 'package:logger/logger.dart';
-
 class SignUpForm {
   String name;
-  DateTime? birthday;
+  DateTime birthday;
   String email;
   String ra;
   String password;
-
-  bool formSubmitted = false;
-
-  final Logger _logger = Logger();
+  Map<String, dynamic> questionnaireAnswers;
+  String token;
 
   SignUpForm({
-    this.name = '',
-    this.email = '',
-    this.ra = '',
-    this.password = '',
+    required this.name,
+    required this.birthday,
+    required this.email,
+    required this.ra,
+    required this.password,
+    required this.questionnaireAnswers,
+    this.token = '',
   });
 
+  factory SignUpForm.init() {
+    return SignUpForm(
+      name: '',
+      birthday: DateTime.fromMillisecondsSinceEpoch(0),
+      email: '',
+      ra: '',
+      password: '',
+      questionnaireAnswers: {},
+    );
+  }
+
   void setEmail(String email) {
-    _logger.d("Input email changed: ${this.email}");
     this.email = email;
   }
 
   void setPassword(String password) {
-    _logger.d("Input password changed: ${this.password}");
     this.password = password;
   }
 
   void setName(String name) {
-    _logger.d("Input name changed: ${this.name}");
     this.name = name;
   }
 
   void setBirthday(DateTime birthday) {
-    _logger.d("Input birthday changed: ${this.birthday}");
     this.birthday = birthday;
   }
 
   void setRa(String ra) {
-    _logger.d("Input ra changed: ${this.ra}");
     this.ra = ra;
   }
 
@@ -52,6 +57,7 @@ class SignUpForm {
       'email': email,
       'ra': ra,
       'password': password,
+      'questionnaire': questionnaireAnswers
     };
   }
 

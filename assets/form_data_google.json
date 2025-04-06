@@ -1,0 +1,111 @@
+{
+  "formTitle": "Questionário sobre saúde mental",
+  "formDescription": "Por favor, responda o questionário.",
+  "questions": [
+    {
+      "id": "name",
+      "title": "fieldSignUpName",
+      "fieldType": "text",
+      "isRequired": true,
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "birthday",
+      "title": "fieldSignUpBirthdate",
+      "fieldType": "date",
+      "isRequired": true,
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "ra",
+      "title": "fieldSignUpRa",
+      "fieldType": "text",
+      "isRequired": true,
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "currentGrade",
+      "title": "formSignUpCurrentGrade",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["school_grade_1","school_grade_2","school_grade_3","school_grade_4","school_grade_other"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "reasonsForUsingApp",
+      "title": "formSignUpReasonsForUsingApp",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Motivo 1", "Motivo 2", "Motivo 3"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "hasTherapyExperience",
+      "title": "formSignUpHasTherapyExperience",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Experiencia 1", "Experiencia 2", "Experiencia 3"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "lastPsychologicalExam",
+      "title": "formSignUpLastPsychologicalExam",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Tempo 1","Tempo 2","Tempo 3","Tempo 4"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "signUpAcademicImpactOnMentalHealth",
+      "title": "formSignUpAcademicImpactOnMentalHealth",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Impacto 1","Impacto 2","Impacto 3","Impacto 4"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "restAndLeisureLevel",
+      "title": "formSignUpRestAndLeisureLevel",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Nivel 1","Nivel 2","Nivel 3","Nivel 4"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "signUpPracticesPhysicalActivities",
+      "title": "formSignUpPracticesPhysicalActivities",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Nivel 1","Nivel 2","Nivel 3","Nivel 4"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "signUpAverageHoursOfSleep",
+      "title": "formSignUpAverageHoursOfSleep",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Opção 1","Opção 2","Opção 3","Opção 4"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    },
+    {
+      "id": "signUpEatingHabitsClassification",
+      "title": "formSignUpEatingHabitsClassification",
+      "fieldType": "bottomSheet",
+      "isRequired": true,
+      "options" : ["Hábitos 1","Hábitos 2","Hábitos 3","Hábitos 4"],
+      "placeholder": "fieldChooseOptionHint",
+      "errorMessage": "fieldNotEmpty"
+    }
+  ]
+}

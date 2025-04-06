@@ -1,20 +1,23 @@
 import 'package:get/get.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository_remote.dart';
+import 'package:nextmind_mobile/data/services/auth/auth_client_http.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_service.dart';
+import 'package:nextmind_mobile/data/services/client_http.dart';
 import 'package:nextmind_mobile/data/services/form_builder/form_service.dart';
 import 'package:nextmind_mobile/main_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/forgot_password_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/base_screen/view_models/base_viewmodel.dart';
+import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
 import 'package:nextmind_mobile/ui/form_builder/viewmodels/form_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 
 import '../../data/services/local_storage.dart';
 
-class FormTestBinding implements Bindings {
+class DynamicFormBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<FormService>(() => FormService());
@@ -61,6 +64,9 @@ class HomeBindings implements Bindings {
 
 setupGlobalDependencies() {
   Get.put<LocalStorage>(LocalStorage());
+  Get.put<ClientHttp>(ClientHttp());
+  Get.put<AuthClientHttp>(AuthClientHttp());
+  Get.put<ThemeController>(ThemeController());
   Get.put<AuthLocalStorage>(AuthLocalStorage());
   Get.put<AuthService>(AuthService());
   Get.put<AuthRepository>(AuthRepositoryRemote());

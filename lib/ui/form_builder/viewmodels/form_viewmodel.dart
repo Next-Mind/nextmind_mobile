@@ -87,6 +87,7 @@ class FormViewModel extends GetxController {
 
   void updateAnswer(String questionId, dynamic value) {
     answers[questionId] = value;
+    update();
   }
 
   String? validateAnswer(Question question, dynamic value) {
@@ -104,19 +105,6 @@ class FormViewModel extends GetxController {
     }
 
     return null;
-  }
-
-  void submitForm() {
-    if (formKey.currentState!.validate()) {
-      _logger.d('Form submitted with answers: $answers');
-      Get.snackbar(
-        'Success',
-        'Form submitted successfully',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green,
-        colorText: Colors.white,
-      );
-    }
   }
 
   void resetForm() {

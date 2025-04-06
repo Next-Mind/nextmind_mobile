@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
+import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
 import 'package:nextmind_mobile/utils/routes/app_routes.dart';
 import 'package:result_command/result_command.dart';
 
@@ -44,8 +45,11 @@ class _SignInScreenState extends State<SignInScreen> {
   void _onCommandChanged(Command command) {
     if (command.isSuccess) {
       _logger.d("Command Success: $command");
+    } else if (command.isRunning) {
+      Get.toNamed(AppRoutes.loadingScreen);
     } else if (command.isFailure) {
       _logger.d("Command Failure: $command");
+      if (Get.currentRoute == AppRoutes.loadingScreen) Get.back();
       final result = command.value as FailureCommand;
       Get.snackbar(
         'Ops!',
@@ -167,6 +171,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           viewModel.loginWithAppleCommand.execute();
                         },
                       ),
+                      IconButton(
+                          onPressed: () => ThemeController.to.toggleThemeMode(),
+                          icon: Icon(Icons.brightness_4_outlined))
                     ],
                   ),
                 ],
