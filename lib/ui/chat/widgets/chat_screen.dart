@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_final_fields, unused_field, sort_child_properties_last
+// ignore_for_file: prefer_final_fields, unused_field, sort_child_properties_last, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nextmind_mobile/ui/chat/view_models/chat_screen_viewmodel.dart';
 import 'package:nextmind_mobile/ui/chat/widgets/chat_summary.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -11,10 +12,11 @@ class ChatScreen extends StatefulWidget {
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
-  TextEditingController _searchPeople = TextEditingController();
-  TextEditingController _addPeople = TextEditingController();
-
 class _ChatScreenState extends State<ChatScreen> {
+  final viewModel = ChatScreenViewmodel();
+  final formKey = GlobalKey<FormState>();
+
+
   List<ChatSummary> contacts = [
     ChatSummary(name: "Marlon", photoURL: "M", lastMessage: "Olá Mundo"),
     ChatSummary(name: "Marlon", photoURL: "M", lastMessage: "Olá Mundo"),
@@ -28,6 +30,67 @@ class _ChatScreenState extends State<ChatScreen> {
     ChatSummary(name: "Marlon", photoURL: "M", lastMessage: "Olá Mundo"),
     ChatSummary(name: "Marlon", photoURL: "M", lastMessage: "Olá Mundo"),
   ];
+
+  void addContacts(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Form(
+            key: formKey, // associando a chave
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(
+                  'assets/images/add_contacts.svg',
+                  height: 100,
+                ),
+                SizedBox(height: 15),
+                TextFormField(
+                  controller: viewModel.addPeopleController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Campo obrigatório';
+                    }
+                    if (!viewModel.isValidEmail(value.trim())) {
+                      return 'E-mail inválido';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Pesquisar...",
+                    suffixIcon: Icon(Icons.arrow_drop_down),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+                ElevatedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      // tudo certo, pode continuar
+                      print("Email válido: ${viewModel.addPeopleController.text}");
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  child: Text("Adicionar"),
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +111,17 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Row(
               children: [
                 Expanded(
-                    child: TextField(
-                  controller: _searchPeople,
+                    child: TextFormField(
+                  controller: viewModel.searchPeopleController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                        return 'fieldNotEmpty';
+                      }
+                      if (!viewModel.isValidEmail(value)) {
+                        return 'fieldEmailInvalid';
+                      }
+                      return null;
+                  },
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
                     hintText: ("Pesquisar..."),
@@ -95,45 +167,4 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
     );
   }
-}
-
-void addContacts(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset(
-                'assets/images/add_contacts.svg',
-                height: 100,
-              ),
-              SizedBox(height: 15,),
-              TextField(
-                controller: _addPeople,
-                decoration: InputDecoration(
-                  hintText: "Pesquisar...",
-                  suffixIcon: Icon(Icons.arrow_drop_down),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-              SizedBox(height: 15,),
-              ElevatedButton(onPressed: () {
-                
-              }, child: Text("Adicionar"))
-            ],
-          ),
-        ),
-      );
-    },
-  );
 }
