@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nextmind_mobile/ui/chat/chat_screen.dart';
 
 class ChatSummaryWidget extends StatelessWidget {
   final ChatSummary chatSummary;
@@ -17,7 +19,7 @@ class ChatSummaryWidget extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
-          
+          Get.to(() => ChatScreen(chatSummary: chatSummary));
         },
         child: ListTile(
         title: Text(chatSummary.name),

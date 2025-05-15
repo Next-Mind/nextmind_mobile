@@ -28,6 +28,10 @@ dependencies:
   result_dart: ^2.0.0
   shared_preferences: ^2.5.1
   sqflite: ^2.4.1
+  file_picker: ^10.1.2 
+  image_picker: ^1.1.2
+  url_launcher: 
+  open_file: ^3.5.10
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.3"
