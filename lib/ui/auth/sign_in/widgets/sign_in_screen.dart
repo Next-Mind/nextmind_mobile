@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
@@ -46,7 +47,11 @@ class _SignInScreenState extends State<SignInScreen> {
     if (command.isSuccess) {
       _logger.d("Command Success: $command");
     } else if (command.isRunning) {
-      Get.toNamed(AppRoutes.loadingScreen);
+      Get.toNamed(AppRoutes.loadingScreen, arguments: () async {
+        Logger().d("Command Cancelled: $command");
+        command.cancel();
+        AuthRepository.to.logout();
+      });
     } else if (command.isFailure) {
       _logger.d("Command Failure: $command");
       if (Get.currentRoute == AppRoutes.loadingScreen) Get.back();
