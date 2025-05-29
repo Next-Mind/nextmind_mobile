@@ -13,7 +13,7 @@ class AuthClientHttp extends GetxController {
   AsyncResult<ApiUser> authApiUser(String token) async {
     _logger.d('$runtimeType: Calling the API route for authentication');
     final response = await _clientHttp.post(
-        'https://nextmind.tech/api/v1/auth', {},
+        'https://api.nextmind.tech/v1/auth', {},
         requiresAuth: true, token: token);
 
     return response.map((response) {
@@ -30,7 +30,7 @@ class AuthClientHttp extends GetxController {
     final postBody = {'questionnaire': user.questionnaire};
     _logger.d(postBody);
     return await _clientHttp
-        .put('https://nextmind.tech/api/v1/users/me/questionnaire', postBody,
+        .put('https://api.nextmind.tech/v1/users/me/questionnaire', postBody,
             requiresAuth: true, token: user.token)
         .pure(user);
   }
@@ -41,7 +41,7 @@ class AuthClientHttp extends GetxController {
     final postBody = {"user": user.toJson()};
     _logger.d(postBody);
     return await _clientHttp
-        .put('https://nextmind.tech/api/v1/users/me/profile', postBody,
+        .put('https://api.nextmind.tech/v1/users/me/profile', postBody,
             requiresAuth: true, token: user.token)
         .onSuccess((r) => _logger.d(r.data.toString()))
         .pure(user);
@@ -51,7 +51,7 @@ class AuthClientHttp extends GetxController {
     _logger.d(
         '$runtimeType: Calling the API route to retrieve the currently logged in data');
     final response = _clientHttp.get(
-      'https://nextmind.tech/api/v1/users/me',
+      'https://api.nextmind.tech/v1/users/me',
       requiresAuth: true,
       token: token,
     );

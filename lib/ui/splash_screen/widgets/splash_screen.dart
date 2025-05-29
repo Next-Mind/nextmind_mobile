@@ -5,6 +5,11 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset("assets/images/nextmind/loading_splash.gif");
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: Image.asset("assets/images/nextmind/loading_splash.gif"),
+      ),
+    );
   }
 }

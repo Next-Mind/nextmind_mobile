@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
 import 'package:nextmind_mobile/domain/dtos/signup_form/signup_form.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -12,6 +15,7 @@ class AuthService extends GetxService {
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
   final Rxn<User> _firebaseUser = Rxn<User>();
   var userIsAuthenticated = false.obs;
+  Timer? _tokenRefreshTimer;
 
   User? get user => _firebaseUser.value;
   final Logger _logger = Logger();
@@ -23,7 +27,17 @@ class AuthService extends GetxService {
     ever(_firebaseUser, (User? user) {
       userIsAuthenticated.value = user != null;
     });
+
+    _scheduleTokenRefresh();
+
     _logger.d("Auth Service Initialized");
+  }
+
+  @override
+  void onClose() {
+    _tokenRefreshTimer?.cancel();
+    _logger.d("Auth Service Closed");
+    super.onClose();
   }
 
   static AuthService get to => Get.find<AuthService>();
@@ -105,6 +119,53 @@ class AuthService extends GetxService {
       _logger.d("User login failed using Google Authentication.");
       return Failure(AuthException(e.toString()));
     }
+  }
+
+  AsyncResult<String> refreshToken() async {
+    try {
+      if (_auth.currentUser != null) {
+        _logger.d("User token refreshed successfully.");
+        return Success(await _auth.currentUser!.getIdToken() ?? '');
+      } else {
+        return Failure(AuthException("No user is currently logged in."));
+      }
+    } catch (e) {
+      _logger.d("Failed to refresh user token.");
+      return Failure(AuthException(e.toString()));
+    }
+  }
+
+  AsyncResult<Unit> _refreshLoggedUserToken() async {
+    final storage = Get.find<AuthLocalStorage>();
+
+    final result = await storage.getUser();
+    result.fold(
+      (user) async {
+        final tokenResult = await refreshToken();
+        tokenResult.fold(
+          (newToken) async {
+            final updatedUser = user.copyWith(token: newToken);
+            await storage.saveUser(updatedUser);
+            _logger.d("User token successfully refreshed and saved.");
+          },
+          (e) => _logger.e("Failed to refresh user token: ${e.toString()}"),
+        );
+        return Success(unit);
+      },
+      (_) {
+        _logger.d("No user found in Local Storage to refresh token.");
+        return Failure(AuthException("No user found in Local Storage."));
+      },
+    );
+    return Success(unit);
+  }
+
+  void _scheduleTokenRefresh() {
+    _refreshLoggedUserToken();
+    _tokenRefreshTimer = Timer.periodic(
+      Duration(minutes: 50),
+      (_) => _refreshLoggedUserToken(),
+    );
   }
 
   AsyncResult<Unit> logout() async {
