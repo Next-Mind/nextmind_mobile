@@ -12,6 +12,7 @@ import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.da
 import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/base_screen/view_models/base_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
+import 'package:nextmind_mobile/ui/core/wigdets/user_avatar/view_model/user_avatar_viewmodel.dart';
 import 'package:nextmind_mobile/ui/form_builder/viewmodels/form_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 
@@ -59,6 +60,7 @@ class HomeBindings implements Bindings {
     Get.lazyPut(
       () => HomeViewModel(),
     );
+    Get.lazyPut(() => UserAvatarViewmodel(), fenix: true);
   }
 }
 
