@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:nextmind_mobile/data/repositories/appointment/appointment_repository.dart';
+import 'package:nextmind_mobile/data/repositories/appointment/appointment_repository_local.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository_remote.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_client_http.dart';
@@ -15,6 +17,8 @@ import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
 import 'package:nextmind_mobile/ui/core/wigdets/user_avatar/view_model/user_avatar_viewmodel.dart';
 import 'package:nextmind_mobile/ui/form_builder/viewmodels/form_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
+import 'package:nextmind_mobile/ui/home/widgets/linear_calendar/view_models/linear_calendar_viewmodel.dart';
+import 'package:nextmind_mobile/ui/home/widgets/next_appointment/view_models/next_appointment_viewmodel.dart';
 
 import '../../data/services/local_storage.dart';
 
@@ -57,10 +61,10 @@ class ForgotPasswordBindings implements Bindings {
 class HomeBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(
-      () => HomeViewModel(),
-    );
-    Get.lazyPut(() => UserAvatarViewmodel(), fenix: true);
+    Get.put(HomeViewModel());
+    Get.put(UserAvatarViewmodel());
+    Get.put(LinearCalendarViewmodel());
+    Get.put(NextAppointmentViewmodel());
   }
 }
 
@@ -73,4 +77,5 @@ setupGlobalDependencies() {
   Get.put<AuthService>(AuthService());
   Get.put<AuthRepository>(AuthRepositoryRemote());
   Get.put<MainViewModel>(MainViewModel());
+  Get.put<AppointmentRepository>(AppointmentRepositoryLocal());
 }
