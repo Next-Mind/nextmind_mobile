@@ -29,10 +29,10 @@ class WavePainter extends CustomPainter {
     final paint = Paint()..color = color;
 
     final path = Path();
-    path.lineTo(0, size.height * 0.8);
+    path.lineTo(0, size.height * 0.9);
 
     path.quadraticBezierTo(
-        size.width * 0.5, size.height, size.width, size.height * 0.8);
+        size.width * 0.5, size.height, size.width, size.height * 0.9);
 
     path.lineTo(size.width, 0);
     path.close();

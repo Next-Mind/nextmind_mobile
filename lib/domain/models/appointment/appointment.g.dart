@@ -24,6 +24,7 @@ _$AppointmentImpl _$$AppointmentImplFromJson(Map<String, dynamic> json) =>
       reminderSent: json['reminderSent'] as bool,
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$AppointmentImplToJson(_$AppointmentImpl instance) =>
@@ -44,4 +45,33 @@ Map<String, dynamic> _$$AppointmentImplToJson(_$AppointmentImpl instance) =>
       'reminderSent': instance.reminderSent,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
+      'runtimeType': instance.$type,
+    };
+
+_$NextAppointmentImpl _$$NextAppointmentImplFromJson(
+        Map<String, dynamic> json) =>
+    _$NextAppointmentImpl(
+      id: (json['id'] as num).toInt(),
+      date: DateTime.parse(json['date'] as String),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$NextAppointmentImplToJson(
+        _$NextAppointmentImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'date': instance.date.toIso8601String(),
+      'runtimeType': instance.$type,
+    };
+
+_$EmptyAppointmentImpl _$$EmptyAppointmentImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EmptyAppointmentImpl(
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$EmptyAppointmentImplToJson(
+        _$EmptyAppointmentImpl instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
     };

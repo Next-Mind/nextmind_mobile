@@ -22,10 +22,15 @@ sealed class Appointment with _$Appointment {
     required bool reminderSent,
     required String createdAt,
     required String updatedAt,
+  }) = _Appointment;
 
-  })= _Appointment;
+  factory Appointment.next({
+    required int id,
+    required DateTime date,
+  }) = NextAppointment;
 
+  factory Appointment.empty() = EmptyAppointment;
 
-
-  factory Appointment.fromJson(Map<String, dynamic> json) => _$AppointmentFromJson(json);
+  factory Appointment.fromJson(Map<String, dynamic> json) =>
+      _$AppointmentFromJson(json);
 }
