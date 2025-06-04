@@ -125,7 +125,7 @@ class AuthService extends GetxService {
     try {
       if (_auth.currentUser != null) {
         _logger.d("User token refreshed successfully.");
-        return Success(await _auth.currentUser!.getIdToken() ?? '');
+        return Success(await _auth.currentUser!.getIdToken(true) ?? '');
       } else {
         return Failure(AuthException("No user is currently logged in."));
       }
