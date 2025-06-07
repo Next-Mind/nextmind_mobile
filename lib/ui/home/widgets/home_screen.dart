@@ -9,17 +9,8 @@ import 'package:nextmind_mobile/ui/home/widgets/linear_calendar/widgets/linear_c
 import 'package:nextmind_mobile/ui/home/widgets/next_appointment/widgets/next_appointment_widget.dart';
 import 'package:nextmind_mobile/ui/home/widgets/wave_background/wave_background.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey _sectionKey = GlobalKey();
-  double _waveHeight = 300.0;
-  bool _waveMeasured = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,39 +22,38 @@ class _HomeScreenState extends State<HomeScreen> {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (!_waveMeasured) {
-          Future.delayed(Duration.zero, _calculateWaveHeight);
-        }
-
         return SingleChildScrollView(
           child: Column(
             children: [
-              Stack(
-                children: [
-                  WaveBackgroundStacked(height: _waveHeight),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
-                      key: _sectionKey,
-                      children: [
-                        const SizedBox(height: 24),
-                        HomeAppBar(
-                          onMenuTap: () {
-                            AuthRepository.to.logout();
-                          },
-                        ),
-                        LinearCalendarWidget(),
-                        NextAppointmentWidget(),
-                        const SizedBox(height: 16),
-                      ],
+              SizedBox(
+                height: 380, // Altura fixa da seção com curva
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    const WaveBackgroundStacked(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 24),
+                          HomeAppBar(
+                            onMenuTap: () {
+                              AuthRepository.to.logout();
+                            },
+                          ),
+                          LinearCalendarWidget(),
+                          NextAppointmentWidget(),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Padding(
                 padding: Dimens.of(context).edgeInsetsScreenHorizontal,
                 child: const Column(
                   children: [
+                    SizedBox(height: 16),
                     DynamicBox(),
                   ],
                 ),
@@ -73,20 +63,5 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       }),
     );
-  }
-
-  void _calculateWaveHeight() {
-    final context = _sectionKey.currentContext;
-    if (context != null) {
-      final box = context.findRenderObject() as RenderBox;
-      final contentHeight = box.size.height;
-
-      if (contentHeight > 0) {
-        setState(() {
-          _waveHeight = (contentHeight);
-          _waveMeasured = true;
-        });
-      }
-    }
   }
 }

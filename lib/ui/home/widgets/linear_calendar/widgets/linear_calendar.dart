@@ -22,8 +22,8 @@ class _LinearCalendarWidgetState extends State<LinearCalendarWidget> {
               ? FadeShimmer(
                   width: MediaQuery.of(context).size.width * 0.9,
                   height: 50,
-                  highlightColor: Theme.of(context).colorScheme.onPrimary,
-                  baseColor: Theme.of(context).colorScheme.inversePrimary,
+                  highlightColor: Color(0xFF4FCB53),
+                  baseColor: Color(0xFF00AC2F).withValues(alpha: 0.5),
                   radius: 8,
                 )
               : _buildCalendar();

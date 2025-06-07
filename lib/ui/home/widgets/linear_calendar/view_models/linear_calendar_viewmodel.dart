@@ -12,9 +12,11 @@ class LinearCalendarViewmodel extends GetxController {
 
   final Logger _logger = Logger();
 
-  late final generateWeekCommand = Command1<List<DateTime>,DateTime>((date) => _generateWeek(date));
+  late final generateWeekCommand =
+      Command1<List<DateTime>, DateTime>(_generateWeek);
 
   AsyncResult<List<DateTime>> _generateWeek(DateTime date) async {
+    await Future.delayed(Duration(minutes: 1));
     int weekday = date.weekday % 7;
     DateTime sunday = date.subtract(Duration(days: weekday));
     return Success(List.generate(7, (i) => sunday.add(Duration(days: i))));
@@ -23,15 +25,15 @@ class LinearCalendarViewmodel extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    generateWeekCommand.addListener((){
+    generateWeekCommand.addListener(() {
       final snapshot = generateWeekCommand.value;
-      if(snapshot is SuccessCommand<List<DateTime>>){
+      if (snapshot is SuccessCommand<List<DateTime>>) {
         weekDates = snapshot.value;
-      } else if(snapshot is FailureCommand<List<DateTime>>){
+      } else if (snapshot is FailureCommand<List<DateTime>>) {
         _logger.d('Failed to generate week: ${snapshot.error}');
       }
     });
 
-    generateWeekCommand.execute(selectedDate);  
+    generateWeekCommand.execute(selectedDate);
   }
 }
