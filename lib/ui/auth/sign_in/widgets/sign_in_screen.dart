@@ -4,6 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
+import 'package:nextmind_mobile/utils/extensions/dimens_extension.dart';
 import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
 import 'package:nextmind_mobile/utils/routes/app_routes.dart';
 import 'package:result_command/result_command.dart';
@@ -77,7 +78,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: Dimens.extraLargePadding * 2),
-                  Image.asset('assets/images/nextmind/logotipo_branco.png'),
+                  Image.asset(
+                    'assets/images/nextmind/logotipo_branco.png',
+                    width: context.deviceHeight * 0.35,
+                  ),
                   SizedBox(height: Dimens.extraLargePadding * 2),
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,

@@ -17,6 +17,7 @@ import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
 import 'package:nextmind_mobile/ui/core/wigdets/user_avatar/view_model/user_avatar_viewmodel.dart';
 import 'package:nextmind_mobile/ui/form_builder/viewmodels/form_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
+import 'package:nextmind_mobile/ui/home/widgets/dynamic_box/view_models/dynamic_box_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/widgets/linear_calendar/view_models/linear_calendar_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/widgets/next_appointment/view_models/next_appointment_viewmodel.dart';
 
@@ -61,10 +62,11 @@ class ForgotPasswordBindings implements Bindings {
 class HomeBindings implements Bindings {
   @override
   void dependencies() {
-    Get.put(HomeViewModel());
-    Get.put(UserAvatarViewmodel());
-    Get.put(LinearCalendarViewmodel());
-    Get.put(NextAppointmentViewmodel());
+    Get.lazyPut(() => HomeViewModel(), fenix: true);
+    Get.lazyPut(() => UserAvatarViewmodel(), fenix: true);
+    Get.lazyPut(() => LinearCalendarViewmodel(), fenix: true);
+    Get.lazyPut(() => NextAppointmentViewmodel(), fenix: true);
+    Get.lazyPut(() => DynamicBoxViewmodel(), fenix: true);
   }
 }
 

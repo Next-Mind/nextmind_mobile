@@ -1,5 +1,6 @@
 import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:nextmind_mobile/ui/core/themes/colors/menu_app_colors.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 import 'package:nextmind_mobile/ui/home/widgets/next_appointment/view_models/next_appointment_viewmodel.dart';
 
@@ -62,18 +63,24 @@ Widget _buildNextAppointment(BuildContext context) {
           viewModel.nextAppointmentTitle,
           style: TextStyle(
             fontSize: 16,
+            color: Colors.white,
           ),
         ),
         SizedBox(height: 8),
         Text(
           viewModel.nextAppointmentDate,
-          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         SizedBox(height: viewModel.nextAppointmentDate != '' ? 16 : 0),
         Text(
           viewModel.nextAppointmentHint,
           style: TextStyle(
             fontSize: 12,
+            color: Colors.white,
           ),
         ),
         SizedBox(height: 8),
@@ -83,7 +90,10 @@ Widget _buildNextAppointment(BuildContext context) {
             backgroundColor: Colors.white,
             padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           ),
-          child: Text(viewModel.nextAppointmentButton),
+          child: Text(
+            viewModel.nextAppointmentButton,
+            style: TextStyle(color: MenuAppColors.textSelectedColors),
+          ),
         ),
       ],
     ),
