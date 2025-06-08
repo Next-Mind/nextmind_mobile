@@ -57,7 +57,7 @@ class Messages extends Translations {
           'NavChat': 'Chat',
           'NavHome': 'Home',
           'NavSettings': 'Settings',
-          'unimplementedError': 'Unimplemented Function'
+          'unimplementedError': 'Unimplemented Function',
         },
         'pt_BR': {
           'fieldBirthdayLessThan': 'Idade mínima: 13 anos.',
@@ -112,7 +112,7 @@ class Messages extends Translations {
           'sigInAborted': 'Login cancelado pelo usuário',
           'signIn': 'Entrar',
           'signUp': 'Criar Conta',
-          'unimplementedError': 'Função não implementada'
+          'unimplementedError': 'Função não implementada',
         },
       };
 }
