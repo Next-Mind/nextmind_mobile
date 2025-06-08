@@ -11,7 +11,7 @@ class DynamicBoxRepositoryLocal extends GetxController
   AsyncResult<DynamicBox> getDynamicBoxContent() async {
     _logger.d('Fetching dynamic box content from local repository');
     final json = {
-      'dynamicBoxTitle': 'Como você está se sentindo hoje?',
+      'dynamicBoxTitle': 'titleFeeling',
       'dynamicBoxContent': 'feeling_content',
     };
     return Success(

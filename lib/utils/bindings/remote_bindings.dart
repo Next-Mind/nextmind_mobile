@@ -7,6 +7,8 @@ import 'package:nextmind_mobile/data/repositories/home_screen/buttons_drawer/but
 import 'package:nextmind_mobile/data/repositories/home_screen/buttons_drawer/buttons_drawer_repository_local.dart';
 import 'package:nextmind_mobile/data/repositories/home_screen/dynamic_box/dynamic_box_repository.dart';
 import 'package:nextmind_mobile/data/repositories/home_screen/dynamic_box/dynamic_box_repository_local.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/posts/posts_repository.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/posts/posts_repository_local.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_client_http.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_service.dart';
@@ -27,6 +29,7 @@ import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/widgets/dynamic_box/view_models/dynamic_box_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/widgets/linear_calendar/view_models/linear_calendar_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/widgets/next_appointment/view_models/next_appointment_viewmodel.dart';
+import 'package:nextmind_mobile/ui/home/widgets/posts_section/view_models/post_carousel_viewmodel.dart';
 
 import '../../data/services/local_storage.dart';
 
@@ -84,6 +87,9 @@ class HomeBindings implements Bindings {
     Get.lazyPut<ButtonsDrawerRepository>(() => ButtonsDrawerRepositoryLocal(),
         fenix: true);
     Get.lazyPut<ButtonsDrawerViewmodel>(() => ButtonsDrawerViewmodel(),
+        fenix: true);
+    Get.lazyPut<PostsRepository>(() => PostsRepositoryLocal(), fenix: true);
+    Get.lazyPut<PostCarouselViewmodel>(() => PostCarouselViewmodel(),
         fenix: true);
   }
 }

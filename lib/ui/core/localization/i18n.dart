@@ -63,7 +63,10 @@ class Messages extends Translations {
           'NavLogout': 'Logout',
           'NavUsersManagement': 'Users Management',
           'NavDevOptions': 'Developer Options',
-          'unimplementedError': 'Unimplemented Function'
+          'unimplementedError': 'Unimplemented Function',
+          'HomeLastPosts': 'Last Posts',
+          'titleFeeling': 'How are you feeling today?',
+          'loading': 'Loading...'
         },
         'pt_BR': {
           'fieldBirthdayLessThan': 'Idade mínima: 13 anos.',
@@ -124,7 +127,10 @@ class Messages extends Translations {
           'sigInAborted': 'Login cancelado pelo usuário',
           'signIn': 'Entrar',
           'signUp': 'Criar Conta',
-          'unimplementedError': 'Função não implementada'
+          'unimplementedError': 'Função não implementada',
+          'HomeLastPosts': 'Últimas Postagens',
+          'titleFeeling': 'Como você está se sentindo hoje?',
+          'loading': 'Carregando...'
         },
       };
 }

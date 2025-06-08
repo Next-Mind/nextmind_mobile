@@ -34,7 +34,7 @@ class DynamicBox extends StatelessWidget {
           children: [
             Obx(
               () => Text(
-                viewModel.dynamicBoxTitle.value,
+                viewModel.dynamicBoxTitle.value.toString().tr,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,

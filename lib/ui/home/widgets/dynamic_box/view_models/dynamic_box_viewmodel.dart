@@ -8,7 +8,7 @@ class DynamicBoxViewmodel extends GetxController {
 
   final _dynamicBoxRepository = Get.find<DynamicBoxRepository>();
 
-  var dynamicBoxTitle = 'Carregando...'.obs;
+  var dynamicBoxTitle = 'loading'.obs;
   var dynamicBoxContent = 'feeling_content'.obs;
   final RxInt happinessSelected = (-1).obs;
   final RxBool isRegistered = false.obs;
