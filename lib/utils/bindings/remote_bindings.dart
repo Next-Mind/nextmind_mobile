@@ -3,6 +3,8 @@ import 'package:nextmind_mobile/data/repositories/appointment/appointment_reposi
 import 'package:nextmind_mobile/data/repositories/appointment/appointment_repository_local.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository_remote.dart';
+import 'package:nextmind_mobile/data/repositories/dynamic_box/dynamic_box_repository.dart';
+import 'package:nextmind_mobile/data/repositories/dynamic_box/dynamic_box_repository_local.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_client_http.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_service.dart';
@@ -66,6 +68,8 @@ class HomeBindings implements Bindings {
     Get.lazyPut(() => UserAvatarViewmodel(), fenix: true);
     Get.lazyPut(() => LinearCalendarViewmodel(), fenix: true);
     Get.lazyPut(() => NextAppointmentViewmodel(), fenix: true);
+    Get.lazyPut<DynamicBoxRepository>(() => DynamicBoxRepositoryLocal(),
+        fenix: true);
     Get.lazyPut(() => DynamicBoxViewmodel(), fenix: true);
   }
 }

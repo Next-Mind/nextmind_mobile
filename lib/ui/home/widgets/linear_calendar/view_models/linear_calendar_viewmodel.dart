@@ -16,7 +16,6 @@ class LinearCalendarViewmodel extends GetxController {
       Command1<List<DateTime>, DateTime>(_generateWeek);
 
   AsyncResult<List<DateTime>> _generateWeek(DateTime date) async {
-    await Future.delayed(Duration(minutes: 1));
     int weekday = date.weekday % 7;
     DateTime sunday = date.subtract(Duration(days: weekday));
     return Success(List.generate(7, (i) => sunday.add(Duration(days: i))));

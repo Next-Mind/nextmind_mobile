@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(height: 24),
                           HomeAppBar(
                             onMenuTap: () {
-                              AuthRepository.to.logout();
+                              Scaffold.of(context).openDrawer();
                             },
                           ),
                           LinearCalendarWidget(),
