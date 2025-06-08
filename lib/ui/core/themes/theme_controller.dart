@@ -11,6 +11,7 @@ class ThemeController extends GetxController {
   final LocalStorage _localStorage = LocalStorage.to;
   ThemeMode _themeMode = ThemeMode.system;
   ThemeMode get themeMode => _themeMode;
+  final RxBool isDarkMode = false.obs;
 
   @override
   onInit() {
@@ -39,6 +40,7 @@ class ThemeController extends GetxController {
     try {
       Get.changeThemeMode(themeMode);
       _themeMode = themeMode;
+      isDarkMode.value = themeMode == ThemeMode.dark;
       update();
       _localStorage.saveData(_themeKey, themeMode.toString().split('.')[1]);
       return Success(unit);
