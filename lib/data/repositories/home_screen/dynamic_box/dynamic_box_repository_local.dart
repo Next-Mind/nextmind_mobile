@@ -1,6 +1,6 @@
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:logger/web.dart';
-import 'package:nextmind_mobile/data/repositories/dynamic_box/dynamic_box_repository.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/dynamic_box/dynamic_box_repository.dart';
 import 'package:nextmind_mobile/domain/models/dynamic_box/dynamic_box.dart';
 import 'package:result_dart/result_dart.dart';
 

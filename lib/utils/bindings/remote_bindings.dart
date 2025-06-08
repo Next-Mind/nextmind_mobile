@@ -3,18 +3,23 @@ import 'package:nextmind_mobile/data/repositories/appointment/appointment_reposi
 import 'package:nextmind_mobile/data/repositories/appointment/appointment_repository_local.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/data/repositories/auth/auth_repository_remote.dart';
-import 'package:nextmind_mobile/data/repositories/dynamic_box/dynamic_box_repository.dart';
-import 'package:nextmind_mobile/data/repositories/dynamic_box/dynamic_box_repository_local.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/buttons_drawer/buttons_drawer_repository.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/buttons_drawer/buttons_drawer_repository_local.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/dynamic_box/dynamic_box_repository.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/dynamic_box/dynamic_box_repository_local.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_client_http.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_service.dart';
 import 'package:nextmind_mobile/data/services/client_http.dart';
 import 'package:nextmind_mobile/data/services/form_builder/form_service.dart';
+import 'package:nextmind_mobile/data/services/home_screen/buttons_drawer_local_storage.dart';
 import 'package:nextmind_mobile/main_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/forgot_password_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_in/view_models/sign_in_viewmodel.dart';
 import 'package:nextmind_mobile/ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import 'package:nextmind_mobile/ui/base_screen/view_models/base_viewmodel.dart';
+import 'package:nextmind_mobile/ui/base_screen/widgets/drawer_menu/view_models/buttons_drawer_viewmodel.dart';
+import 'package:nextmind_mobile/ui/base_screen/widgets/drawer_menu/view_models/user_accounts_drawer_header_viewmodel.dart';
 import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
 import 'package:nextmind_mobile/ui/core/wigdets/user_avatar/view_model/user_avatar_viewmodel.dart';
 import 'package:nextmind_mobile/ui/form_builder/viewmodels/form_viewmodel.dart';
@@ -71,6 +76,15 @@ class HomeBindings implements Bindings {
     Get.lazyPut<DynamicBoxRepository>(() => DynamicBoxRepositoryLocal(),
         fenix: true);
     Get.lazyPut(() => DynamicBoxViewmodel(), fenix: true);
+    Get.lazyPut<UserAccountsDrawerHeaderViewmodel>(
+        () => UserAccountsDrawerHeaderViewmodel(),
+        fenix: true);
+    Get.lazyPut<ButtonsDrawerLocalStorage>(() => ButtonsDrawerLocalStorage(),
+        fenix: true);
+    Get.lazyPut<ButtonsDrawerRepository>(() => ButtonsDrawerRepositoryLocal(),
+        fenix: true);
+    Get.lazyPut<ButtonsDrawerViewmodel>(() => ButtonsDrawerViewmodel(),
+        fenix: true);
   }
 }
 

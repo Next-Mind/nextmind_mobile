@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:nextmind_mobile/data/repositories/dynamic_box/dynamic_box_repository.dart';
+import 'package:nextmind_mobile/data/repositories/home_screen/dynamic_box/dynamic_box_repository.dart';
 import 'package:result_command/result_command.dart';
 import 'package:result_dart/result_dart.dart';
 

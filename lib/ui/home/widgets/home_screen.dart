@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/ui/core/themes/dimens.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 import 'package:nextmind_mobile/ui/home/widgets/dynamic_box/widgets/dynamic_box_widget.dart';
