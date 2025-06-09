@@ -67,6 +67,7 @@ class Messages extends Translations {
           'HomeLastPosts': 'Last Posts',
           'titleFeeling': 'How are you feeling today?',
           'loading': 'Loading...'
+          'unimplementedError': 'Unimplemented Function',
         },
         'pt_BR': {
           'fieldBirthdayLessThan': 'Idade mínima: 13 anos.',
