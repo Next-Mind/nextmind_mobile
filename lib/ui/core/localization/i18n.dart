@@ -66,7 +66,7 @@ class Messages extends Translations {
           'unimplementedError': 'Unimplemented Function',
           'HomeLastPosts': 'Last Posts',
           'titleFeeling': 'How are you feeling today?',
-          'loading': 'Loading...'
+          'loading': 'Loading...',
           'unimplementedError': 'Unimplemented Function',
         },
         'pt_BR': {

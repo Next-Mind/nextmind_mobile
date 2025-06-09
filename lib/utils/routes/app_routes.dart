@@ -87,12 +87,14 @@ class AppRoutes {
           page: () => LoadingScreen(),
           transition: Transition.circularReveal,
           transitionDuration: Duration(seconds: 1),
-        ),GetPage(
+        ),
+        GetPage(
           name: AppRoutes.notificationScreen,
           page: () => NotificationsScreen(),
           transition: Transition.circularReveal,
           transitionDuration: Duration(seconds: 1),
-        ),GetPage(
+        ),
+        GetPage(
           name: AppRoutes.securityScreen,
           page: () => SecurityScreen(),
           transition: Transition.circularReveal,
