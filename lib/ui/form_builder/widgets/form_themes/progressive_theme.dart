@@ -57,6 +57,7 @@ class ProgressiveTheme extends StatelessWidget {
         }
 
         return SafeArea(
+          bottom: true,
           child: Column(
             children: [
               Expanded(

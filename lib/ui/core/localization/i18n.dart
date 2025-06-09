@@ -57,6 +57,16 @@ class Messages extends Translations {
           'NavChat': 'Chat',
           'NavHome': 'Home',
           'NavSettings': 'Settings',
+          'NavUserProfile': 'User Profile',
+          'NavPatients': 'Patients',
+          'NavReports': 'Reports',
+          'NavLogout': 'Logout',
+          'NavUsersManagement': 'Users Management',
+          'NavDevOptions': 'Developer Options',
+          'unimplementedError': 'Unimplemented Function',
+          'HomeLastPosts': 'Last Posts',
+          'titleFeeling': 'How are you feeling today?',
+          'loading': 'Loading...'
           'unimplementedError': 'Unimplemented Function',
         },
         'pt_BR': {
@@ -104,6 +114,12 @@ class Messages extends Translations {
           'NavChat': 'Chat',
           'NavHome': 'Início',
           'NavSettings': 'Configs.',
+          'NavUserProfile': 'Meu Perfil',
+          'NavPatients': 'Pacientes',
+          'NavReports': 'Relatórios',
+          'NavLogout': 'Sair',
+          'NavUsersManagement': 'Gerenciamento de Usuários',
+          'NavDevOptions': 'Opções de Desenvolvedor',
           'school_grade_1': '1º Série',
           'school_grade_2': '2º Série',
           'school_grade_3': '3º Série',
@@ -113,6 +129,9 @@ class Messages extends Translations {
           'signIn': 'Entrar',
           'signUp': 'Criar Conta',
           'unimplementedError': 'Função não implementada',
+          'HomeLastPosts': 'Últimas Postagens',
+          'titleFeeling': 'Como você está se sentindo hoje?',
+          'loading': 'Carregando...'
         },
       };
 }

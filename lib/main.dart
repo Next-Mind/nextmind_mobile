@@ -7,10 +7,12 @@ import 'package:nextmind_mobile/ui/core/themes/util.dart';
 import 'package:nextmind_mobile/utils/bindings/remote_bindings.dart';
 import 'package:nextmind_mobile/utils/routes/app_routes.dart';
 import 'ui/splash_screen/widgets/splash_screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(SplashScreen());
+  await initializeDateFormatting('pt_BR', null);
   await Firebase.initializeApp();
   setupGlobalDependencies();
   runApp(const MainApp());
