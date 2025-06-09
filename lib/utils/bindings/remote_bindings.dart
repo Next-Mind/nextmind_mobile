@@ -51,7 +51,7 @@ class SignInBindings implements Bindings {
 class BaseBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<BaseViewModel>(() => BaseViewModel());
+    Get.lazyPut<BaseViewModel>(() => BaseViewModel(), fenix: true);
   }
 }
 

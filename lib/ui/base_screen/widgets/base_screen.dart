@@ -18,7 +18,7 @@ class BaseScreen extends StatelessWidget {
       drawer: DrawerMenuWidget(),
       body: Obx(
         () => IndexedStack(
-          index: viewModel.currentIndex.value,
+          index: viewModel.tabIndex.value,
           children: [
             HomeNav(),
             AppointmentNav(),

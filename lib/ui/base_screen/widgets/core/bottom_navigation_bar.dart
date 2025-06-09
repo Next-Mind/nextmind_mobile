@@ -12,8 +12,8 @@ class BottomNavBar extends StatelessWidget {
       () => NavigationBar(
         indicatorColor: Theme.of(context).colorScheme.primary,
         elevation: 10,
-        selectedIndex: viewModel.currentIndex.value,
-        onDestinationSelected: viewModel.changeIndex,
+        selectedIndex: viewModel.tabIndex.value,
+        onDestinationSelected: viewModel.changeTab,
         destinations: [
           NavigationDestination(
             icon: Icon(Icons.home_outlined),

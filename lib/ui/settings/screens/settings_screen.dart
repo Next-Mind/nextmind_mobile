@@ -60,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             email: email.isNotEmpty ? email : '...',
             photoURL: photoURL,
             onTap: () {
-              Get.toNamed(AppRoutes.userAccountScreen);
+              Get.toNamed(AppRoutes.userAccountScreen, id: 4);
             },
           ),
 
@@ -103,7 +103,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           SettingsItem(
             icon: Icons.language,
             text: "Idioma do App".tr,
-            onTap: () {Get.toNamed(AppRoutes.languageScreen);},
+            onTap: () {
+              Get.toNamed(AppRoutes.languageScreen);
+            },
           ),
 
           const Divider(height: 32),

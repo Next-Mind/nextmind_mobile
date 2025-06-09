@@ -9,7 +9,8 @@ class HomeNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: Get.nestedKey(GlobalKey<NavigatorState>()),
+      key: Get.nestedKey(1),
+      observers: [HeroController()],
       onGenerateRoute: (settings) {
         if (settings.name == '/') {
           return GetPageRoute(

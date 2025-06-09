@@ -130,11 +130,11 @@ class AppRoutes {
           transition: Transition.circularReveal,
           transitionDuration: Duration(seconds: 1),
         ),
-        GetPage(
-          name: AppRoutes.userAccountScreen,
-          page: () => UserAccountScreen(),
-          transition: Transition.circularReveal,
-          transitionDuration: Duration(seconds: 1),
-        ),
+        // GetPage(
+        //   name: AppRoutes.userAccountScreen,
+        //   page: () => UserAccountScreen(),
+        //   transition: Transition.circularReveal,
+        //   transitionDuration: Duration(seconds: 1),
+        // ),
       ];
 }
