@@ -52,7 +52,7 @@ class _ChatContactListState extends State<ChatContactList> {
                   TextFormField(
                     controller: viewModel.addPeopleController,
                     decoration: InputDecoration(
-                      hintText: "Pesquisar...",
+                      hintText: "Pesquisar...".tr,
                       suffixIcon: Icon(Icons.arrow_drop_down),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -71,7 +71,7 @@ class _ChatContactListState extends State<ChatContactList> {
                         Navigator.of(context).pop();
                       }
                     },
-                    child: Text("Adicionar",
+                    child: Text("Adicionar".tr,
                         style: TextStyle(color: Colors.white)),
                   )
                 ],
@@ -90,15 +90,15 @@ class _ChatContactListState extends State<ChatContactList> {
     await showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Editar Nome'),
+        title: Text('Editar Nome'.tr),
         content: TextFormField(
           controller: nameController,
-          decoration: InputDecoration(labelText: 'Nome'),
+          decoration: InputDecoration(labelText: 'Nome'.tr),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: Text('Cancelar'),
+            child: Text('Cancelar'.tr),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -107,7 +107,7 @@ class _ChatContactListState extends State<ChatContactList> {
               Navigator.of(ctx).pop();
               await viewModel.fetchContacts();
             },
-            child: Text('Salvar'),
+            child: Text('Salvar'.tr),
           ),
         ],
       ),
@@ -120,7 +120,7 @@ class _ChatContactListState extends State<ChatContactList> {
         extendBodyBehindAppBar: false,
         appBar: AppBar(
           title: Text(
-            "Mensagens",
+            "Mensagens".tr,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           toolbarHeight: 64,
@@ -137,16 +137,16 @@ class _ChatContactListState extends State<ChatContactList> {
                     controller: viewModel.searchPeopleController,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'fieldNotEmpty';
+                        return 'fieldNotEmpty'.tr;
                       }
                       if (!viewModel.isValidEmail(value)) {
-                        return 'fieldEmailInvalid';
+                        return 'fieldEmailInvalid'.tr;
                       }
                       return null;
                     },
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.search),
-                      hintText: ("Pesquisar..."),
+                      hintText: ("Pesquisar...".tr),
                     ),
                   )),
                   SizedBox(
@@ -190,13 +190,13 @@ class _ChatContactListState extends State<ChatContactList> {
               Icon(Icons.chat_bubble_outline, size: 60, color: Colors.grey),
               const SizedBox(height: 20),
               Text(
-                "Você ainda não tem conversas.",
+                "Você ainda não tem conversas.".tr,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
               Text(
-                "Adicione contatos para começar a conversar.",
+                "Adicione contatos para começar a conversar.".tr,
                 style: TextStyle(fontSize: 14, color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
@@ -204,7 +204,7 @@ class _ChatContactListState extends State<ChatContactList> {
               ElevatedButton.icon(
                 onPressed: () => addContacts(context),
                 icon: Icon(Icons.person_add, color: Colors.white),
-                label: Text("Adicionar contato"),
+                label: Text("Adicionar contato".tr),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24, 
@@ -255,16 +255,16 @@ class _ChatContactListState extends State<ChatContactList> {
                   bool? confirm = await showDialog(
                     context: context,
                     builder: (ctx) => AlertDialog(
-                      title: Text('Confirmar'),
-                      content: Text('Tem certeza que deseja excluir este contato?'),
+                      title: Text('Confirmar'.tr),
+                      content: Text('Tem certeza que deseja excluir este contato?'.tr),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.of(ctx).pop(false),
-                          child: Text('Cancelar'),
+                          child: Text('Cancelar'.tr),
                         ),
                         TextButton(
                           onPressed: () => Navigator.of(ctx).pop(true),
-                          child: Text('Excluir'),
+                          child: Text('Excluir'.tr),
                         ),
                       ],
                     ),
