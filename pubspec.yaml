@@ -1,7 +1,7 @@
 name: nextmind_mobile
 description: "Aplicativo Mobile do Projeto NextMind"
 publish_to: "none"
-version: 0.0.1
+version: 0.5.0
 
 environment:
   sdk: ^3.6.0
@@ -33,11 +33,11 @@ dependencies:
   sqflite: ^2.4.1
   fade_shimmer: ^2.3.0
   font_awesome_flutter: ^10.8.0
-  file_picker: ^10.1.2 
+  file_picker: ^10.1.2
   image_picker: ^1.1.2
-  url_launcher: 
+  url_launcher:
   open_file: ^3.5.10
-  package_info_plus: 
+  package_info_plus:
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.3"

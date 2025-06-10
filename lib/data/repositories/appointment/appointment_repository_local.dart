@@ -17,7 +17,7 @@ class AppointmentRepositoryLocal extends GetxController
   AsyncResult<Appointment> fetchNextAppointment() async {
     final json = {
       "id": 1,
-      "date": "2025-06-10T10:00:00Z",
+      "date": "2025-07-18T10:00:00Z",
     };
     final nextAppointment = NextAppointment.fromJson(json);
     //final nextAppointment = EmptyAppointment();

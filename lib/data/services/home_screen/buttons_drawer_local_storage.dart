@@ -12,11 +12,11 @@ class ButtonsDrawerLocalStorage extends GetxController {
     ButtonDrawer(
         title: 'NavUserProfile',
         iconPath: 'account_circle_outlined',
-        routeName: AppRoutes.home),
+        onPressed: () => Get.toNamed(AppRoutes.userAccountScreen, id: 4)),
     ButtonDrawer(
       title: 'NavSettings',
       iconPath: 'settings_outlined',
-      routeName: AppRoutes.home,
+      routeName: '/settings',
     ),
     ButtonDrawer(
       title: 'NavAppointments',

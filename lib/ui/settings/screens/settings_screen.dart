@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nextmind_mobile/data/services/auth/auth_local_storage.dart';
 import 'package:nextmind_mobile/ui/core/themes/theme_controller.dart';
+import 'package:nextmind_mobile/ui/settings/screens/settings_option_screen/legal_information_screen.dart';
 import 'package:nextmind_mobile/ui/settings/widgets/settings_item.dart';
 import 'package:nextmind_mobile/ui/settings/widgets/settings_item_switch.dart';
 import 'package:nextmind_mobile/ui/settings/widgets/user_info_card.dart';
@@ -72,7 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.notifications_none,
             text: 'Notificações'.tr,
             onTap: () {
-              Get.toNamed(AppRoutes.notificationScreen);
+              Get.toNamed(AppRoutes.notificationScreen, id: 4);
             },
           ),
           SizedBox(
@@ -82,7 +83,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.security,
             text: 'Segurança'.tr,
             onTap: () {
-              Get.toNamed(AppRoutes.securityScreen);
+              Get.toNamed(AppRoutes.securityScreen, id: 4);
             },
           ),
           SizedBox(
@@ -104,7 +105,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.language,
             text: "Idioma do App".tr,
             onTap: () {
-              Get.toNamed(AppRoutes.languageScreen);
+              Get.toNamed(AppRoutes.languageScreen, id: 4);
             },
           ),
 
@@ -116,7 +117,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.help_outline,
             text: 'Central de Ajuda'.tr,
             onTap: () {
-              Get.toNamed(AppRoutes.helpCentralScreen);
+              Get.toNamed(AppRoutes.helpCentralScreen, id: 4);
             },
           ),
           SizedBox(
@@ -126,7 +127,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.flag_outlined,
             text: 'Reportar um Erro'.tr,
             onTap: () {
-              Get.toNamed(AppRoutes.feedbackScreen);
+              Get.toNamed(AppRoutes.feedbackScreen, id: 4);
             },
           ),
 
@@ -138,7 +139,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.info_outline,
             text: 'Informações Legais'.tr,
             onTap: () {
-              Get.toNamed(AppRoutes.legalInformationScreen);
+              Get.dialog(
+                LegalInformationScreen(),
+                barrierColor: Theme.of(context).colorScheme.surface,
+                transitionCurve: Curves.easeInOut,
+              );
             },
           ),
           SizedBox(
@@ -148,7 +153,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             icon: Icons.developer_board,
             text: 'Informações de Software'.tr,
             onTap: () {
-              Get.toNamed(AppRoutes.softwareInformationScreen);
+              Get.toNamed(AppRoutes.softwareInformationScreen, id: 4);
             },
           ),
         ],

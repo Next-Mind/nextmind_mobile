@@ -123,6 +123,7 @@ class AppRoutes {
           page: () => SoftwareInformationScreen(),
           transition: Transition.circularReveal,
           transitionDuration: Duration(seconds: 1),
+          participatesInRootNavigator: true,
         ),
         GetPage(
           name: AppRoutes.languageScreen,
@@ -130,11 +131,11 @@ class AppRoutes {
           transition: Transition.circularReveal,
           transitionDuration: Duration(seconds: 1),
         ),
-        // GetPage(
-        //   name: AppRoutes.userAccountScreen,
-        //   page: () => UserAccountScreen(),
-        //   transition: Transition.circularReveal,
-        //   transitionDuration: Duration(seconds: 1),
-        // ),
+        GetPage(
+          name: AppRoutes.userAccountScreen,
+          page: () => UserAccountScreen(),
+          transition: Transition.circularReveal,
+          transitionDuration: Duration(seconds: 1),
+        ),
       ];
 }
