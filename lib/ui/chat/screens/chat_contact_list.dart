@@ -133,22 +133,15 @@ class _ChatContactListState extends State<ChatContactList> {
               child: Row(
                 children: [
                   Expanded(
-                      child: TextFormField(
-                    controller: viewModel.searchPeopleController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'fieldNotEmpty'.tr;
-                      }
-                      if (!viewModel.isValidEmail(value)) {
-                        return 'fieldEmailInvalid'.tr;
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      hintText: ("Pesquisar...".tr),
+                    child: TextFormField(
+                      controller: viewModel.searchPeopleController,
+                      onChanged: (value) => viewModel.searchTerm.value = value,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        hintText: ("Pesquisar...".tr),
+                      ),
                     ),
-                  )),
+                  ),
                   SizedBox(
                     width: 10,
                   ),
@@ -171,120 +164,146 @@ class _ChatContactListState extends State<ChatContactList> {
               height: 30,
             ),
             Expanded(
-  child: Obx(() {
-    if (viewModel.isLoading.value) {
-      return const Center(child: CircularProgressIndicator());
-    }
+              child: Obx(() {
+                if (viewModel.isLoading.value) {
+                  return const Center(child: CircularProgressIndicator());
+                }
 
-    if (viewModel.error.value.isNotEmpty) {
-      return Center(child: Text(viewModel.error.value));
-    }
+                if (viewModel.error.value.isNotEmpty) {
+                  return Center(child: Text(viewModel.error.value));
+                }
 
-    if (viewModel.users.isEmpty) {
-      return Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.chat_bubble_outline, size: 60, color: Colors.grey),
-              const SizedBox(height: 20),
-              Text(
-                "Você ainda não tem conversas.".tr,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Adicione contatos para começar a conversar.".tr,
-                style: TextStyle(fontSize: 14, color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton.icon(
-                onPressed: () => addContacts(context),
-                icon: Icon(Icons.person_add, color: Colors.white),
-                label: Text("Adicionar contato".tr),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24, 
-                    vertical: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
-    return RefreshIndicator(
-      onRefresh: () async => await viewModel.fetchContacts(),
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        physics: const AlwaysScrollableScrollPhysics(),
-        child: Column(
-          children: viewModel.users.map((user) {
-            final chatSummary = ChatSummary(
-              name: user.nickname,
-              photoURL: user.profileImage,
-              lastMessage: user.id.toString(), // Ultima mensagem, apenas de teste o ID.
-            );
-
-            return Dismissible(
-              key: Key(user.id.toString()),
-              background: Container(
-                color: Theme.of(context).colorScheme.onTertiaryFixedVariant,
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                margin: EdgeInsets.only(bottom: 15),
-                child: Icon(Icons.edit, color: Colors.white),
-              ),
-              secondaryBackground: Container(
-                color: Theme.of(context).colorScheme.error,
-                alignment: Alignment.centerRight,
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                margin: EdgeInsets.only(bottom: 15),
-                child: Icon(Icons.delete, color: Colors.white),
-              ),
-              confirmDismiss: (direction) async {
-                if (direction == DismissDirection.startToEnd) {
-                  await _showEditDialog(context, user);
-                  return false;
-                } else if (direction == DismissDirection.endToStart) {
-                  bool? confirm = await showDialog(
-                    context: context,
-                    builder: (ctx) => AlertDialog(
-                      title: Text('Confirmar'.tr),
-                      content: Text('Tem certeza que deseja excluir este contato?'.tr),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(ctx).pop(false),
-                          child: Text('Cancelar'.tr),
-                        ),
-                        TextButton(
-                          onPressed: () => Navigator.of(ctx).pop(true),
-                          child: Text('Excluir'.tr),
-                        ),
-                      ],
+                if (viewModel.filteredUsers.isEmpty) {
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset("assets/images/not_found.svg", width: 200,),
+                          Text("Nenhum contato encontrado.".tr,
+                          style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
                     ),
                   );
-                  if (confirm == true) {
-                    await viewModel.deleteContact(user.id);
-                    await viewModel.fetchContacts();
-                  }
-                  return confirm ?? false;
                 }
-                return false;
-              },
-              child: ChatSummaryWidget(chatSummary: chatSummary),
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }),
-),
+
+                if(viewModel.users.isEmpty){
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.chat_bubble_outline,
+                              size: 60, color: Colors.grey),
+                          const SizedBox(height: 20),
+                          Text(
+                            "Você ainda não tem conversas.".tr,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            "Adicione contatos para começar a conversar.".tr,
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.grey),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton.icon(
+                            onPressed: () => addContacts(context),
+                            icon: Icon(Icons.person_add, color: Colors.white),
+                            label: Text("Adicionar contato".tr),
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+
+                return RefreshIndicator(
+                  onRefresh: () async => await viewModel.fetchContacts(),
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: Column(
+                      children: viewModel.filteredUsers.map((user) {
+                        final chatSummary = ChatSummary(
+                          name: user.nickname,
+                          photoURL: user.profileImage,
+                          lastMessage: user.id.toString(),
+                        );
+
+                        return Dismissible(
+                          key: Key(user.id.toString()),
+                          background: Container(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onTertiaryFixedVariant,
+                            alignment: Alignment.centerLeft,
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            margin: EdgeInsets.only(bottom: 15),
+                            child: Icon(Icons.edit, color: Colors.white),
+                          ),
+                          secondaryBackground: Container(
+                            color: Theme.of(context).colorScheme.error,
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            margin: EdgeInsets.only(bottom: 15),
+                            child: Icon(Icons.delete, color: Colors.white),
+                          ),
+                          confirmDismiss: (direction) async {
+                            if (direction == DismissDirection.startToEnd) {
+                              await _showEditDialog(context, user);
+                              return false;
+                            } else if (direction == DismissDirection.endToStart) {
+                              bool? confirm = await showDialog(
+                                context: context,
+                                builder: (ctx) => AlertDialog(
+                                  title: Text('Confirmar'.tr),
+                                  content: Text(
+                                      'Tem certeza que deseja excluir este contato?'
+                                          .tr),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.of(ctx).pop(false),
+                                      child: Text('Cancelar'.tr),
+                                    ),
+                                    TextButton(
+                                      onPressed: () => Navigator.of(ctx).pop(true),
+                                      child: Text('Excluir'.tr),
+                                    ),
+                                  ],
+                                ),
+                              );
+                              if (confirm == true) {
+                                await viewModel.deleteContact(user.id);
+                                await viewModel.fetchContacts();
+                              }
+                              return confirm ?? false;
+                            }
+                            return false;
+                          },
+                          child: ChatSummaryWidget(chatSummary: chatSummary),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                );
+              }),
+            ),
           ],
         ));
   }

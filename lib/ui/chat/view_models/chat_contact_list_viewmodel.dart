@@ -21,14 +21,16 @@ class ChatContactListViewmodel extends GetxController {
   final error = ''.obs;
   final RxList<UserModel> availableUsers = <UserModel>[].obs;
   final RxBool isAdding = false.obs;
+  final RxString searchTerm = ''.obs;
+  final RxList<UserModel> filteredUsers = <UserModel>[].obs;
 
   late ContactRepository repository;
 
   @override
   void onInit() {
     super.onInit();
-    
     fetchContacts();
+    ever(searchTerm, (_) => _filterContacts());
   }
 
   Future<void> fetchContacts() async {
@@ -40,6 +42,7 @@ class ChatContactListViewmodel extends GetxController {
       error.value = '';
       final result = await repository.fetchContacts();
       users.assignAll(result);
+      _filterContacts();
     } catch (e) { 
       error.value = e.toString();
     } finally {
@@ -118,6 +121,19 @@ class ChatContactListViewmodel extends GetxController {
       }
     } catch (e) {
       Get.snackbar('Erro', 'Não foi possível atualizar o contato.');
+    }
+  }
+
+  void _filterContacts() {
+    final term = searchTerm.value.toLowerCase();
+    if (term.isEmpty) {
+      filteredUsers.assignAll(users);
+    } else {
+      filteredUsers.assignAll(
+        users.where((u) =>
+          u.nickname.toLowerCase().contains(term)
+        ),
+      );
     }
   }
 }

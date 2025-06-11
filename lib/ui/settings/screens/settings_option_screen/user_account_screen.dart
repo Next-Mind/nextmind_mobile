@@ -1,8 +1,5 @@
-// ignore_for_file: unnecessary_type_check, unnecessary_cast, unnecessary_null_comparison
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nextmind_mobile/domain/models/user/user.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 import 'package:nextmind_mobile/ui/settings/widgets/settings_info_item.dart';
 
@@ -13,17 +10,18 @@ class UserAccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = HomeViewModel.to;
 
-    // Verifica se é um LoggedUser
-    if (viewModel.user is! LoggedUser) {
+    if (!viewModel.isLogged || viewModel.loggedUser == null) {
       return Scaffold(
-        appBar: AppBar(title: Text('Minha Conta'.tr)),
-        body: Center(
-          child: Text('Usuário não autenticado'.tr),
+        appBar: AppBar(
+          title: Text('Minha Conta'.tr),
+        ),
+        body: const Center(
+          child: CircularProgressIndicator(),
         ),
       );
     }
 
-    final user = viewModel.user as LoggedUser;
+    final user = viewModel.loggedUser!;
 
     return Scaffold(
       appBar: AppBar(
@@ -38,9 +36,8 @@ class UserAccountScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 60,
-                    backgroundImage: user.profileImage != null &&
-                            user.profileImage!.isNotEmpty
-                        ? NetworkImage(user.profileImage!)
+                    backgroundImage: user.profileImage.isNotEmpty
+                        ? NetworkImage(user.profileImage)
                         : const AssetImage('assets/images/placeholder_user.png')
                             as ImageProvider,
                   ),
@@ -75,16 +72,16 @@ class UserAccountScreen extends StatelessWidget {
             const SizedBox(height: 30),
             Text(
               'Informações de Perfil'.tr,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const Divider(),
             InfoItem(title: "Nome", subtitle: user.name),
             const SizedBox(height: 10),
-            InfoItem(title: "Data", subtitle: user.birthDate ?? 'Não informado'),
+            InfoItem(title: "Data", subtitle: user.birthDate),
             const SizedBox(height: 10),
             InfoItem(title: "Email", subtitle: user.email),
             const SizedBox(height: 10),
-            InfoItem(title: "RA", subtitle: user.ra ?? 'Não informado'),
+            InfoItem(title: "RA", subtitle: user.ra),
             const SizedBox(height: 30),
             Center(
               child: TextButton.icon(

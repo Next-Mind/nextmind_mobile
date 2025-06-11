@@ -11,6 +11,7 @@ class HomeViewModel extends GetxController {
   final _isLoading = true.obs;
 
   bool get isLoading => _isLoading.value;
+  bool get isLogged => _user.value is LoggedUser;
 
   @override
   void onInit() async {
@@ -24,6 +25,9 @@ class HomeViewModel extends GetxController {
     );
     _user.value = await _authRepository.getUser().getOrThrow();
   }
+
+  LoggedUser? get loggedUser =>
+    _user.value is LoggedUser ? _user.value as LoggedUser : null;
 
   static HomeViewModel get to => Get.find<HomeViewModel>();
 
