@@ -37,14 +37,14 @@ class FeedbackScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reportar Erro".tr),
+        title: Text("Report a Bug".tr),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 15),
         children: [
           Image.asset("assets/images/feedback.png"),
-          Text("\nSe você encontrou algum problema enquanto usava o aplicativo, pedimos desculpas pelo transtorno. Sua colaboração é muito importante para que possamos melhorar continuamente a sua experiência. Por favor, descreva o erro encontrado com o máximo de detalhes possível.".tr),
-          Text("\nNossa equipe analisará o seu relato o mais rápido possível e trabalhará para corrigir o problema. Agradecemos pela sua ajuda!".tr),
+          Text("\nIf you have encountered any issues while using the app, we apologize for the inconvenience. Your cooperation is very important so that we can continually improve your experience. Please describe the error you encountered in as much detail as possible.".tr),
+          Text("\nOur team will review your report as soon as possible and work to fix the issue. Thank you for your help!".tr),
           const SizedBox(height: 70),
           Align(
             alignment: Alignment.center,
@@ -53,7 +53,7 @@ class FeedbackScreen extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () => _sendEmail(context),
-                child: Text("Confirmar".tr),
+                child: Text("Confirm".tr),
               ),
             ),
           ),

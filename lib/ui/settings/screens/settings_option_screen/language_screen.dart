@@ -8,7 +8,7 @@ class LanguageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Idioma'.tr),
+        title: Text('Language'.tr),
         centerTitle: true,
       ),
       body: ListView(
@@ -44,8 +44,8 @@ class LanguageTile extends StatelessWidget {
       onTap: () {
         Get.updateLocale(locale);
         Get.snackbar(
-          'Idioma'.tr,
-          'Idioma alterado para $title',
+          'Language'.tr,
+          'Idioma alterado para $title'.tr,
           snackPosition: SnackPosition.BOTTOM,
           duration: const Duration(seconds: 2),
         );

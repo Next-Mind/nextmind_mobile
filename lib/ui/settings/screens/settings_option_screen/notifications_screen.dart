@@ -18,21 +18,20 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   bool isConversation = false;
   String selectedOption = 'All'.tr;
   double kItemSpacing = 32;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notificações".tr),
+        title: Text("Notifications".tr),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 15),
         children: [
-          SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           SettingsItemSwitch(
             icon: Icons.notifications_none,
-            text: 'Permitir Notificações',
+            text: 'Allow Notifications'.tr,
             value: isNotify,
             onChanged: (value) {
               setState(() {
@@ -40,41 +39,41 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               });
             },
           ),
-          SizedBox(height: kItemSpacing,),
-          sectionTitle('Alertas'),
+          SizedBox(height: kItemSpacing),
+          sectionTitle('Alerts'.tr),
           SettingsItemRadio(
-            text: 'Permitir lembrete do Alarme', 
-            value: 'All', 
-            groupValue: selectedOption, 
+            text: 'Allow Alarm reminder'.tr,
+            value: 'All',
+            groupValue: selectedOption,
             onChanged: (value) {
               setState(() {
                 selectedOption = value!;
               });
             },
           ),
-          Divider(height: 32,),
+          const Divider(height: 32),
           SettingsItemRadio(
-            text: 'Silencioso', 
-            value: 'none', 
-            groupValue: selectedOption, 
+            text: 'Silent'.tr,
+            value: 'none',
+            groupValue: selectedOption,
             onChanged: (value) {
               setState(() {
                 selectedOption = value!;
               });
             },
           ),
-          SizedBox(height: kItemSpacing,),
-          sectionTitle('Mensagens'),
+          SizedBox(height: kItemSpacing),
+          sectionTitle('Messages'.tr),
           SettingsItemSwitch(
-            text: 'Sons de Conversa', 
+            text: 'Conversation Sounds'.tr,
             icon: Icons.message,
-            value: isConversation, 
+            value: isConversation,
             onChanged: (value) {
               setState(() {
                 isConversation = value;
               });
             },
-          )
+          ),
         ],
       ),
     );
@@ -84,7 +83,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Text(
-        title.tr,
+        title,
         style: TextStyle(
           color: Theme.of(context).colorScheme.outline,
           fontWeight: FontWeight.bold,
@@ -93,5 +92,3 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     );
   }
 }
-
-

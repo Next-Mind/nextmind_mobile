@@ -1,5 +1,8 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:nextmind_mobile/ui/home/view_models/home_viewmodel.dart';
 import 'package:nextmind_mobile/ui/settings/widgets/settings_info_item.dart';
 
@@ -13,7 +16,7 @@ class UserAccountScreen extends StatelessWidget {
     if (!viewModel.isLogged || viewModel.loggedUser == null) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Minha Conta'.tr),
+          title: Text('My Account'.tr),
         ),
         body: const Center(
           child: CircularProgressIndicator(),
@@ -22,10 +25,19 @@ class UserAccountScreen extends StatelessWidget {
     }
 
     final user = viewModel.loggedUser!;
+    String formatDate(String rawDate) {
+      try {
+        final date = DateTime.parse(rawDate);
+        return DateFormat('dd/MM/yyyy').format(date);
+      } catch (e) {
+        return rawDate;
+      }
+    }
+
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Minha Conta'.tr),
+        title: Text('My Account'.tr),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -71,13 +83,13 @@ class UserAccountScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Text(
-              'Informações de Perfil'.tr,
+              'Profile Information'.tr,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const Divider(),
-            InfoItem(title: "Nome", subtitle: user.name),
+            InfoItem(title: "Name", subtitle: user.name),
             const SizedBox(height: 10),
-            InfoItem(title: "Data", subtitle: user.birthDate),
+            InfoItem(title: "Date", subtitle: formatDate(user.birthDate)),
             const SizedBox(height: 10),
             InfoItem(title: "Email", subtitle: user.email),
             const SizedBox(height: 10),
@@ -88,7 +100,7 @@ class UserAccountScreen extends StatelessWidget {
                 onPressed: viewModel.logout,
                 icon: Icon(Icons.logout, color: Theme.of(context).colorScheme.error),
                 label: Text(
-                  'Sair da Conta'.tr,
+                  'Logout of Account'.tr,
                   style: TextStyle(color: Theme.of(context).colorScheme.error),
                 ),
               ),

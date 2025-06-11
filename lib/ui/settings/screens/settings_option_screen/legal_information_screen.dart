@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nextmind_mobile/ui/settings/screens/settings_option_screen/legal_detail_screen.dart';
 import 'package:nextmind_mobile/ui/settings/screens/settings_option_screen/legal_info_item_screen.dart';
-import 'package:nextmind_mobile/ui/settings/widgets/settings_item.dart';
 
 class LegalInformationScreen extends StatefulWidget {
   const LegalInformationScreen({super.key});
@@ -16,49 +15,49 @@ class _LegalInformationScreenState extends State<LegalInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Informações Legais".tr),
+        title: Text("Legal Information".tr),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 15),
         children: [
           SizedBox(height: 32,),
           LegalInfoItem(
-            title: "Informações Legais do Projeto".tr, 
+            title: "Project Legal Information".tr, 
             onTap: () => Get.to(() => const LegalDetailScreen(
-            title: "Informações do Projeto", 
-              content: "Este aplicativo foi desenvolvido com o propósito de facilitar a vida dos usuários através da tecnologia, respeitando as leis de proteção de dados e diretrizes de uso de software livre e proprietário.\n\nTodas as marcas, logos e conteúdos utilizados no aplicativo pertencem aos seus respectivos proprietários. O projeto respeita os princípios de transparência, responsabilidade e ética digital.",
+            title: "Project Information", 
+              content: "This application was developed with the purpose of making users' lives easier through technology, respecting data protection laws and guidelines for the use of free and proprietary software.\n\nAll brands, logos and content used in the application belong to their respective owners. The project respects the principles of transparency, responsibility and digital ethics.",
             )),
           ),
           SizedBox(height: 15,),
           LegalInfoItem(
-            title: "Informações Legais do Google", 
+            title: "Google Legal Information".tr, 
             onTap: () => Get.to(() => const LegalDetailScreen(
-            title: "Informações do Google", 
-              content: "Este aplicativo pode utilizar APIs e serviços fornecidos pelo Google, incluindo Firebase, Google Maps, Google Sign-In, entre outros.\n\nA utilização desses serviços está sujeita aos Termos de Serviço do Google e à Política de Privacidade do Google. O uso do aplicativo implica na aceitação dessas condições, bem como no cumprimento das práticas exigidas pelas APIs do Google.",
+            title: "Google Information", 
+              content: "This application may use APIs and services provided by Google, including Firebase, Google Maps, Google Sign-In, among others.\n\nThe use of these services is subject to the Google Terms of Service and the Google Privacy Policy. The use of the application implies the acceptance of these conditions, as well as the compliance with the practices required by the Google APIs.",
             )),
           ),
           SizedBox(height: 15,),
           LegalInfoItem(
-            title: "Termos e Politica", 
+            title: "Terms and Policy".tr, 
             onTap: () => Get.to(() => const LegalDetailScreen(
-            title: "Termos e Politica", 
-              content: "Ao utilizar este aplicativo, você concorda com nossos Termos de Uso e Política de Privacidade.\n\nNosso compromisso é garantir a transparência no tratamento dos seus dados, respeitando sua privacidade e protegendo suas informações pessoais.\n\nRecomendamos a leitura completa dos termos e políticas para compreender seus direitos e deveres como usuário.",
+            title: "Terms and Policy", 
+              content: "By using this application, you agree to our Terms of Use and Privacy Policy.\n\nOur commitment is to ensure transparency in the processing of your data, respecting your privacy and protecting your personal information.\n\nWe recommend that you read the terms and policies in full to understand your rights and duties as a user.",
             )),
           ),
           SizedBox(height: 15,),
           LegalInfoItem(
-            title: "Termos de Uso", 
+            title: "Terms of Use".tr, 
             onTap: () => Get.to(() => const LegalDetailScreen(
-            title: "Termos de Uso", 
-              content: "O uso deste aplicativo é permitido apenas para fins lícitos e conforme previsto nestes Termos de Uso.\n\nO usuário compromete-se a:\n- Utilizar o aplicativo de forma ética;\n- Não compartilhar conteúdos maliciosos ou ilegais;\n- Respeitar os demais usuários e as funcionalidades do sistema.\n\nO descumprimento destes termos poderá resultar em suspensão ou exclusão da conta.",
+            title: "Terms of Use", 
+              content: "The use of this application is permitted only for lawful purposes and as provided for in these Terms of Use.\n\nThe user agrees to:\n- Use the application ethically;\n- Not share malicious or illegal content;\n- Respect other users and the system's features.\n\nFailure to comply with these terms may result in suspension or deletion of the account.",
             )),
           ),
           SizedBox(height: 15,),
           LegalInfoItem(
-            title: "Politica de Privacidade", 
+            title: "Privacy Policy".tr, 
             onTap: () => Get.to(() => const LegalDetailScreen(
-            title: "Politica de Privacidade", 
-              content: "Coletamos e utilizamos suas informações pessoais apenas quando necessário para fornecer e melhorar nossos serviços.\n\nSeus dados são tratados com segurança e não são compartilhados com terceiros sem sua permissão, exceto quando exigido por lei.\n\nVocê pode a qualquer momento solicitar a exclusão ou alteração dos seus dados, conforme previsto na Lei Geral de Proteção de Dados (LGPD).",
+            title: "Privacy Policy", 
+              content: "We collect and use your personal information only when necessary to provide and improve our services.\n\nYour data is treated securely and is not shared with third parties without your permission, except when required by law.\n\nYou can at any time request the deletion or modification of your data, as provided for in the General Data Protection Law (LGPD).",
             )),
           ),
         ],

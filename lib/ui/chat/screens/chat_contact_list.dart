@@ -52,7 +52,7 @@ class _ChatContactListState extends State<ChatContactList> {
                   TextFormField(
                     controller: viewModel.addPeopleController,
                     decoration: InputDecoration(
-                      hintText: "Pesquisar...".tr,
+                      hintText: "Search...".tr,
                       suffixIcon: Icon(Icons.arrow_drop_down),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -71,7 +71,7 @@ class _ChatContactListState extends State<ChatContactList> {
                         Navigator.of(context).pop();
                       }
                     },
-                    child: Text("Adicionar".tr,
+                    child: Text("to add".tr,
                         style: TextStyle(color: Colors.white)),
                   )
                 ],
@@ -90,15 +90,15 @@ class _ChatContactListState extends State<ChatContactList> {
     await showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Editar Nome'.tr),
+        title: Text('Edit Name'.tr),
         content: TextFormField(
           controller: nameController,
-          decoration: InputDecoration(labelText: 'Nome'.tr),
+          decoration: InputDecoration(labelText: 'Name'.tr),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: Text('Cancelar'.tr),
+            child: Text('Cancel'.tr),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -107,7 +107,7 @@ class _ChatContactListState extends State<ChatContactList> {
               Navigator.of(ctx).pop();
               await viewModel.fetchContacts();
             },
-            child: Text('Salvar'.tr),
+            child: Text('save'.tr),
           ),
         ],
       ),
@@ -120,7 +120,7 @@ class _ChatContactListState extends State<ChatContactList> {
         extendBodyBehindAppBar: false,
         appBar: AppBar(
           title: Text(
-            "Mensagens".tr,
+            "messages".tr,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           toolbarHeight: 64,
@@ -138,7 +138,7 @@ class _ChatContactListState extends State<ChatContactList> {
                       onChanged: (value) => viewModel.searchTerm.value = value,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.search),
-                        hintText: ("Pesquisar...".tr),
+                        hintText: ("Search...".tr),
                       ),
                     ),
                   ),
@@ -181,7 +181,7 @@ class _ChatContactListState extends State<ChatContactList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset("assets/images/not_found.svg", width: 200,),
-                          Text("Nenhum contato encontrado.".tr,
+                          Text("No contacts found.".tr,
                           style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
@@ -203,14 +203,14 @@ class _ChatContactListState extends State<ChatContactList> {
                               size: 60, color: Colors.grey),
                           const SizedBox(height: 20),
                           Text(
-                            "Você ainda não tem conversas.".tr,
+                            "You have no conversations yet.".tr,
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            "Adicione contatos para começar a conversar.".tr,
+                            "Add contacts to start chatting.".tr,
                             style:
                                 TextStyle(fontSize: 14, color: Colors.grey),
                             textAlign: TextAlign.center,
@@ -219,7 +219,7 @@ class _ChatContactListState extends State<ChatContactList> {
                           ElevatedButton.icon(
                             onPressed: () => addContacts(context),
                             icon: Icon(Icons.person_add, color: Colors.white),
-                            label: Text("Adicionar contato".tr),
+                            label: Text("Add contact".tr),
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 24,
@@ -272,18 +272,18 @@ class _ChatContactListState extends State<ChatContactList> {
                               bool? confirm = await showDialog(
                                 context: context,
                                 builder: (ctx) => AlertDialog(
-                                  title: Text('Confirmar'.tr),
+                                  title: Text('Confirm'.tr),
                                   content: Text(
-                                      'Tem certeza que deseja excluir este contato?'
+                                      'Are you sure you want to delete this contact?'
                                           .tr),
                                   actions: [
                                     TextButton(
                                       onPressed: () => Navigator.of(ctx).pop(false),
-                                      child: Text('Cancelar'.tr),
+                                      child: Text('Cancel'.tr),
                                     ),
                                     TextButton(
                                       onPressed: () => Navigator.of(ctx).pop(true),
-                                      child: Text('Excluir'.tr),
+                                      child: Text('Delete'.tr),
                                     ),
                                   ],
                                 ),

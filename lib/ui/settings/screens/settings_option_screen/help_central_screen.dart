@@ -25,7 +25,7 @@ class HelpCentralScreen extends StatelessWidget {
     if (!launched) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Não foi possível abrir o aplicativo de e-mail.'.tr),
+          content: Text('Unable to open email application.'.tr),
           backgroundColor: Theme.of(context).colorScheme.error,
           behavior: SnackBarBehavior.floating,
         ),
@@ -37,14 +37,14 @@ class HelpCentralScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Central de Ajuda".tr),
+        title: Text("Help Center".tr),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 15),
         children: [
           Image.asset("assets/images/help_central.png"),
-          Text("\nSe você estiver enfrentando problemas ou tiver dúvidas sobre como usar o aplicativo, estamos aqui para ajudar!".tr),
-          Text("\nAcesse nossa Central de Ajuda para encontrar respostas para perguntas frequentes, tutoriais e orientações passo a passo. Caso precise de suporte adicional, você também poderá entrar em contato com a nossa equipe diretamente por aqui.".tr),
+          Text("\nIf you're experiencing any issues or have questions about using the app, we're here to help!".tr),
+          Text("\nVisit our Help Center to find answers to frequently asked questions, tutorials, and step-by-step guidance. If you need additional support, you can also contact our team directly here.".tr),
           SizedBox(height: 70,),
           Align(
             alignment: Alignment.center,
@@ -53,7 +53,7 @@ class HelpCentralScreen extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () => _sendEmail(context),
-                child: Text("Confirmar".tr),
+                child: Text("Confirm".tr),
               ),
             ),
           ),

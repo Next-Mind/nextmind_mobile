@@ -41,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         });
       },
       (error) {
-        print('Erro ao carregar usuário: $error'.tr);
+        print('Error loading user: $error'.tr);
       },
     );
   }
@@ -50,14 +50,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Minha Conta'.tr),
+        title: Text('My Account'.tr),
         centerTitle: true,
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 15),
         children: [
           UserInfoCard(
-            name: name.isNotEmpty ? name : 'Carregando...'.tr,
+            name: name.isNotEmpty ? name : 'Loading...'.tr,
             email: email.isNotEmpty ? email : '...',
             photoURL: photoURL,
             onTap: () {
@@ -68,10 +68,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(height: 32),
 
           // Configurações e Preferências
-          sectionTitle('Configurações e Preferências'.tr),
+          sectionTitle('Settings and Preferences'.tr),
           SettingsItem(
             icon: Icons.notifications_none,
-            text: 'Notificações'.tr,
+            text: 'Notifications'.tr,
             onTap: () {
               Get.toNamed(AppRoutes.notificationScreen, id: 4);
             },
@@ -81,7 +81,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           SettingsItem(
             icon: Icons.security,
-            text: 'Segurança'.tr,
+            text: 'Security'.tr,
             onTap: () {
               Get.toNamed(AppRoutes.securityScreen, id: 4);
             },
@@ -91,7 +91,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           SettingsItemSwitch(
               icon: Icons.dark_mode_outlined,
-              text: 'Modo Escuro'.tr,
+              text: 'Dark Mode'.tr,
               value: ThemeController.to.isDarkMode.value,
               onChanged: (val) {
                 setState(() {
@@ -103,7 +103,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           SettingsItem(
             icon: Icons.language,
-            text: "Idioma do App".tr,
+            text: "App Language".tr,
             onTap: () {
               Get.toNamed(AppRoutes.languageScreen, id: 4);
             },
@@ -112,10 +112,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(height: 32),
 
           // Suporte
-          sectionTitle('Suporte'.tr),
+          sectionTitle('Support'.tr),
           SettingsItem(
             icon: Icons.help_outline,
-            text: 'Central de Ajuda'.tr,
+            text: 'Help Center'.tr,
             onTap: () {
               Get.toNamed(AppRoutes.helpCentralScreen, id: 4);
             },
@@ -125,7 +125,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           SettingsItem(
             icon: Icons.flag_outlined,
-            text: 'Reportar um Erro'.tr,
+            text: 'Report a Bug'.tr,
             onTap: () {
               Get.toNamed(AppRoutes.feedbackScreen, id: 4);
             },
@@ -134,10 +134,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Divider(height: 32),
 
           // Sobre o aplicativo
-          sectionTitle('Sobre o Aplicativo'.tr),
+          sectionTitle('About the Application'.tr),
           SettingsItem(
             icon: Icons.info_outline,
-            text: 'Informações Legais'.tr,
+            text: 'Legal Information'.tr,
             onTap: () {
               Get.dialog(
                 LegalInformationScreen(),
@@ -151,7 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           SettingsItem(
             icon: Icons.developer_board,
-            text: 'Informações de Software'.tr,
+            text: 'Software Information'.tr,
             onTap: () {
               Get.toNamed(AppRoutes.softwareInformationScreen, id: 4);
             },

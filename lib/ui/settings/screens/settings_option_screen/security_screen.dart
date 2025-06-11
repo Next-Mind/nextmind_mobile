@@ -19,22 +19,22 @@ class _SecurityScreenState extends State<SecurityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Segurança".tr),
+        title: Text("Security".tr),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 15),
         children: [
           SizedBox(height: 10,),
           SettingsItem(
-            text: "Alterar a senha da conta", 
+            text: "Change account password".tr, 
             icon: Icons.password,
             onTap: () {},
           ),
           SizedBox(height: kItemSpacing,),
-          sectionTitle("Config. do App"),
+          sectionTitle("App Settings".tr),
           Divider(height: 15,),
           SettingsItemSwitch(
-            text: "Senha ao Abrir o App", 
+            text: "Password when opening the app".tr, 
             value: isPassword, 
             onChanged: (value) {
               setState(() {
@@ -45,7 +45,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           SizedBox(height: 10,),
           if(isPassword)
             SettingsItem(
-            text: "Definir Senha", 
+            text: "Set Password".tr, 
             onTap: () {},
           ),
         ],
@@ -57,7 +57,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Text(
-        title.tr,
+        title,
         style: TextStyle(
           color: Theme.of(context).colorScheme.outline,
           fontWeight: FontWeight.bold,
