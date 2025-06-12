@@ -11,7 +11,6 @@ _$AvailabilityImpl _$$AvailabilityImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       date: json['date'] as String,
       status: (json['status'] as num).toInt(),
-      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$AvailabilityImplToJson(_$AvailabilityImpl instance) =>
@@ -19,17 +18,4 @@ Map<String, dynamic> _$$AvailabilityImplToJson(_$AvailabilityImpl instance) =>
       'id': instance.id,
       'date': instance.date,
       'status': instance.status,
-      'runtimeType': instance.$type,
-    };
-
-_$EmptyAvailabilityImpl _$$EmptyAvailabilityImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EmptyAvailabilityImpl(
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$EmptyAvailabilityImplToJson(
-        _$EmptyAvailabilityImpl instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
     };

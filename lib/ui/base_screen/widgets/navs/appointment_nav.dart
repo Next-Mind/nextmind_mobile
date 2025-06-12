@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:nextmind_mobile/ui/appointment/widget/searchPsycho.dart';
 import 'package:nextmind_mobile/ui/home/widgets/home_screen.dart';
 
 class AppointmentNav extends StatelessWidget {
@@ -13,7 +14,7 @@ class AppointmentNav extends StatelessWidget {
         if (settings.name == '/') {
           return GetPageRoute(
             settings: settings,
-            page: () => HomeScreen(),
+            page: () => Searchpsycho(),
           );
         }
         return null;
