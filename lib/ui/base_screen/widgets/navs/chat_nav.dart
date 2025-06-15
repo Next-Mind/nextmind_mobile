@@ -3,7 +3,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:nextmind_mobile/ui/chat/screens/chat_screen.dart';
-import 'package:nextmind_mobile/ui/chat/screens/chat_contact_list.dart';
+import 'package:nextmind_mobile/ui/chat/screens/chat_contact_list_screen.dart';
 import 'package:nextmind_mobile/ui/home/widgets/home_screen.dart';
 
 class ChatNav extends StatelessWidget {

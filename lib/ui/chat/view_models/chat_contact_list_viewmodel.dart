@@ -7,7 +7,7 @@ import 'package:nextmind_mobile/data/repositories/auth/auth_repository.dart';
 import 'package:nextmind_mobile/data/repositories/chat/contact_repository.dart';
 import 'package:nextmind_mobile/data/services/chat/contact_service.dart';
 import 'package:nextmind_mobile/domain/models/user/user.dart';
-import 'package:nextmind_mobile/ui/chat/screens/chat_contact_list.dart';
+import 'package:nextmind_mobile/ui/chat/screens/chat_contact_list_screen.dart';
 import 'package:result_dart/result_dart.dart';
 import '../../../data/models/user_model.dart';
 
